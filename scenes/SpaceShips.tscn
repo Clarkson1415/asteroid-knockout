@@ -1,4 +1,4 @@
-[gd_scene load_steps=243 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=246 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -736,6 +736,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tncqp"]
+friction = 0.2
+bounce = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lctqp"]
 atlas = ExtResource("13_c0id2")
 region = Rect2(0, 0, 48, 48)
@@ -946,6 +950,10 @@ _data = {
 &"idle": SubResource("Animation_tncqp")
 }
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tkyuk"]
+friction = 0.2
+bounce = 1.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1tyum"]
 atlas = ExtResource("17_myew2")
 region = Rect2(0, 0, 96, 96)
@@ -1051,8 +1059,11 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tncqp"]
+radius = 16.155497
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0621"]
-radius = 17.464228
+radius = 16.155497
 
 [sub_resource type="Animation" id="Animation_h3aac"]
 length = 0.001
@@ -1781,17 +1792,20 @@ offset_right = 474.54834
 offset_bottom = 606.0
 text = "FIRE"
 
-[node name="ship" type="Node2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "currentWeapon", "area")]
+[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "currentWeapon", "area")]
 z_index = 10
 position = Vector2(8, -5)
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_tncqp")
+gravity_scale = 0.0
 script = ExtResource("12_h3aac")
+Friction = 100.0
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
 fireButton = NodePath("../CanvasLayer/Button")
 currentWeapon = NodePath("weaponSlot/weapon")
 area = NodePath("Area2D")
 
 [node name="Camera2D" type="Camera2D" parent="ship"]
-position = Vector2(-7, 4)
 zoom = Vector2(1.8, 1.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -1799,25 +1813,23 @@ position_smoothing_speed = 10.0
 [node name="EngineSlot" type="Node2D" parent="ship"]
 
 [node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot"]
-position = Vector2(-12, 4)
-rotation = 1.5707964
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_3n1cu")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.83167547
 
 [node name="engine" type="AnimatedSprite2D" parent="ship/EngineSlot"]
-position = Vector2(-9, 4)
-rotation = 1.5707964
+position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yepbu")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="weaponSlot" type="Node2D" parent="ship"]
-position = Vector2(-7, 4)
+position = Vector2(-6, 4)
 
 [node name="weapon" type="AnimatedSprite2D" parent="ship/weaponSlot" node_paths=PackedStringArray("animationPlayer", "leftMuzzle", "rightMuzzle")]
-rotation = 1.5707964
+position = Vector2(6, -6)
 sprite_frames = SubResource("SpriteFrames_h3aac")
 animation = &"fire"
 autoplay = "idle"
@@ -1840,19 +1852,28 @@ position = Vector2(-9.000001, -9)
 position = Vector2(8.999999, -9.000001)
 
 [node name="Ship" type="Sprite2D" parent="ship"]
-position = Vector2(-7, 4)
-rotation = 1.5707964
 texture = ExtResource("15_yepbu")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship"]
+position = Vector2(-4, -6)
+rotation = -1.5707964
+polygon = PackedVector2Array(6, 4, -12, 18, -17, 18, -14, 8, -19, 7, -19, 2, -14, 0, -17, -10, -12, -10)
+
 [node name="Area2D" type="Area2D" parent="ship"]
+position = Vector2(-4, -10)
+rotation = -1.5707964
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship/Area2D"]
-polygon = PackedVector2Array(-17, 18, -13, 18, 3, 4, -13, -10, -17, -10)
+polygon = PackedVector2Array(-20, 18, -13, 18, 3, 4, -13, -10, -20, -10, -23, 0.99999905, -23, 6.9999995)
 
-[node name="asteroid" type="Node2D" parent="." node_paths=PackedStringArray("area", "animationPlayer")]
-position = Vector2(142, -38.999996)
-rotation = -0.3112441
+[node name="asteroid" type="RigidBody2D" parent="." node_paths=PackedStringArray("area", "animationPlayer")]
+position = Vector2(69.00001, -0.99999976)
+rotation = 0.051715106
+collision_layer = 2
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_tkyuk")
+gravity_scale = 0.0
 script = ExtResource("17_d0621")
 area = NodePath("Area2D")
 animationPlayer = NodePath("AnimationPlayer")
@@ -1866,13 +1887,17 @@ frame_progress = 0.31453902
 sprite_frames = SubResource("SpriteFrames_1tyum")
 autoplay = "default"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid"]
+position = Vector2(-0.9519521, -0.30624685)
+shape = SubResource("CircleShape2D_tncqp")
+
 [node name="Area2D" type="Area2D" parent="asteroid"]
 position = Vector2(-1.5497208e-06, -5.9604645e-06)
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid/Area2D"]
-position = Vector2(-1.2581966, 0.6457101)
+position = Vector2(-1.2581965, 0.6457101)
 shape = SubResource("CircleShape2D_d0621")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="asteroid"]

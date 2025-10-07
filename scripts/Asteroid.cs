@@ -1,35 +1,44 @@
 using Godot;
 using System;
 
-public partial class Asteroid : Node2D
+public partial class Asteroid : RigidBody2D
 {
-	private float asteroidSpeed = 50;
+    private float asteroidSpeed = 50f;
 
-	[Export] private Area2D area;
+    [Export] private Area2D area;
+    [Export] private AnimationPlayer animationPlayer;
 
-	[Export] private AnimationPlayer animationPlayer;
+    // Direction the asteroid will move in (unit vector)
+    private Vector2 moveDirection = Vector2.Right;
 
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
-		// pick random diretion to float in. Look At that direction.
-		var randomDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
-		GD.Print(randomDirection);
-        GlobalRotation = randomDirection.Angle();
-		asteroidSpeed = GD.RandRange(5, 30);
+    {
+        // Pick a random direction to float in, normalize it
+        moveDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
+
+        // Rotate to face that direction
+        GlobalRotation = moveDirection.Angle();
+
+        // Set random speed
+        asteroidSpeed = GD.RandRange(5, 30);
+
+        // Connect signal for detecting collision
         area.AreaEntered += Explode;
+
+        // Initialize velocity to move asteroid in the chosen direction
+        LinearVelocity = -moveDirection * asteroidSpeed;
     }
 
-	private void Explode(Area2D area)
-	{
+    private void Explode(Area2D area)
+    {
         animationPlayer.Play("explode");
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-		// move in the direction we are looking at.
-		var velocity = new Vector2(-1, 0).Rotated(GlobalRotation) * asteroidSpeed;
-		GlobalPosition += velocity * (float)delta;
+    public override void _PhysicsProcess(double delta)
+    {
+        // No manual position update needed: physics moves the asteroid based on LinearVelocity.
+
+        // Optional: You could add drag/friction if you want to slow it down over time:
+        //LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, drag * (float)delta);
     }
 }
