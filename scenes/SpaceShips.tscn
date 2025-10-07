@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=10 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Script" uid="uid://35655vv7iafa" path="res://scripts/controller.gd" id="1_iqer8"]
 [ext_resource type="Texture2D" uid="uid://cynpgfjdcqovb" path="res://Graphics Asset - Spaceships/PNG/Flame_01.png" id="2_pp3iq"]
 [ext_resource type="Texture2D" uid="uid://cvel2m6ijy7yt" path="res://Graphics Asset - Spaceships/PNG/Flame_02.png" id="3_eqaos"]
+[ext_resource type="Shader" uid="uid://co53g3smmxfck" path="res://scripts/stars.gdshader" id="3_pp3iq"]
 [ext_resource type="Texture2D" uid="uid://qyrakolnke2v" path="res://Graphics Asset - Spaceships/PNG/Spaceships/01/Spaceship_01_BLUE.png" id="4_i0fdi"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_30c0q"]
+[ext_resource type="Texture2D" uid="uid://bkmm260h3v6p8" path="res://space.jpg" id="5_pp3iq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqaos"]
+shader = ExtResource("3_pp3iq")
+shader_parameter/speed = 0.0
+shader_parameter/density = 0.01
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3n1cu"]
 animations = [{
@@ -22,11 +29,35 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.41215247, 0.41215247, 0.41215247, 1)
+offset_left = -6125.0
+offset_top = -3001.0
+offset_right = 6077.0
+offset_bottom = 2907.0
+texture = ExtResource("5_pp3iq")
+
+[node name="starsShader" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_eqaos")
+offset_left = -3264.0
+offset_top = -1541.0
+offset_right = 3262.0
+offset_bottom = 1538.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
+use_input_actions = false
 
 [node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("joystick_left")]
+z_index = 10
+position = Vector2(7, -4)
 script = ExtResource("1_iqer8")
 joystick_left = NodePath("../CanvasLayer/Virtual Joystick")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(-7, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(-112, 0)
@@ -40,8 +71,3 @@ position = Vector2(-1, 0)
 rotation = 1.5707964
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_i0fdi")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
-use_input_actions = false
