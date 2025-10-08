@@ -1,42 +1,42 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqcs1eukaeloy"]
 
-[ext_resource type="Script" uid="uid://e7bxd13suj4d" path="res://scenes/Bullet.cs" id="1_jm8ui"]
+[ext_resource type="Script" uid="uid://e7bxd13suj4d" path="res://scripts/Bullet.cs" id="1_jm8ui"]
 [ext_resource type="Texture2D" uid="uid://coxskmg616gkw" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main ship weapons/PNGs/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_mkf8s"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm8ui"]
 atlas = ExtResource("1_mkf8s")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a34wc"]
 atlas = ExtResource("1_mkf8s")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_umat8"]
 atlas = ExtResource("1_mkf8s")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_33lyl"]
 atlas = ExtResource("1_mkf8s")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h1aey"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgab0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y25gk")
+"texture": SubResource("AtlasTexture_jm8ui")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
+"texture": SubResource("AtlasTexture_a34wc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
+"texture": SubResource("AtlasTexture_umat8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
+"texture": SubResource("AtlasTexture_33lyl")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm8ui"]
@@ -48,9 +48,8 @@ script = ExtResource("1_jm8ui")
 area = NodePath("Area2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_h1aey")
+sprite_frames = SubResource("SpriteFrames_jgab0")
 autoplay = "default"
-frame_progress = 0.39294374
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4

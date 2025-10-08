@@ -46,7 +46,7 @@ public partial class Weapon : AnimatedSprite2D
 	public void InstantiateBulletLeft()
 	{
 		var bullet = (Bullet)bulletScene.Instantiate();
-		AddChild(bullet);
+        GetTree().Root.AddChild(bullet);
         bullet.GlobalPosition = leftMuzzle.GlobalPosition;
         bullet.GlobalRotation = GlobalRotation;
     }
@@ -54,7 +54,7 @@ public partial class Weapon : AnimatedSprite2D
     public void InstantiateBulletRight()
 	{
         var bullet = (Bullet)bulletScene.Instantiate();
-        AddChild(bullet);
+        GetTree().Root.AddChild(bullet);
         bullet.GlobalPosition = rightMuzzle.GlobalPosition;
         bullet.GlobalRotation = GlobalRotation;
     }

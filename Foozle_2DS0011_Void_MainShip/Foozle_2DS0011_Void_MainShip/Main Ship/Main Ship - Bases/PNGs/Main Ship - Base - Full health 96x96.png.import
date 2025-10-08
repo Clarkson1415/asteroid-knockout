@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c76kybjnjh1p"
-path="res://.godot/imported/Main Ship - Base - Full health.png-8d79a56bffec07582259b9ef9bc54bbf.ctex"
+uid="uid://ba12apm74pw0f"
+path="res://.godot/imported/Main Ship - Base - Full health 96x96.png-33067382e5a544bee1e819c8980ab441.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png"
-dest_files=["res://.godot/imported/Main Ship - Base - Full health.png-8d79a56bffec07582259b9ef9bc54bbf.ctex"]
+source_file="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health 96x96.png"
+dest_files=["res://.godot/imported/Main Ship - Base - Full health 96x96.png-33067382e5a544bee1e819c8980ab441.ctex"]
 
 [params]
 
