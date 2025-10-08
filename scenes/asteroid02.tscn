@@ -1,0 +1,131 @@
+[gd_scene load_steps=19 format=3 uid="uid://b7cyqdh2fncu3"]
+
+[ext_resource type="PackedScene" uid="uid://dn2t24mlrfnoa" path="res://scenes/asteroid_base.tscn" id="1_f4go5"]
+[ext_resource type="Texture2D" uid="uid://cbwn3s50qdkw6" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 02 - Flame.png" id="2_yh80d"]
+[ext_resource type="Texture2D" uid="uid://csbu1dmif0xrx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/asteroid 02.png" id="3_yh80d"]
+[ext_resource type="Texture2D" uid="uid://jo0frjptqwrl" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 02 - Explode.png" id="4_qvqcm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee7tg"]
+atlas = ExtResource("2_yh80d")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgo50"]
+atlas = ExtResource("2_yh80d")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qowtu"]
+atlas = ExtResource("2_yh80d")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh80d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee7tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgo50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qowtu")
+}],
+"loop": true,
+"name": &"erm",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvqcm"]
+atlas = ExtResource("3_yh80d")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr0rm"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvrji"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pd1j1"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkmu5"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_655om"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppoxe"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c7qt"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vpmp"]
+atlas = ExtResource("4_qvqcm")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee7tg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvqcm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr0rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvrji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pd1j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkmu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_655om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppoxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c7qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vpmp")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="asteroid" instance=ExtResource("1_f4go5")]
+
+[node name="fire" parent="." index="0"]
+rotation = 0.001556641
+sprite_frames = SubResource("SpriteFrames_yh80d")
+animation = &"erm"
+autoplay = "erm"
+frame_progress = 0.0
+
+[node name="animated" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_ee7tg")
+animation = &"default"
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+position = Vector2(3.9429603, -1.2054313)
+polygon = PackedVector2Array(-12.500877, -9.366326, -18.131012, -2.0655322, -17.717472, 5.9237785, -9.262942, 14.498203, 4.8217254, 15.771841, 9.453196, 8.522739, 8.884584, -2.462555, 3.4260397, -11.192062, -8.60961, -11.570421)
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-3.6679845, -12.8275385, -8.557916, -10.571752, -14.188049, -3.2709575, -13.826205, 3.7196841, -5.3199806, 13.292778, 8.764688, 14.566416, 10.658629, 12.465706, 13.396158, 7.317314, 12.827546, -3.6679802, 7.3690014, -12.397488)

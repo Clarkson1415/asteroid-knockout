@@ -20,7 +20,9 @@ public partial class ShipController : RigidBody2D
     [Export] public float Friction = 200f;
     [Export] public Node JoystickLeft;
 
-    [Export] private Button fireButton;
+    [Export] private TouchScreenButton fireButton;
+    [Export] private TouchScreenButton boostButton;
+
     [Export] private Area2D area;
 
     // TODO: these will be able to be changed at runtime when picked up.
@@ -38,7 +40,6 @@ public partial class ShipController : RigidBody2D
 
     private bool isBoosting;
 
-    [Export] private Button boostButton;
 
     public override void _Ready()
     {
@@ -64,12 +65,12 @@ public partial class ShipController : RigidBody2D
     {
         float dt = (float)delta;
 
-        if (fireButton.ButtonPressed)
+        if (fireButton.IsPressed())
         {
             currentWeapon.Fire();
         }
 
-        isBoosting = boostButton.ButtonPressed;
+        isBoosting = boostButton.IsPressed();
 
         Movement(dt);
 

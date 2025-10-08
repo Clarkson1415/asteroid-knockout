@@ -36,7 +36,13 @@ public partial class Asteroid : RigidBody2D
 
     private void Explode(Area2D area)
     {
+        if (animationPlayer.CurrentAnimation == "explode")
+        {
+            return;
+        }
+
         animationPlayer.Play("explode");
+        GlobalSignalBus.GetInstance().EmitOnAstroidDestroyedSignal();
     }
 
     //public override void _PhysicsProcess(double delta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=253 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -12,11 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://wujsdwgvsfbv" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background - Layer X -Rotary Star 2.png" id="9_yepbu"]
 [ext_resource type="Texture2D" uid="uid://rw6jw22s6hvn" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background - Layer X -Rotary Star.png" id="10_3m62u"]
 [ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/ShipController.cs" id="12_h3aac"]
+[ext_resource type="Texture2D" uid="uid://c0sml00finabf" path="res://BetterShootImage.png" id="12_kdhaw"]
+[ext_resource type="Texture2D" uid="uid://cvv0gfijogn4u" path="res://BetterBoostImage.png" id="13_bk3pc"]
+[ext_resource type="Texture2D" uid="uid://d4chf1p5ur6ge" path="res://BetterShootImagePressed.png" id="13_jnogn"]
 [ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/Engine.cs" id="13_rfagt"]
 [ext_resource type="Texture2D" uid="uid://d3f0ntc28axqa" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="14_368rj"]
+[ext_resource type="Texture2D" uid="uid://b5imhg62asnj3" path="res://BetterBoostImagePressed.png" id="14_kdhaw"]
 [ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scenes/AstroidSpawner.cs" id="14_tkyuk"]
 [ext_resource type="Texture2D" uid="uid://dsuulg6whsfyi" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="15_ncsgd"]
-[ext_resource type="PackedScene" uid="uid://dn2t24mlrfnoa" path="res://scenes/asteroid.tscn" id="15_r0to7"]
 [ext_resource type="Texture2D" uid="uid://brvdgciagsbk5" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="16_bk3pc"]
 [ext_resource type="AudioStream" uid="uid://dwxoeasy1rxfb" path="res://sounds/EngineIdleLoop.mp3" id="16_r0to7"]
 [ext_resource type="AudioStream" uid="uid://bby4wv65yfewj" path="res://sounds/EngineTurningOn.mp3" id="17_4jc4o"]
@@ -29,7 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://dqcs1eukaeloy" path="res://scenes/bulletAutoCannon.tscn" id="18_tncqp"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
+[ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
+[ext_resource type="PackedScene" uid="uid://b7cyqdh2fncu3" path="res://scenes/asteroid02.tscn" id="23_fjoud"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
 [ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
@@ -751,82 +756,7 @@ friction = 0.2
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
-size = Vector2(1030, 632)
-
-[sub_resource type="Animation" id="Animation_bgaru"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine-base engine flame:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/idleSound:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Engine/PoweringOn:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweredSound:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/PoweringOff:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Engine/boost:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+size = Vector2(1268, 768)
 
 [sub_resource type="Animation" id="Animation_368rj"]
 resource_name = "boost"
@@ -1205,7 +1135,6 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgaru"]
 _data = {
-&"RESET": SubResource("Animation_bgaru"),
 &"boost": SubResource("Animation_368rj"),
 &"idle": SubResource("Animation_r0to7"),
 &"powered": SubResource("Animation_m36cv"),
@@ -2158,30 +2087,70 @@ autoplay = "default"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
+modulate = Color(0.8893871, 0.4118303, 0.7156243, 1)
+offset_top = -150.0
+offset_bottom = 150.0
+scale = Vector2(0.5, 0.5)
+pressed_color = Color(0.9439187, 0.66288173, 0.8258425, 1)
+joystick_mode = 1
 use_input_actions = false
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 868.0
-offset_top = 557.0
-offset_right = 968.54834
-offset_bottom = 606.0
-text = "FIRE"
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -176.0
+offset_right = -9.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
 
-[node name="boost" type="Button" parent="CanvasLayer"]
-offset_left = 992.0
-offset_top = 475.0
-offset_right = 1084.0
-offset_bottom = 520.0
-text = "Boost"
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
 
-[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "area", "currentEngine", "currentWeapon", "shipSprite", "boostButton")]
+[node name="fire" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control"]
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("12_kdhaw")
+texture_pressed = ExtResource("13_jnogn")
+passby_press = true
+
+[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(25, 80)
+layout_mode = 2
+
+[node name="boost" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control2"]
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("13_bk3pc")
+texture_pressed = ExtResource("14_kdhaw")
+passby_press = true
+
+[node name="Control" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 15.0
+offset_right = 209.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 2
+text = "Roids Boomed: "
+
+[node name="astroidscore" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 2
+text = "0"
+
+[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite")]
 z_index = 10
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
 script = ExtResource("12_h3aac")
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
-fireButton = NodePath("../CanvasLayer/Button")
+fireButton = NodePath("../CanvasLayer/VBoxContainer/Control/fire")
+boostButton = NodePath("../CanvasLayer/VBoxContainer/Control2/boost")
 area = NodePath("Area2D")
 currentEngine = NodePath("Engine")
 currentWeapon = NodePath("weaponSlot/weapon")
@@ -2192,20 +2161,17 @@ damageSprites = Dictionary[int, Texture2D]({
 3: ExtResource("16_bk3pc")
 })
 shipSprite = NodePath("Ship")
-boostButton = NodePath("../CanvasLayer/boost")
+
+[node name="Camera2D" type="Camera2D" parent="ship"]
+process_callback = 0
+position_smoothing_speed = 10.0
 
 [node name="astroidSpawner" type="Area2D" parent="ship"]
 script = ExtResource("14_tkyuk")
-asteroidScene = ExtResource("15_r0to7")
+asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
 shape = SubResource("RectangleShape2D_tkyuk")
-
-[node name="Camera2D" type="Camera2D" parent="ship"]
-zoom = Vector2(2, 2)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 
 [node name="Engine" type="Node2D" parent="ship" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("13_rfagt")
@@ -2227,7 +2193,7 @@ autoplay = "idle"
 [node name="engine" type="AnimatedSprite2D" parent="ship/Engine"]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yepbu")
-animation = &"powering"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="idleSound" type="AudioStreamPlayer2D" parent="ship/Engine"]
@@ -2272,12 +2238,14 @@ position = Vector2(-9.000001, -9)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/leftMuzzle"]
 stream = ExtResource("23_4jc4o")
+volume_db = -3.0
 
 [node name="rightMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
 position = Vector2(8.999999, -9.000001)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/rightMuzzle"]
 stream = ExtResource("23_4jc4o")
+volume_db = -3.0
 
 [node name="Ship" type="Sprite2D" parent="ship"]
 texture = ExtResource("29_ncsgd")
@@ -2300,12 +2268,14 @@ position = Vector2(984, 426)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 sprite_frames = SubResource("SpriteFrames_myew2")
+autoplay = "default"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("30_4jc4o")
-volume_db = -10.859
+volume_db = -10.0
 autoplay = true
 
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner")]
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner", "astroidsScore")]
 script = ExtResource("28_m36cv")
 astroidSpawner = NodePath("../ship/astroidSpawner")
+astroidsScore = NodePath("../CanvasLayer/Control/astroidscore")

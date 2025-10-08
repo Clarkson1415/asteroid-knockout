@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Level : Node
 {
@@ -10,10 +9,16 @@ public partial class Level : Node
 
 	[Export] private AstroidSpawner astroidSpawner;
 
+	[Export] private Label astroidsScore;
+
+	// TODO: have time lasted
+
 	/// <summary>
 	/// Level increments survived.
 	/// </summary>
 	private int levels = 0;
+
+	private int astroidsDestroyed = 0;
 
 	public override void _Ready()
 	{
@@ -21,11 +26,19 @@ public partial class Level : Node
 		AddChild(timer);
 		timer.WaitTime = levelIncrementTime;
 		timer.Timeout += IncreaseAsteroidSpeed;
-	}
+
+		GlobalSignalBus.GetInstance().OnAstroidDestroyed += OnDestroyed;
+    }
 
 	private void IncreaseAsteroidSpeed()
 	{
 		astroidSpawner.IncreaseSpeeds(10f * (float)levels);
         levels++;
+    }
+
+	private void OnDestroyed()
+	{
+		astroidsDestroyed++;
+		astroidsScore.Text = astroidsDestroyed.ToString();
     }
 }

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvtgd885iyfkp"
-path="res://.godot/imported/Asteroid 01 - Explode.png-8ee044f7d059d647bfad44ca7c745ac1.ctex"
+path="res://.godot/imported/Asteroid 01 - Explode.png-accd220d4f58d2c62dc4120326ab531d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Explode.png"
-dest_files=["res://.godot/imported/Asteroid 01 - Explode.png-8ee044f7d059d647bfad44ca7c745ac1.ctex"]
+source_file="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png"
+dest_files=["res://.godot/imported/Asteroid 01 - Explode.png-accd220d4f58d2c62dc4120326ab531d.ctex"]
 
 [params]
 

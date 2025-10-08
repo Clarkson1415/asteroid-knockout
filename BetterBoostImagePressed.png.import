@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct8qs3jyv4rkl"
-path="res://.godot/imported/Asteroid - Flame.png-71db337c3dc1594bb5bf645145b50e9c.ctex"
+uid="uid://b5imhg62asnj3"
+path="res://.godot/imported/BetterBoostImagePressed.png-c09becd8cd9c9abea12d513cf9e53bc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Foozle_2DS0015_Void_EnvironmentPack/Effects/PNGs/Asteroid - Flame.png"
-dest_files=["res://.godot/imported/Asteroid - Flame.png-71db337c3dc1594bb5bf645145b50e9c.ctex"]
+source_file="res://BetterBoostImagePressed.png"
+dest_files=["res://.godot/imported/BetterBoostImagePressed.png-c09becd8cd9c9abea12d513cf9e53bc6.ctex"]
 
 [params]
 

@@ -1,9 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dn2t24mlrfnoa"]
+[gd_scene load_steps=24 format=3 uid="uid://dn2t24mlrfnoa"]
 
 [ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/Asteroid.cs" id="1_pwrvu"]
-[ext_resource type="Texture2D" uid="uid://ct8qs3jyv4rkl" path="res://Foozle_2DS0015_Void_EnvironmentPack/Effects/PNGs/Asteroid - Flame.png" id="2_0jovh"]
-[ext_resource type="Texture2D" uid="uid://buv71xd1l8j7j" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Base.png" id="3_kkwpv"]
-[ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Explode.png" id="4_x1lus"]
+[ext_resource type="Texture2D" uid="uid://jnhvx3rc1ir8" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Flame.png" id="2_0jovh"]
+[ext_resource type="Texture2D" uid="uid://buv71xd1l8j7j" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Base.png" id="3_kkwpv"]
+[ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png" id="4_x1lus"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="5_71tyo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tkyuk"]
@@ -115,12 +115,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tncqp"]
-radius = 16.155497
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_d0621"]
-radius = 16.155497
-
 [sub_resource type="Animation" id="Animation_h3aac"]
 length = 0.001
 tracks/0/type = "value"
@@ -130,6 +124,30 @@ tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionPolygon2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -196,24 +214,10 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -221,19 +225,29 @@ tracks/5/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/6/type = "method"
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionPolygon2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Area2D")
+tracks/6/path = NodePath("Area2D/CollisionPolygon2D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3aac"]
@@ -245,6 +259,7 @@ _data = {
 [node name="asteroid" type="RigidBody2D" node_paths=PackedStringArray("area", "animationPlayer")]
 rotation = 0.051715106
 collision_layer = 2
+collision_mask = 3
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_tkyuk")
 gravity_scale = 0.0
@@ -262,18 +277,16 @@ sprite_frames = SubResource("SpriteFrames_1tyum")
 animation = &"explode"
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.9519521, -0.30624685)
-shape = SubResource("CircleShape2D_tncqp")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5.7686944, -14.72148, -9.763347, -14.514712, -17.287422, -5.113208, -17.717472, 5.9237785, -6.215259, 15.341796, 4.821727, 15.771847, 15.393484, 7.213929, 15.926919, -1.8257301, 2.2206101, -15.135016)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-1.5497208e-06, -5.9604645e-06)
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.2581965, 0.6457101)
-shape = SubResource("CircleShape2D_d0621")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-5.7686944, -14.72148, -9.763347, -14.514712, -17.287422, -5.113208, -17.717472, 5.9237785, -6.215259, 15.341796, 4.821727, 15.771847, 15.393484, 7.213929, 15.926919, -1.8257301, 2.2206101, -15.135016)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
