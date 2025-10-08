@@ -1,10 +1,20 @@
 using Godot;
 using Godot.Collections;
+using System;
 
 public partial class ShipController : RigidBody2D
 {
     [Export] public float MaxSpeed = 100f;
-    [Export] private float boostSpeedMultiplier = 2f;
+
+    /// <summary>
+    /// Multipler of how much bigger max speed is when boosting.
+    /// </summary>
+    [Export] private float boostMaxSpeedMultiplier = 2f;
+
+    /// <summary>
+    /// How fast boost accellerates.
+    /// </summary>
+    [Export] private float boostAccellerationMultiplier = 2f;
 
     [Export] public float Acceleration = 300f;
     [Export] public float Friction = 200f;
@@ -87,17 +97,27 @@ public partial class ShipController : RigidBody2D
             inputVector = (Vector2)JoystickLeft.Get("output");
         }
 
-        GlobalRotation = inputVector.Angle() + Mathf.Pi / 2;
-        ApplyCentralForce(inputVector.Normalized() * Acceleration);
+        // change dir only if input
+        if (inputVector != Vector2.Zero)
+        {
+            GlobalRotation = inputVector.Angle() + Mathf.Pi / 2;
+        }
+
+        // apply force.
+        var boost = isBoosting ? boostAccellerationMultiplier : 1f;
+
+        // if no input but is boosing apply force in direction facing.
+        var forceDirection = !isBoosting ? inputVector : new Vector2(Mathf.Sin(GlobalRotation), -Mathf.Cos(GlobalRotation));
+        ApplyCentralForce(forceDirection.Normalized() * Acceleration * boost);
 
         // apply friction (dampen velocity manually)
         LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, Friction * dt);
 
         // Clamp max speed
-        if (LinearVelocity.Length() > MaxSpeed)
+        var maxSpeed = isBoosting ? (MaxSpeed * boostMaxSpeedMultiplier) : MaxSpeed;
+        if (LinearVelocity.Length() > maxSpeed)
         {
-            var boost = isBoosting ? boostSpeedMultiplier : 1f;
-            LinearVelocity = LinearVelocity.Normalized() * MaxSpeed * boost;
+            LinearVelocity = LinearVelocity.Normalized() * maxSpeed;
         }
     }
 }

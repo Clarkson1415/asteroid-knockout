@@ -1,4 +1,4 @@
-[gd_scene load_steps=268 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=269 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="21_h3aac"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
+[ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqaos"]
 atlas = ExtResource("1_pp3iq")
@@ -2432,7 +2433,6 @@ text = "Boost"
 
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "area", "currentEngine", "currentWeapon", "shipSprite", "boostButton")]
 z_index = 10
-position = Vector2(8, -5)
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
@@ -2505,8 +2505,8 @@ sprite_frames = SubResource("SpriteFrames_h3aac")
 animation = &"fire"
 autoplay = "idle"
 script = ExtResource("17_elunu")
-bulletScene = ExtResource("18_tncqp")
 animationPlayer = NodePath("AnimationPlayer")
+bulletScene = ExtResource("18_tncqp")
 leftMuzzle = NodePath("leftMuzzle")
 rightMuzzle = NodePath("rightMuzzle")
 
@@ -2593,3 +2593,8 @@ position = Vector2(984, 426)
 sprite_frames = SubResource("SpriteFrames_myew2")
 
 [node name="astroidSpawner" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_4jc4o")
+volume_db = -10.859
+autoplay = true
