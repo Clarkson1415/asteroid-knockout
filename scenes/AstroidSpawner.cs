@@ -20,19 +20,23 @@ public partial class AstroidSpawner : Area2D
 		CollisionShape2D shape = this.GetChild<CollisionShape2D>(0);
 		collisionShape = (RectangleShape2D)shape.Shape;
 
-		// spawn every 10 seconds
 		var timer = new Timer();
 		AddChild(timer);
-		timer.WaitTime = 5f;
+		timer.WaitTime = 1f;
 		timer.Start();
 		timer.Timeout += Spawn;
 		timer.Timeout += () => timer.Start();
 
-		// spawn 10 straight up.
-		for (int i = 0; i < 10; i++)
-		{
-			Spawn();
-		}
+		CallDeferred(nameof(Spawn10));
+    }
+
+	private void Spawn10()
+	{
+        // spawn 10 straight up.
+        for (int i = 0; i < 20; i++)
+        {
+            Spawn();
+        }
     }
 
 	private void Spawn()
@@ -42,5 +46,6 @@ public partial class AstroidSpawner : Area2D
 		var asteroid = asteroidScene.Instantiate<Asteroid>();
 		GetTree().Root.AddChild(asteroid);
 		asteroid.GlobalPosition = this.GlobalPosition + random_offset;
+		asteroid.SetSpeed(additionalSpeedIncrease);
     }
 }

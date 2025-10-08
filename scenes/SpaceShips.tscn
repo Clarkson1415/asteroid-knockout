@@ -1,4 +1,4 @@
-[gd_scene load_steps=248 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=249 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -13,17 +13,24 @@
 [ext_resource type="Texture2D" uid="uid://rw6jw22s6hvn" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background - Layer X -Rotary Star.png" id="10_3m62u"]
 [ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/ShipController.cs" id="12_h3aac"]
 [ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/Engine.cs" id="13_rfagt"]
+[ext_resource type="Texture2D" uid="uid://d3f0ntc28axqa" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="14_368rj"]
 [ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scenes/AstroidSpawner.cs" id="14_tkyuk"]
+[ext_resource type="Texture2D" uid="uid://dsuulg6whsfyi" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="15_ncsgd"]
 [ext_resource type="PackedScene" uid="uid://dn2t24mlrfnoa" path="res://scenes/asteroid.tscn" id="15_r0to7"]
+[ext_resource type="Texture2D" uid="uid://brvdgciagsbk5" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="16_bk3pc"]
 [ext_resource type="AudioStream" uid="uid://dwxoeasy1rxfb" path="res://sounds/EngineIdleLoop.mp3" id="16_r0to7"]
 [ext_resource type="AudioStream" uid="uid://bby4wv65yfewj" path="res://sounds/EngineTurningOn.mp3" id="17_4jc4o"]
+[ext_resource type="Texture2D" uid="uid://c5euqw8o7xje2" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="17_bgaru"]
 [ext_resource type="Script" uid="uid://65yqwwtl5r45" path="res://scripts/Weapon.cs" id="17_elunu"]
+[ext_resource type="Texture2D" uid="uid://dtqvlwuaf3l15" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="17_rfagt"]
 [ext_resource type="Texture2D" uid="uid://c1lvunitqrsp8" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Boost.png" id="18_368rj"]
+[ext_resource type="Texture2D" uid="uid://b7youynf6v52p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Powering.png" id="18_ebvmo"]
 [ext_resource type="AudioStream" uid="uid://cn84dh2o7eujr" path="res://sounds/EngineLoopPowered.mp3" id="18_rfagt"]
 [ext_resource type="PackedScene" uid="uid://dqcs1eukaeloy" path="res://scenes/bulletAutoCannon.tscn" id="18_tncqp"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
+[ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
 [ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
@@ -743,15 +750,6 @@ animations = [{
 friction = 0.2
 bounce = 1.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgaru"]
-load_path = "res://.godot/imported/Main Ship - Base - Slight damage.png-8d40b012d63689016aa915a0fed78d23.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4jc4o"]
-load_path = "res://.godot/imported/Main Ship - Base - Damaged.png-eeb13f19da8d7c948c1170e7ac0489c3.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfagt"]
-load_path = "res://.godot/imported/Main Ship - Base - Very damaged.png-396e0770ed84eff79341a5ba24632566.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
 size = Vector2(1030, 632)
 
@@ -760,7 +758,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../Engine/engine-base engine flame:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -772,19 +770,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../Engine/idleSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle"]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Engine/idleSound:playing")
+tracks/2/path = NodePath("../Engine/PoweringOn:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -796,7 +794,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweringOn:playing")
+tracks/3/path = NodePath("../Engine/PoweredSound:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -808,7 +806,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/PoweredSound:playing")
+tracks/4/path = NodePath("../Engine/PoweringOff:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -820,22 +818,10 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Engine/PoweringOff:playing")
+tracks/5/path = NodePath("../Engine/boost:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Engine/boost:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1243,38 +1229,32 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("18_368rj")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ebvmo"]
-load_path = "res://.godot/imported/Main Ship - Engines - Base Engine - Idle.png-d2db97df06ebeb5f381a2390154c86e8.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lctqp"]
-atlas = SubResource("CompressedTexture2D_ebvmo")
+atlas = ExtResource("17_rfagt")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_187kh"]
-atlas = SubResource("CompressedTexture2D_ebvmo")
+atlas = ExtResource("17_rfagt")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0b7p"]
-atlas = SubResource("CompressedTexture2D_ebvmo")
+atlas = ExtResource("17_rfagt")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0irw5"]
-load_path = "res://.godot/imported/Main Ship - Engines - Base Engine - Powering.png-aac407f96193691b2e6fa0afb2e71f9c.ctex"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_dihkf"]
-atlas = SubResource("CompressedTexture2D_0irw5")
+atlas = ExtResource("18_ebvmo")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmxou"]
-atlas = SubResource("CompressedTexture2D_0irw5")
+atlas = ExtResource("18_ebvmo")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t61my"]
-atlas = SubResource("CompressedTexture2D_0irw5")
+atlas = ExtResource("18_ebvmo")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tt5av"]
-atlas = SubResource("CompressedTexture2D_0irw5")
+atlas = ExtResource("18_ebvmo")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3n1cu"]
@@ -1328,22 +1308,23 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ndk0j"]
-load_path = "res://.godot/imported/Main Ship - Engines - Base Engine.png-9af6ba0af4762d7c59b5df49cbe95e67.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p6dx"]
+atlas = ExtResource("17_bgaru")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0omk6"]
-atlas = SubResource("CompressedTexture2D_ndk0j")
+atlas = ExtResource("17_bgaru")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yepbu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0omk6")
+"texture": SubResource("AtlasTexture_2p6dx")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1354,50 +1335,47 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_368rj"]
-load_path = "res://.godot/imported/Main Ship - Weapons - Auto Cannon.png-f520e2b435ebc0c60ef3468e6aa5afd4.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mphfl"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a5fv"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_inbfr"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3777f"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mgrh"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fadx"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_01ind"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oqgg"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4svyc"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(240, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2kvvd"]
-atlas = SubResource("CompressedTexture2D_368rj")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u26pe"]
+atlas = ExtResource("25_ebvmo")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h3aac"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mphfl")
+"texture": SubResource("AtlasTexture_4a5fv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_inbfr")
+"texture": SubResource("AtlasTexture_3777f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4mgrh")
+"texture": SubResource("AtlasTexture_4fadx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_01ind")
+"texture": SubResource("AtlasTexture_3oqgg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_082m1")
+"texture": SubResource("AtlasTexture_4svyc")
 }],
 "loop": true,
 "name": &"fire",
@@ -1405,7 +1383,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2kvvd")
+"texture": SubResource("AtlasTexture_u26pe")
 }],
 "loop": true,
 "name": &"idle",
@@ -1453,7 +1431,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_elunu"]
 resource_name = "fire"
-length = 0.49
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2201,7 +2179,6 @@ z_index = 10
 collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
-continuous_cd = 2
 script = ExtResource("12_h3aac")
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
 fireButton = NodePath("../CanvasLayer/Button")
@@ -2210,9 +2187,9 @@ currentEngine = NodePath("Engine")
 currentWeapon = NodePath("weaponSlot/weapon")
 damageSprites = Dictionary[int, Texture2D]({
 0: ExtResource("29_ncsgd"),
-1: SubResource("CompressedTexture2D_bgaru"),
-2: SubResource("CompressedTexture2D_4jc4o"),
-3: SubResource("CompressedTexture2D_rfagt")
+1: ExtResource("14_368rj"),
+2: ExtResource("15_ncsgd"),
+3: ExtResource("16_bk3pc")
 })
 shipSprite = NodePath("Ship")
 boostButton = NodePath("../CanvasLayer/boost")
@@ -2242,7 +2219,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/Engine"]
-position = Vector2(0, 4)
+position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3n1cu")
 animation = &"idle"
 autoplay = "idle"
@@ -2250,7 +2227,7 @@ autoplay = "idle"
 [node name="engine" type="AnimatedSprite2D" parent="ship/Engine"]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yepbu")
-animation = &"idle"
+animation = &"powering"
 autoplay = "idle"
 
 [node name="idleSound" type="AudioStreamPlayer2D" parent="ship/Engine"]
@@ -2276,6 +2253,8 @@ position = Vector2(6, -6)
 sprite_frames = SubResource("SpriteFrames_h3aac")
 animation = &"fire"
 autoplay = "idle"
+frame = 3
+frame_progress = 0.8888854
 script = ExtResource("17_elunu")
 animationPlayer = NodePath("AnimationPlayer")
 bulletScene = ExtResource("18_tncqp")
@@ -2327,5 +2306,6 @@ stream = ExtResource("30_4jc4o")
 volume_db = -10.859
 autoplay = true
 
-[node name="Level" type="Node" parent="."]
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner")]
 script = ExtResource("28_m36cv")
+astroidSpawner = NodePath("../ship/astroidSpawner")

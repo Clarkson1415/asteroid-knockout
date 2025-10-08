@@ -39,11 +39,11 @@ public partial class Asteroid : RigidBody2D
         animationPlayer.Play("explode");
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        // No manual position update needed: physics moves the asteroid based on LinearVelocity.
+    //public override void _PhysicsProcess(double delta)
+    //{
+    //    // No manual position update needed: physics moves the asteroid based on LinearVelocity.
 
-        // Optional: You could add drag/friction if you want to slow it down over time:
-        //LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, drag * (float)delta);
-    }
+    //    // Optional: You could add drag/friction if you want to slow it down over time:
+    //    //LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, drag * (float)delta);
+    //}
 }
