@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=248 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -13,21 +13,19 @@
 [ext_resource type="Texture2D" uid="uid://rw6jw22s6hvn" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background - Layer X -Rotary Star.png" id="10_3m62u"]
 [ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/ShipController.cs" id="12_h3aac"]
 [ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/Engine.cs" id="13_rfagt"]
+[ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scenes/AstroidSpawner.cs" id="14_tkyuk"]
+[ext_resource type="PackedScene" uid="uid://dn2t24mlrfnoa" path="res://scenes/asteroid.tscn" id="15_r0to7"]
 [ext_resource type="AudioStream" uid="uid://dwxoeasy1rxfb" path="res://sounds/EngineIdleLoop.mp3" id="16_r0to7"]
 [ext_resource type="AudioStream" uid="uid://bby4wv65yfewj" path="res://sounds/EngineTurningOn.mp3" id="17_4jc4o"]
-[ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/Asteroid.cs" id="17_d0621"]
 [ext_resource type="Script" uid="uid://65yqwwtl5r45" path="res://scripts/Weapon.cs" id="17_elunu"]
-[ext_resource type="Texture2D" uid="uid://buv71xd1l8j7j" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Base.png" id="17_k55ce"]
-[ext_resource type="Texture2D" uid="uid://ct8qs3jyv4rkl" path="res://Foozle_2DS0015_Void_EnvironmentPack/Effects/PNGs/Asteroid - Flame.png" id="17_myew2"]
 [ext_resource type="Texture2D" uid="uid://c1lvunitqrsp8" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Boost.png" id="18_368rj"]
-[ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Explode.png" id="18_myew2"]
 [ext_resource type="AudioStream" uid="uid://cn84dh2o7eujr" path="res://sounds/EngineLoopPowered.mp3" id="18_rfagt"]
 [ext_resource type="PackedScene" uid="uid://dqcs1eukaeloy" path="res://scenes/bulletAutoCannon.tscn" id="18_tncqp"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
-[ext_resource type="AudioStream" uid="uid://xhldxb4atx4c" path="res://sounds/AutoGunThingBulletShot.mp3" id="19_tkyuk"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
-[ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="21_h3aac"]
+[ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
+[ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 
@@ -753,6 +751,9 @@ load_path = "res://.godot/imported/Main Ship - Base - Damaged.png-eeb13f19da8d7c
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rfagt"]
 load_path = "res://.godot/imported/Main Ship - Base - Very damaged.png-396e0770ed84eff79341a5ba24632566.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
+size = Vector2(1030, 632)
 
 [sub_resource type="Animation" id="Animation_bgaru"]
 length = 0.001
@@ -1529,242 +1530,6 @@ _data = {
 &"idle": SubResource("Animation_tncqp")
 }
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tkyuk"]
-friction = 0.2
-bounce = 1.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1tyum"]
-atlas = ExtResource("17_myew2")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fi5k4"]
-atlas = ExtResource("17_myew2")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xr73o"]
-atlas = ExtResource("17_myew2")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qndy7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1tyum")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fi5k4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xr73o")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2p6dx"]
-atlas = ExtResource("17_k55ce")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u26pe"]
-atlas = ExtResource("18_myew2")
-region = Rect2(0, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4a5fv"]
-atlas = ExtResource("18_myew2")
-region = Rect2(96, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3777f"]
-atlas = ExtResource("18_myew2")
-region = Rect2(192, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fadx"]
-atlas = ExtResource("18_myew2")
-region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3oqgg"]
-atlas = ExtResource("18_myew2")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4svyc"]
-atlas = ExtResource("18_myew2")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_48hm8"]
-atlas = ExtResource("18_myew2")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_njdai"]
-atlas = ExtResource("18_myew2")
-region = Rect2(672, 0, 96, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1tyum"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2p6dx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u26pe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4a5fv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3777f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4fadx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3oqgg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4svyc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_48hm8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_njdai")
-}],
-"loop": false,
-"name": &"explode",
-"speed": 10.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tncqp"]
-radius = 16.155497
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_d0621"]
-radius = 16.155497
-
-[sub_resource type="Animation" id="Animation_h3aac"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_d0621"]
-resource_name = "destroy"
-length = 4.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("animated")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"explode", 1.0, false],
-"method": &"play"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("fire")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("animated")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Area2D")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3aac"]
-_data = {
-&"RESET": SubResource("Animation_h3aac"),
-&"explode": SubResource("Animation_d0621")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qndy7"]
 atlas = ExtResource("20_dlmki")
 region = Rect2(0, 0, 96, 96)
@@ -2452,6 +2217,13 @@ damageSprites = Dictionary[int, Texture2D]({
 shipSprite = NodePath("Ship")
 boostButton = NodePath("../CanvasLayer/boost")
 
+[node name="astroidSpawner" type="Area2D" parent="ship"]
+script = ExtResource("14_tkyuk")
+asteroidScene = ExtResource("15_r0to7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
+shape = SubResource("RectangleShape2D_tkyuk")
+
 [node name="Camera2D" type="Camera2D" parent="ship"]
 zoom = Vector2(2, 2)
 process_callback = 0
@@ -2520,13 +2292,13 @@ autoplay = "idle"
 position = Vector2(-9.000001, -9)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/leftMuzzle"]
-stream = ExtResource("19_tkyuk")
+stream = ExtResource("23_4jc4o")
 
 [node name="rightMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
 position = Vector2(8.999999, -9.000001)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/rightMuzzle"]
-stream = ExtResource("19_tkyuk")
+stream = ExtResource("23_4jc4o")
 
 [node name="Ship" type="Sprite2D" parent="ship"]
 texture = ExtResource("29_ncsgd")
@@ -2544,57 +2316,16 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship/Area2D"]
 polygon = PackedVector2Array(-20, 18, -13, 18, 3, 4, -13, -10, -20, -10, -23, 0.99999905, -23, 6.9999995)
 
-[node name="asteroid" type="RigidBody2D" parent="." node_paths=PackedStringArray("area", "animationPlayer")]
-position = Vector2(243, -26)
-rotation = 0.051715106
-collision_layer = 2
-mass = 1000.0
-physics_material_override = SubResource("PhysicsMaterial_tkyuk")
-gravity_scale = 0.0
-script = ExtResource("17_d0621")
-area = NodePath("Area2D")
-animationPlayer = NodePath("AnimationPlayer")
-
-[node name="fire" type="AnimatedSprite2D" parent="asteroid"]
-sprite_frames = SubResource("SpriteFrames_qndy7")
-autoplay = "default"
-frame_progress = 0.31453902
-
-[node name="animated" type="AnimatedSprite2D" parent="asteroid"]
-sprite_frames = SubResource("SpriteFrames_1tyum")
-animation = &"explode"
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid"]
-position = Vector2(-0.9519521, -0.30624685)
-shape = SubResource("CircleShape2D_tncqp")
-
-[node name="Area2D" type="Area2D" parent="asteroid"]
-position = Vector2(-1.5497208e-06, -5.9604645e-06)
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid/Area2D"]
-position = Vector2(-1.2581965, 0.6457101)
-shape = SubResource("CircleShape2D_d0621")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="asteroid"]
-libraries = {
-&"": SubResource("AnimationLibrary_h3aac")
-}
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="asteroid"]
-stream = ExtResource("21_h3aac")
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(984, 426)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 sprite_frames = SubResource("SpriteFrames_myew2")
 
-[node name="astroidSpawner" type="Node" parent="."]
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("30_4jc4o")
 volume_db = -10.859
 autoplay = true
+
+[node name="Level" type="Node" parent="."]
+script = ExtResource("28_m36cv")

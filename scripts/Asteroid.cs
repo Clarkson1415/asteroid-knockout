@@ -19,11 +19,16 @@ public partial class Asteroid : RigidBody2D
         // Rotate to face that direction
         GlobalRotation = moveDirection.Angle();
 
-        // Set random speed
-        asteroidSpeed = GD.RandRange(5, 30);
-
         // Connect signal for detecting collision
         area.AreaEntered += Explode;
+    }
+
+    public void SetSpeed(double additionalSpeedIncrease)
+    {
+        // Set random speed
+        double min = 5 + additionalSpeedIncrease;
+        double max = 30 + additionalSpeedIncrease;
+        asteroidSpeed = (float)GD.RandRange(min, max);
 
         // Initialize velocity to move asteroid in the chosen direction
         LinearVelocity = -moveDirection * asteroidSpeed;
