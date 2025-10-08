@@ -1,4 +1,4 @@
-[gd_scene load_steps=253 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=254 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scenes/AstroidSpawner.cs" id="14_tkyuk"]
 [ext_resource type="Texture2D" uid="uid://dsuulg6whsfyi" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="15_ncsgd"]
 [ext_resource type="Texture2D" uid="uid://brvdgciagsbk5" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="16_bk3pc"]
+[ext_resource type="FontFile" uid="uid://bs6luk4i06mad" path="res://Stormlight.ttf" id="16_jnogn"]
 [ext_resource type="AudioStream" uid="uid://dwxoeasy1rxfb" path="res://sounds/EngineIdleLoop.mp3" id="16_r0to7"]
 [ext_resource type="AudioStream" uid="uid://bby4wv65yfewj" path="res://sounds/EngineTurningOn.mp3" id="17_4jc4o"]
 [ext_resource type="Texture2D" uid="uid://c5euqw8o7xje2" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="17_bgaru"]
@@ -2130,16 +2131,27 @@ texture_pressed = ExtResource("14_kdhaw")
 passby_press = true
 
 [node name="Control" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 15.0
-offset_right = 209.0
-offset_bottom = 40.0
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 450.0
+offset_bottom = 50.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.7862757, 0.29739234, 0.7401805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("16_jnogn")
+theme_override_font_sizes/font_size = 30
 text = "Roids Boomed: "
 
 [node name="astroidscore" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.7862757, 0.29739234, 0.7401805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("16_jnogn")
+theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite")]
@@ -2275,7 +2287,6 @@ stream = ExtResource("30_4jc4o")
 volume_db = -10.0
 autoplay = true
 
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner", "astroidsScore")]
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner")]
 script = ExtResource("28_m36cv")
 astroidSpawner = NodePath("../ship/astroidSpawner")
-astroidsScore = NodePath("../CanvasLayer/Control/astroidscore")
