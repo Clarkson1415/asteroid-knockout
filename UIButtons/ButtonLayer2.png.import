@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0sml00finabf"
-path="res://.godot/imported/BetterShootImage.png-a70e55f2a93fd7604a6014a7dceee068.ctex"
+uid="uid://ds5fwck5uilpb"
+path="res://.godot/imported/ButtonLayer2.png-a691f1bf2727bf08a0f97ec712e7f998.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BetterShootImage.png"
-dest_files=["res://.godot/imported/BetterShootImage.png-a70e55f2a93fd7604a6014a7dceee068.ctex"]
+source_file="res://UIButtons/ButtonLayer2.png"
+dest_files=["res://.godot/imported/ButtonLayer2.png-a691f1bf2727bf08a0f97ec712e7f998.ctex"]
 
 [params]
 

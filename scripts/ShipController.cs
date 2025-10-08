@@ -40,6 +40,9 @@ public partial class ShipController : RigidBody2D
 
     private bool isBoosting;
 
+    [Export] private AnimationPlayer shipSpriteAnimator;
+
+    private string explode = "explode";
 
     public override void _Ready()
     {
@@ -53,12 +56,33 @@ public partial class ShipController : RigidBody2D
         // TODO: instead of isBoosting check for the speed of the collision.
         if (damageLevel == DAMAGE.completely || isBoosting)
         {
-            Logger.Log("You died");
+            if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
+            {
+                return;
+            }
+
+            shipSpriteAnimator.Play(explode);
             return;
         }
 
         damageLevel += 1;
         shipSprite.Texture = damageSprites[damageLevel];
+    }
+
+    private bool shipDestroyedHasBeenEmitted;
+
+    /// <summary>
+    /// TODO: to be called from animation player after animation of ship exploding
+    /// </summary>
+    public void OnShipDestroyed()
+    {
+        if (shipDestroyedHasBeenEmitted)
+        {
+            return;
+        }
+
+        shipDestroyedHasBeenEmitted = true;
+        GlobalSignalBus.GetInstance().EmitShipDestroyed();
     }
 
     public override void _PhysicsProcess(double delta)

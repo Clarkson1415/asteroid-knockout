@@ -26,8 +26,8 @@ public partial class Asteroid : RigidBody2D
     public void SetSpeed(double additionalSpeedIncrease)
     {
         // Set random speed
-        double min = 5 + additionalSpeedIncrease;
-        double max = 30 + additionalSpeedIncrease;
+        double min = 30 + additionalSpeedIncrease;
+        double max = 200 + additionalSpeedIncrease;
         asteroidSpeed = (float)GD.RandRange(min, max);
 
         // Initialize velocity to move asteroid in the chosen direction

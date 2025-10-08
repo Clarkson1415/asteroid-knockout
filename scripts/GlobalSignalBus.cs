@@ -20,4 +20,11 @@ public partial class GlobalSignalBus : Node
     {
         EmitSignal(SignalName.OnAstroidDestroyed);
     }
+
+    [Signal] public delegate void OnShipDestroyedEventHandler();
+
+    public void EmitShipDestroyed()
+    {
+        EmitSignal(SignalName.OnShipDestroyed);
+    }
 }

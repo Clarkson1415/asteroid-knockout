@@ -4,6 +4,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>pc</ActiveDebugProfile>
+    <ActiveDebugProfile>lap</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

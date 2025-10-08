@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4chf1p5ur6ge"
-path="res://.godot/imported/BetterShootImagePressed.png-d627adb23e46df8c19b7d68fcfb3684a.ctex"
+uid="uid://c7ui6nclw7mfa"
+path="res://.godot/imported/ColoredboostcircleSciFi.png-aa0284d52684d1e704c4b9ccaba732b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BetterShootImagePressed.png"
-dest_files=["res://.godot/imported/BetterShootImagePressed.png-d627adb23e46df8c19b7d68fcfb3684a.ctex"]
+source_file="res://UIButtons/ColoredboostcircleSciFi.png"
+dest_files=["res://.godot/imported/ColoredboostcircleSciFi.png-aa0284d52684d1e704c4b9ccaba732b1.ctex"]
 
 [params]
 

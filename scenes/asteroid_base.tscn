@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn2t24mlrfnoa"]
+[gd_scene load_steps=24 format=3 uid="uid://bukbivorbl6bb"]
 
 [ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/Asteroid.cs" id="1_pwrvu"]
 [ext_resource type="Texture2D" uid="uid://jnhvx3rc1ir8" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Flame.png" id="2_0jovh"]
@@ -260,7 +260,7 @@ _data = {
 rotation = 0.051715106
 collision_layer = 2
 collision_mask = 3
-mass = 1000.0
+mass = 200.0
 physics_material_override = SubResource("PhysicsMaterial_tkyuk")
 gravity_scale = 0.0
 script = ExtResource("1_pwrvu")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5imhg62asnj3"
-path="res://.godot/imported/BetterBoostImagePressed.png-c09becd8cd9c9abea12d513cf9e53bc6.ctex"
+uid="uid://dpyolwbyb3ilv"
+path="res://.godot/imported/crosshairImageONLY.png-d6e676df031a6882530f95322fbf111f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BetterBoostImagePressed.png"
-dest_files=["res://.godot/imported/BetterBoostImagePressed.png-c09becd8cd9c9abea12d513cf9e53bc6.ctex"]
+source_file="res://UIButtons/crosshairImageONLY.png"
+dest_files=["res://.godot/imported/crosshairImageONLY.png-d6e676df031a6882530f95322fbf111f.ctex"]
 
 [params]
 
