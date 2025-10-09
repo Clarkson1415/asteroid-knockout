@@ -11,7 +11,12 @@ public partial class CanvasAnimator : AnimationPlayer
 		GlobalSignalBus.GetInstance().OnShipDestroyed += GameOver;
 	}
 
-	private void GameOver()
+    public override void _ExitTree()
+    {
+        GlobalSignalBus.GetInstance().OnShipDestroyed -= GameOver;
+    }
+
+    private void GameOver()
 	{
         if (CurrentAnimation == gameOver)
 		{

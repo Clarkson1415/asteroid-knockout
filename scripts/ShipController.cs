@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class ShipController : RigidBody2D
 {
@@ -34,7 +35,7 @@ public partial class ShipController : RigidBody2D
 
     private DAMAGE damageLevel = DAMAGE.none;
 
-    [Export] Dictionary<DAMAGE, Texture2D> damageSprites;
+    [Export] Godot.Collections.Dictionary<DAMAGE, Texture2D> damageSprites;
 
     [Export] Sprite2D shipSprite;
 
@@ -44,35 +45,108 @@ public partial class ShipController : RigidBody2D
 
     private string explode = "explode";
 
+    private ShaderMaterial flashMaterial;
+
     public override void _Ready()
     {
         area.AreaEntered += OnHitAsteroid;
         CanSleep = false;
         shipSprite.Texture = damageSprites[damageLevel];
+
+        // duplicate material future proof if add more ships or something idk.
+        flashMaterial = (ShaderMaterial)shipSprite.Material.Duplicate();
+        shipSprite.Material = flashMaterial;
+    }
+
+    public override void _ExitTree()
+    {
+        area.AreaEntered -= OnHitAsteroid;
     }
 
     private void OnHitAsteroid(Area2D area)
     {
+        if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
+        {
+            return;
+        }
+
         // TODO: instead of isBoosting check for the speed of the collision.
         if (damageLevel == DAMAGE.completely || isBoosting)
         {
-            if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
-            {
-                return;
-            }
-
             shipSpriteAnimator.Play(explode);
             return;
         }
 
+        // Flash all sprite2ds in the ships tree.
+        // add material to sprite then add all materials to list to flash.
+        var colourToFlash = flashMaterial.GetShaderParameter("color");
+        spriteMats = new Array<ShaderMaterial>();
+
+        // get children for now: todo: will have references to engine, etc. to have reference to sprites.
+        List<Node> children1lvlDeep = new();
+
+        foreach (Node child in GetChildren())
+        {
+            children1lvlDeep.Add(child);
+            children1lvlDeep.AddRange(child.GetChildren());
+        }
+
+        foreach (Node node in children1lvlDeep)
+        {
+            if (node is Sprite2D sprite2d)
+            {
+                sprite2d.Material = (Material)flashMaterial.Duplicate();
+                spriteMats.Add((ShaderMaterial)sprite2d.Material);
+            }
+            else if (node is AnimatedSprite2D animSprite2d)
+            {
+                animSprite2d.Material = (Material)flashMaterial.Duplicate();
+                spriteMats.Add((ShaderMaterial)animSprite2d.Material);
+            }
+        }
+
+        // if flashing rn ignore
+        // TODO: multiple pulsing flashes for a second. 
+        // TODO fire damage sprite effects and sound.
+        if (flashTimer != null)
+        {
+            if (!flashTimer.IsStopped())
+            {
+                return;
+            }
+
+            flashTimer.Timeout -= ResetAll;
+        }
+
+        // FLASH
+        flashTimer = new Timer();
+        flashTimer.OneShot = true;
+        AddChild(flashTimer);
+        flashTimer.WaitTime = 0.5f;
+        flashTimer.Timeout += ResetAll;
+        flashTimer.Start();
+
+        spriteMats.ToList().ForEach(x => x.SetShaderParameter("color", colourToFlash));
+        spriteMats.ToList().ForEach(x => x.SetShaderParameter("flash_strength", 1f));
+
+        // sprite change
         damageLevel += 1;
         shipSprite.Texture = damageSprites[damageLevel];
     }
 
+    private Array<ShaderMaterial> spriteMats = new();
+
+    private void ResetAll()
+    {
+        spriteMats.ToList().ForEach(x => x.SetShaderParameter("flash_strength", 0f));
+    }
+
+    private Timer flashTimer;
+
     private bool shipDestroyedHasBeenEmitted;
 
     /// <summary>
-    /// TODO: to be called from animation player after animation of ship exploding
+    /// TODO: to be called from animation player after animation of ship exploding.
     /// </summary>
     public void OnShipDestroyed()
     {

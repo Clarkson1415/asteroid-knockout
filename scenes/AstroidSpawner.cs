@@ -80,7 +80,7 @@ public partial class AstroidSpawner : Area2D
 
 		var asteroidScene = asteroidScenes[GD.RandRange(0, asteroidScenes.Count - 1)];
 		var asteroid = asteroidScene.Instantiate<Asteroid>();
-		GetTree().Root.AddChild(asteroid);
+		GetTree().CurrentScene.AddChild(asteroid);
 		asteroid.GlobalPosition = spawnPoint;
 		asteroid.SetSpeed(additionalSpeedIncrease);
     }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=272 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -36,7 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://c7ui6nclw7mfa" path="res://UIButtons/ColoredboostcircleSciFi.png" id="18_uj3vt"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
+[ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="20_whogn"]
 [ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/CanvasAnimator.cs" id="20_wxqlh"]
+[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/RestartButton.cs" id="21_3ko2o"]
+[ext_resource type="Texture2D" uid="uid://bbrcjfb3bi4sd" path="res://UIButtons/RestartPressed.png" id="21_lg0qw"]
 [ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
 [ext_resource type="PackedScene" uid="uid://b7cyqdh2fncu3" path="res://scenes/asteroid02.tscn" id="23_fjoud"]
@@ -46,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 [ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png" id="42_0mrug"]
+[ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqaos"]
 atlas = ExtResource("1_pp3iq")
@@ -764,6 +768,89 @@ colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804,
 gradient = SubResource("Gradient_uj3vt")
 width = 255
 
+[sub_resource type="Animation" id="Animation_0mrug"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gameover:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gameover:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gameover:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gameover:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("gameover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Virtual Joystick:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VBoxContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_uj3vt"]
 resource_name = "gameOver"
 length = 0.5
@@ -846,89 +933,6 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_0mrug"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("gameover:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("gameover:modulate:r")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("gameover:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("gameover:modulate:b")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("gameover:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Virtual Joystick:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("VBoxContainer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mrug"]
@@ -1623,6 +1627,14 @@ _data = {
 &"idle": SubResource("Animation_tncqp")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whogn"]
+shader = ExtResource("43_s5ab8")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.4618621, 8.001737e-07, 1.4439226e-07, 1)
+
+[sub_resource type="Animation" id="Animation_s5ab8"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_wxqlh"]
 resource_name = "explode"
 tracks/0/type = "value"
@@ -1632,7 +1644,7 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.03333333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("42_0mrug")]
@@ -1650,21 +1662,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"OnShipDestroyed"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_s5ab8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("29_ncsgd")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s5ab8"]
@@ -2349,12 +2346,11 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 
-[node name="fire" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control" node_paths=PackedStringArray("Segments")]
+[node name="fire" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control"]
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("12_uj3vt")
 passby_press = true
 script = ExtResource("13_irl7o")
-Segments = [NodePath("Sprite2D"), NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4")]
 
 [node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control/fire"]
 position = Vector2(510, 510)
@@ -2382,12 +2378,11 @@ texture = ExtResource("14_fjoud")
 custom_minimum_size = Vector2(120, 100)
 layout_mode = 2
 
-[node name="boost" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control2" node_paths=PackedStringArray("Segments")]
+[node name="boost" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control2"]
 scale = Vector2(0.1, 0.1)
 texture_normal = ExtResource("18_uj3vt")
 passby_press = true
 script = ExtResource("13_irl7o")
-Segments = [NodePath("Sprite2D3"), NodePath("Sprite2D2"), NodePath("Sprite2D")]
 
 [node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control2/boost"]
 modulate = Color(0.16862746, 1, 0, 1)
@@ -2455,6 +2450,13 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 34
 text = "Game Over"
 
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/gameover"]
+position = Vector2(297, 236)
+scale = Vector2(0.099609375, 0.099609375)
+texture_normal = ExtResource("20_whogn")
+texture_pressed = ExtResource("21_lg0qw")
+script = ExtResource("21_3ko2o")
+
 [node name="CanvasAnimation" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
 &"": SubResource("AnimationLibrary_0mrug")
@@ -2467,6 +2469,7 @@ collision_mask = 2
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
+continuous_cd = 2
 script = ExtResource("12_h3aac")
 Acceleration = 9999.0
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
@@ -2570,7 +2573,8 @@ stream = ExtResource("23_4jc4o")
 volume_db = -3.0
 
 [node name="Ship" type="Sprite2D" parent="ship"]
-texture = ExtResource("29_ncsgd")
+material = SubResource("ShaderMaterial_whogn")
+texture = ExtResource("42_0mrug")
 
 [node name="shipAnims" type="AnimationPlayer" parent="ship/Ship"]
 libraries = {

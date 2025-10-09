@@ -30,7 +30,12 @@ public partial class Level : Node
 		GlobalSignalBus.GetInstance().OnAstroidDestroyed += OnDestroyed;
     }
 
-	private void IncreaseAsteroidSpeed()
+    public override void _ExitTree()
+    {
+        GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyed;
+    }
+
+    private void IncreaseAsteroidSpeed()
 	{
 		astroidSpawner.IncreaseSpeeds(10f * (float)levels);
         levels++;
