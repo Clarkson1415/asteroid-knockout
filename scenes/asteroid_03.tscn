@@ -72,9 +72,8 @@ animations = [{
 }]
 
 [node name="asteroid03" instance=ExtResource("1_vumos")]
-material = null
 mass = 500.0
-hitsTillExplode = 7
+hitsTillExplode = 4
 
 [node name="fire" parent="." index="0"]
 visible = false

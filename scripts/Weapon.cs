@@ -69,4 +69,9 @@ public partial class Weapon : AnimatedSprite2D
         bullet.GlobalPosition = rightMuzzle.GlobalPosition;
         bullet.GlobalRotation = GlobalRotation;
     }
+
+    public void FlashSprites(ShaderMaterial material)
+    {
+
+    }
 }

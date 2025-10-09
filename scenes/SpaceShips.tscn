@@ -963,6 +963,11 @@ _data = {
 &"gameOver": SubResource("Animation_uj3vt")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6tte"]
+shader = ExtResource("43_s5ab8")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.5372549, 0, 0, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tncqp"]
 friction = 0.2
 bounce = 1.0
@@ -974,6 +979,9 @@ size = Vector2(1268, 768)
 offsets = PackedFloat32Array(0, 0.5410959, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.5411765, 0, 1, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_sttqx"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_368rj"]
 resource_name = "boost"
 length = 4.9
@@ -981,7 +989,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -993,7 +1001,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1005,7 +1013,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../Engine/PoweredSound:playing")
+tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1017,7 +1025,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("../Engine/PoweringOn:playing")
+tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1029,7 +1037,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/PoweringOn")
+tracks/4/path = NodePath("../EngineSlot/Engine/PoweringOn")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1043,7 +1051,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Engine/PoweredSound")
+tracks/5/path = NodePath("../EngineSlot/Engine/PoweredSound")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1057,7 +1065,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Engine/boost:playing")
+tracks/6/path = NodePath("../EngineSlot/Engine/boost:playing")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1073,7 +1081,7 @@ length = 4.91
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1085,7 +1093,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1097,7 +1105,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Engine/idleSound:playing")
+tracks/2/path = NodePath("../EngineSlot/Engine/idleSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1109,7 +1117,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweredSound")
+tracks/3/path = NodePath("../EngineSlot/Engine/PoweredSound")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1123,7 +1131,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/boost")
+tracks/4/path = NodePath("../EngineSlot/Engine/boost")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1142,7 +1150,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1154,7 +1162,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1166,7 +1174,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Engine/PoweredSound:playing")
+tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1178,7 +1186,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweringOn:playing")
+tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1190,7 +1198,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/PoweringOn")
+tracks/4/path = NodePath("../EngineSlot/Engine/PoweringOn")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1204,7 +1212,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Engine/boost")
+tracks/5/path = NodePath("../EngineSlot/Engine/boost")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1222,7 +1230,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1234,7 +1242,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1246,7 +1254,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../Engine/PoweredSound:playing")
+tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1258,7 +1266,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweringOff:playing")
+tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOff:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1270,7 +1278,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/PoweredSound")
+tracks/4/path = NodePath("../EngineSlot/Engine/PoweredSound")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1288,7 +1296,7 @@ length = 0.26
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Engine/engine:animation")
+tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1300,7 +1308,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1312,7 +1320,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("../Engine/idleSound:playing")
+tracks/2/path = NodePath("../EngineSlot/Engine/idleSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1324,7 +1332,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Engine/PoweringOn:playing")
+tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1336,7 +1344,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine/idleSound")
+tracks/4/path = NodePath("../EngineSlot/Engine/idleSound")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1347,9 +1355,6 @@ tracks/4/keys = {
 "method": &"stop"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_sttqx"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgaru"]
 _data = {
@@ -1656,11 +1661,6 @@ _data = {
 &"idle": SubResource("Animation_tncqp")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_whogn"]
-shader = ExtResource("43_s5ab8")
-shader_parameter/flash_strength = 0.0
-shader_parameter/color = Color(0.4618621, 8.001737e-07, 1.4439226e-07, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_01ind"]
 atlas = ExtResource("47_xklh7")
 region = Rect2(0, 0, 96, 96)
@@ -1836,7 +1836,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Engine")
+tracks/4/path = NodePath("../EngineSlot/Engine")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2714,6 +2714,7 @@ script = ExtResource("20_wxqlh")
 
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
 z_index = 10
+material = SubResource("ShaderMaterial_h6tte")
 collision_mask = 2
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
@@ -2721,12 +2722,14 @@ gravity_scale = 0.0
 continuous_cd = 2
 script = ExtResource("12_h3aac")
 camera2d = NodePath("Camera2D")
+boostMaxSpeedMultiplier = 4.0
+boostAccellerationMultiplier = 4.0
 Acceleration = 9999.0
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
 fireButton = NodePath("../CanvasLayer/VBoxContainer/Control/fire")
 boostButton = NodePath("../CanvasLayer/VBoxContainer/Control2/boost")
 area = NodePath("Area2D")
-currentEngine = NodePath("Engine")
+currentEngine = NodePath("EngineSlot/Engine")
 currentWeapon = NodePath("weaponSlot/weapon")
 damageSprites = Dictionary[int, Texture2D]({
 0: ExtResource("29_ncsgd"),
@@ -2751,13 +2754,15 @@ asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fj
 position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_tkyuk")
 
-[node name="Engine" type="Node2D" parent="ship" node_paths=PackedStringArray("animationPlayer", "emissionLeft", "emissionRight")]
+[node name="EngineSlot" type="Node2D" parent="ship"]
+use_parent_material = true
+
+[node name="Engine" type="Node2D" parent="ship/EngineSlot" node_paths=PackedStringArray("animationPlayer")]
+use_parent_material = true
 script = ExtResource("13_rfagt")
 animationPlayer = NodePath("AnimationPlayer")
-emissionLeft = NodePath("CPUParticles2D")
-emissionRight = NodePath("CPUParticles2D2")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ship/Engine"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ship/EngineSlot/Engine"]
 position = Vector2(-7, 17)
 amount = 500
 lifetime = 1.6700000000000002
@@ -2771,7 +2776,7 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 color_ramp = SubResource("Gradient_sttqx")
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="ship/Engine"]
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="ship/EngineSlot/Engine"]
 position = Vector2(7, 17)
 amount = 500
 lifetime = 1.6700000000000002
@@ -2785,45 +2790,49 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 color_ramp = SubResource("Gradient_sttqx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/Engine"]
-root_node = NodePath("../../Camera2D")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
+root_node = NodePath("../../../Camera2D")
 libraries = {
 &"": SubResource("AnimationLibrary_bgaru")
 }
 autoplay = "idle"
 
-[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/Engine"]
+[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
+use_parent_material = true
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3n1cu")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="engine" type="AnimatedSprite2D" parent="ship/Engine"]
+[node name="engine" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
+use_parent_material = true
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_yepbu")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="idleSound" type="AudioStreamPlayer2D" parent="ship/Engine"]
+[node name="idleSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
 stream = ExtResource("16_r0to7")
 
-[node name="PoweringOn" type="AudioStreamPlayer2D" parent="ship/Engine"]
+[node name="PoweringOn" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
 stream = ExtResource("17_4jc4o")
 
-[node name="PoweredSound" type="AudioStreamPlayer2D" parent="ship/Engine"]
+[node name="PoweredSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
 stream = ExtResource("18_rfagt")
 
-[node name="PoweringOff" type="AudioStreamPlayer2D" parent="ship/Engine"]
+[node name="PoweringOff" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
 stream = ExtResource("19_ebvmo")
 
-[node name="boost" type="AudioStreamPlayer2D" parent="ship/Engine"]
+[node name="boost" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
 stream = ExtResource("26_ncsgd")
 volume_db = 6.0
 
 [node name="weaponSlot" type="Node2D" parent="ship"]
+use_parent_material = true
 position = Vector2(-6, 4)
 
 [node name="weapon" type="AnimatedSprite2D" parent="ship/weaponSlot" node_paths=PackedStringArray("animationPlayer", "leftMuzzle", "rightMuzzle")]
+use_parent_material = true
 position = Vector2(6, -6)
 sprite_frames = SubResource("SpriteFrames_h3aac")
 animation = &"fire"
@@ -2857,7 +2866,7 @@ stream = ExtResource("23_4jc4o")
 volume_db = -6.0
 
 [node name="Ship" type="AnimatedSprite2D" parent="ship"]
-material = SubResource("ShaderMaterial_whogn")
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_lg0qw")
 animation = &"explode"
 autoplay = "default"

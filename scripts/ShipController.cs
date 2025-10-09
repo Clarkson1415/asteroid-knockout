@@ -31,6 +31,7 @@ public partial class ShipController : RigidBody2D
     // TODO: these will be able to be changed at runtime when picked up.
     [Export] private Engine currentEngine;
     [Export] private Weapon currentWeapon;
+
     private Vector2 inputVector;
 
     enum DAMAGE { none = 0, slight = 1, half = 2, completely = 3}
@@ -58,8 +59,8 @@ public partial class ShipController : RigidBody2D
         shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
 
         // duplicate material future proof if add more ships or something idk.
-        flashMaterial = (ShaderMaterial)shipSprite.Material.Duplicate();
-        shipSprite.Material = flashMaterial;
+        flashMaterial = (ShaderMaterial)Material.Duplicate();
+        Material = flashMaterial;
 
         if (currentWeapon != null)
         {
@@ -104,34 +105,6 @@ public partial class ShipController : RigidBody2D
             camera2d.Shake();
         }
 
-        // Flash all sprite2ds in the ships tree.
-        // add material to sprite then add all materials to list to flash.
-        var colourToFlash = flashMaterial.GetShaderParameter("color");
-        spriteMats = new Array<ShaderMaterial>();
-
-        // get children for now: todo: will have references to engine, etc. to have reference to sprites.
-        List<Node> children1lvlDeep = new();
-
-        foreach (Node child in GetChildren())
-        {
-            children1lvlDeep.Add(child);
-            children1lvlDeep.AddRange(child.GetChildren());
-        }
-
-        foreach (Node node in children1lvlDeep)
-        {
-            if (node is Sprite2D sprite2d)
-            {
-                sprite2d.Material = (Material)flashMaterial.Duplicate();
-                spriteMats.Add((ShaderMaterial)sprite2d.Material);
-            }
-            else if (node is AnimatedSprite2D animSprite2d)
-            {
-                animSprite2d.Material = (Material)flashMaterial.Duplicate();
-                spriteMats.Add((ShaderMaterial)animSprite2d.Material);
-            }
-        }
-
         // if flashing rn ignore
         // TODO: multiple pulsing flashes for a second. 
         // TODO fire damage sprite effects and sound.
@@ -141,8 +114,6 @@ public partial class ShipController : RigidBody2D
             {
                 return;
             }
-
-            flashTimer.Timeout -= ResetAll;
         }
 
         // FLASH
@@ -150,22 +121,14 @@ public partial class ShipController : RigidBody2D
         flashTimer.OneShot = true;
         AddChild(flashTimer);
         flashTimer.WaitTime = 0.1f;
-        flashTimer.Timeout += ResetAll;
+        flashTimer.Timeout += () => flashMaterial.SetShaderParameter("flash_strength", 0f);
         flashTimer.Start();
 
-        spriteMats.ToList().ForEach(x => x.SetShaderParameter("color", colourToFlash));
-        spriteMats.ToList().ForEach(x => x.SetShaderParameter("flash_strength", 1f));
+        flashMaterial.SetShaderParameter("flash_strength", 1f);
 
         // sprite change
         damageLevel += 1;
         shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
-    }
-
-    private Array<ShaderMaterial> spriteMats = new();
-
-    private void ResetAll()
-    {
-        spriteMats.ToList().ForEach(x => x.SetShaderParameter("flash_strength", 0f));
     }
 
     private Timer flashTimer;
