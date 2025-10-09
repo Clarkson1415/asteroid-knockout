@@ -1,5 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx00sj46yac8m"]
+[gd_scene load_steps=4 format=3 uid="uid://cx00sj46yac8m"]
 
 [ext_resource type="PackedScene" uid="uid://bukbivorbl6bb" path="res://scenes/asteroid_base.tscn" id="1_rq5kg"]
+[ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="2_ucytk"]
 
-[node name="asteroid" instance=ExtResource("1_rq5kg")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uxqq"]
+shader = ExtResource("2_ucytk")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.4117647, 0, 0, 1)
+
+[node name="asteroid01" instance=ExtResource("1_rq5kg")]
+
+[node name="animated" parent="." index="1"]
+material = SubResource("ShaderMaterial_0uxqq")

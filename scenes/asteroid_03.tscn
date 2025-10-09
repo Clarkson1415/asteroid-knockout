@@ -1,18 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjwdi0sxsebyt"]
+[gd_scene load_steps=13 format=3 uid="uid://bjwdi0sxsebyt"]
 
 [ext_resource type="PackedScene" uid="uid://bukbivorbl6bb" path="res://scenes/asteroid_base.tscn" id="1_vumos"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="2_1t8ky"]
 [ext_resource type="Texture2D" uid="uid://cbldjp340pb6p" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 03 - Explode-Sheet.png" id="2_rtaup"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtaup"]
-shader = ExtResource("2_1t8ky")
-shader_parameter/flash_strength = 0.0
-shader_parameter/color = Color(0.54901963, 0, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cyxp3"]
 shader = ExtResource("2_1t8ky")
 shader_parameter/flash_strength = 0.0
-shader_parameter/color = Color(0.50724375, 4.6927482e-07, 3.3691526e-07, 1)
+shader_parameter/color = Color(0.4117647, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyxp3"]
 atlas = ExtResource("2_rtaup")
@@ -77,7 +72,7 @@ animations = [{
 }]
 
 [node name="asteroid03" instance=ExtResource("1_vumos")]
-material = SubResource("ShaderMaterial_rtaup")
+material = null
 mass = 500.0
 hitsTillExplode = 7
 

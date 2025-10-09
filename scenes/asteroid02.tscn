@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7cyqdh2fncu3"]
+[gd_scene load_steps=20 format=3 uid="uid://b7cyqdh2fncu3"]
 
 [ext_resource type="PackedScene" uid="uid://bukbivorbl6bb" path="res://scenes/asteroid_base.tscn" id="1_f4go5"]
+[ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="2_qvqcm"]
 [ext_resource type="Texture2D" uid="uid://cbwn3s50qdkw6" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 02 - Flame.png" id="2_yh80d"]
 [ext_resource type="Texture2D" uid="uid://csbu1dmif0xrx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/asteroid 02.png" id="3_yh80d"]
 [ext_resource type="Texture2D" uid="uid://jo0frjptqwrl" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 02 - Explode.png" id="4_qvqcm"]
@@ -33,6 +34,11 @@ animations = [{
 "name": &"erm",
 "speed": 10.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvqcm"]
+shader = ExtResource("2_qvqcm")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.4117647, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qvqcm"]
 atlas = ExtResource("3_yh80d")
@@ -103,7 +109,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="asteroid" instance=ExtResource("1_f4go5")]
+[node name="asteroid02" instance=ExtResource("1_f4go5")]
 
 [node name="fire" parent="." index="0"]
 rotation = 0.001556641
@@ -113,6 +119,7 @@ autoplay = "erm"
 frame_progress = 0.0
 
 [node name="animated" parent="." index="1"]
+material = SubResource("ShaderMaterial_qvqcm")
 sprite_frames = SubResource("SpriteFrames_ee7tg")
 
 [node name="CollisionPolygon2D" parent="." index="2"]

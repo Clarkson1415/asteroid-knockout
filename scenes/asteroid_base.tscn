@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bukbivorbl6bb"]
+[gd_scene load_steps=26 format=3 uid="uid://bukbivorbl6bb"]
 
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="1_cdqko"]
 [ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/Asteroid.cs" id="1_pwrvu"]
@@ -7,11 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png" id="4_x1lus"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="5_71tyo"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="7_nce2b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nce2b"]
-shader = ExtResource("1_cdqko")
-shader_parameter/flash_strength = 0.0
-shader_parameter/color = Color(0.54901963, 0, 0, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tkyuk"]
 friction = 0.2
@@ -45,6 +40,11 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nce2b"]
+shader = ExtResource("1_cdqko")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.4117647, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p6dx"]
 atlas = ExtResource("3_kkwpv")
@@ -249,8 +249,12 @@ _data = {
 &"explode": SubResource("Animation_d0621")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sow8j"]
+shader = ExtResource("1_cdqko")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.4117647, 0, 0, 1)
+
 [node name="asteroid" type="RigidBody2D" node_paths=PackedStringArray("area", "animationPlayer", "sprite", "hitByBulletSound")]
-material = SubResource("ShaderMaterial_nce2b")
 rotation = 0.051715106
 collision_layer = 2
 collision_mask = 3
@@ -270,6 +274,7 @@ autoplay = "default"
 frame_progress = 0.31453902
 
 [node name="animated" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_nce2b")
 sprite_frames = SubResource("SpriteFrames_1tyum")
 animation = &"explode"
 autoplay = "default"
@@ -294,5 +299,6 @@ libraries = {
 stream = ExtResource("5_71tyo")
 
 [node name="OnHitSound" type="AudioStreamPlayer2D" parent="."]
+material = SubResource("ShaderMaterial_sow8j")
 stream = ExtResource("7_nce2b")
 volume_db = 10.0

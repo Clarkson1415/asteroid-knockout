@@ -2618,15 +2618,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -149.0
-offset_top = -109.0
-offset_right = 149.0
-offset_bottom = -52.0
+offset_left = -153.0
+offset_top = -110.0
+offset_right = 233.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="Label3" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
 theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
@@ -2639,6 +2640,7 @@ theme_override_font_sizes/font_size = 34
 text = "high score:"
 
 [node name="highscore" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
 theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
@@ -2859,7 +2861,7 @@ material = SubResource("ShaderMaterial_whogn")
 sprite_frames = SubResource("SpriteFrames_lg0qw")
 animation = &"explode"
 autoplay = "default"
-frame_progress = 0.23230283
+frame_progress = 0.13582116
 
 [node name="shipAnims" type="AnimationPlayer" parent="ship/Ship"]
 libraries = {
