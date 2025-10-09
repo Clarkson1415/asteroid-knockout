@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=292 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -36,6 +36,8 @@
 [ext_resource type="Texture2D" uid="uid://c7ui6nclw7mfa" path="res://UIButtons/ColoredboostcircleSciFi.png" id="18_uj3vt"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
+[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/HighScoreLabel.cs" id="20_h6tte"]
+[ext_resource type="Texture2D" uid="uid://bt6vpvah5rtf8" path="res://UIButtons/blankRestartcircle.png" id="20_qurfu"]
 [ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="20_whogn"]
 [ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/CanvasAnimator.cs" id="20_wxqlh"]
 [ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/RestartButton.cs" id="21_3ko2o"]
@@ -43,13 +45,19 @@
 [ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
 [ext_resource type="PackedScene" uid="uid://b7cyqdh2fncu3" path="res://scenes/asteroid02.tscn" id="23_fjoud"]
+[ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="24_h0gdq"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
 [ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
-[ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png" id="42_0mrug"]
+[ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/CameraShake.cs" id="31_y4jiu"]
+[ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
+[ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
+[ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
+[ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
+[ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqaos"]
 atlas = ExtResource("1_pp3iq")
@@ -934,6 +942,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("gameover/HBoxContainer/highscore")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"UpdateHighScoreText"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0mrug"]
 _data = {
@@ -947,6 +969,10 @@ bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
 size = Vector2(1268, 768)
+
+[sub_resource type="Gradient" id="Gradient_sttqx"]
+offsets = PackedFloat32Array(0, 0.5410959, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.5411765, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_368rj"]
 resource_name = "boost"
@@ -1044,7 +1070,6 @@ tracks/6/keys = {
 [sub_resource type="Animation" id="Animation_r0to7"]
 resource_name = "idle"
 length = 4.91
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1102,7 +1127,7 @@ tracks/4/path = NodePath("../Engine/boost")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.03333336),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1323,8 +1348,12 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_sttqx"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgaru"]
 _data = {
+&"RESET": SubResource("Animation_sttqx"),
 &"boost": SubResource("Animation_368rj"),
 &"idle": SubResource("Animation_r0to7"),
 &"powered": SubResource("Animation_m36cv"),
@@ -1393,7 +1422,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"boost",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1632,35 +1661,190 @@ shader = ExtResource("43_s5ab8")
 shader_parameter/flash_strength = 0.0
 shader_parameter/color = Color(0.4618621, 8.001737e-07, 1.4439226e-07, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_01ind"]
+atlas = ExtResource("47_xklh7")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mgrh"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njdai"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tyum"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi5k4"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr73o"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kvvd"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mphfl"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inbfr"]
+atlas = ExtResource("47_lg0qw")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg0qw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01ind")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mgrh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njdai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tyum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi5k4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr73o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kvvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mphfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inbfr")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
 [sub_resource type="Animation" id="Animation_s5ab8"]
 length = 0.001
-
-[sub_resource type="Animation" id="Animation_wxqlh"]
-resource_name = "explode"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath(".:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("42_0mrug")]
+"values": [&"explode"]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..")
+tracks/1/path = NodePath("explosionsound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../weaponSlot:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wxqlh"]
+resource_name = "explode"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"OnShipDestroyed"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"explode", &"dead"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosionsound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../weaponSlot:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Engine")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"TurnOffSprites"
 }]
 }
 
@@ -2427,6 +2611,46 @@ grow_vertical = 2
 mouse_filter = 0
 texture = SubResource("GradientTexture1D_0mrug")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/gameover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -109.0
+offset_right = 149.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label3" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("14_jnogn")
+theme_override_font_sizes/font_size = 34
+text = "high score:"
+
+[node name="highscore" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("14_jnogn")
+theme_override_font_sizes/font_size = 34
+text = "0"
+script = ExtResource("20_h6tte")
+
 [node name="Label" type="Label" parent="CanvasLayer/gameover"]
 layout_mode = 1
 anchors_preset = 8
@@ -2450,8 +2674,31 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 34
 text = "Game Over"
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/gameover"]
-position = Vector2(297, 236)
+[node name="Control" type="Control" parent="CanvasLayer/gameover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 51.0
+offset_right = 20.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shadow" type="Sprite2D" parent="CanvasLayer/gameover/Control"]
+position = Vector2(38, 39)
+scale = Vector2(0.10266032, 0.10266032)
+texture = ExtResource("24_h0gdq")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/gameover/Control"]
+position = Vector2(30.25, 30.875002)
+scale = Vector2(0.09395429, 0.095179744)
+texture = ExtResource("20_qurfu")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/gameover/Control"]
 scale = Vector2(0.099609375, 0.099609375)
 texture_normal = ExtResource("20_whogn")
 texture_pressed = ExtResource("21_lg0qw")
@@ -2463,7 +2710,7 @@ libraries = {
 }
 script = ExtResource("20_wxqlh")
 
-[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator")]
+[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
 z_index = 10
 collision_mask = 2
 mass = 20.0
@@ -2471,6 +2718,7 @@ physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
 continuous_cd = 2
 script = ExtResource("12_h3aac")
+camera2d = NodePath("Camera2D")
 Acceleration = 9999.0
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
 fireButton = NodePath("../CanvasLayer/VBoxContainer/Control/fire")
@@ -2486,21 +2734,54 @@ damageSprites = Dictionary[int, Texture2D]({
 })
 shipSprite = NodePath("Ship")
 shipSpriteAnimator = NodePath("Ship/shipAnims")
+BonkAsteroidSFX = NodePath("Ship/bumpSound")
 
 [node name="Camera2D" type="Camera2D" parent="ship"]
 process_callback = 0
 position_smoothing_speed = 10.0
+script = ExtResource("31_y4jiu")
 
 [node name="astroidSpawner" type="Area2D" parent="ship"]
 script = ExtResource("14_tkyuk")
-asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud")])
+asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
+position = Vector2(-7, 9)
 shape = SubResource("RectangleShape2D_tkyuk")
 
-[node name="Engine" type="Node2D" parent="ship" node_paths=PackedStringArray("animationPlayer")]
+[node name="Engine" type="Node2D" parent="ship" node_paths=PackedStringArray("animationPlayer", "emissionLeft", "emissionRight")]
 script = ExtResource("13_rfagt")
 animationPlayer = NodePath("AnimationPlayer")
+emissionLeft = NodePath("CPUParticles2D")
+emissionRight = NodePath("CPUParticles2D2")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ship/Engine"]
+position = Vector2(-7, 17)
+amount = 500
+lifetime = 1.6700000000000002
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color_ramp = SubResource("Gradient_sttqx")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="ship/Engine"]
+position = Vector2(7, 17)
+amount = 500
+lifetime = 1.6700000000000002
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color_ramp = SubResource("Gradient_sttqx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship/Engine"]
 root_node = NodePath("../../Camera2D")
@@ -2535,6 +2816,7 @@ stream = ExtResource("19_ebvmo")
 
 [node name="boost" type="AudioStreamPlayer2D" parent="ship/Engine"]
 stream = ExtResource("26_ncsgd")
+volume_db = 6.0
 
 [node name="weaponSlot" type="Node2D" parent="ship"]
 position = Vector2(-6, 4)
@@ -2563,23 +2845,33 @@ position = Vector2(-9.000001, -9)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/leftMuzzle"]
 stream = ExtResource("23_4jc4o")
-volume_db = -3.0
+volume_db = -6.0
 
 [node name="rightMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
 position = Vector2(8.999999, -9.000001)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/rightMuzzle"]
 stream = ExtResource("23_4jc4o")
-volume_db = -3.0
+volume_db = -6.0
 
-[node name="Ship" type="Sprite2D" parent="ship"]
+[node name="Ship" type="AnimatedSprite2D" parent="ship"]
 material = SubResource("ShaderMaterial_whogn")
-texture = ExtResource("42_0mrug")
+sprite_frames = SubResource("SpriteFrames_lg0qw")
+animation = &"explode"
+autoplay = "default"
+frame_progress = 0.23230283
 
 [node name="shipAnims" type="AnimationPlayer" parent="ship/Ship"]
 libraries = {
 &"": SubResource("AnimationLibrary_s5ab8")
 }
+
+[node name="explosionsound" type="AudioStreamPlayer2D" parent="ship/Ship"]
+stream = ExtResource("49_oss5w")
+
+[node name="bumpSound" type="AudioStreamPlayer2D" parent="ship/Ship"]
+stream = ExtResource("50_sttqx")
+volume_db = 10.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship"]
 position = Vector2(-4, -6)

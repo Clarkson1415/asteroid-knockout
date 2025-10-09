@@ -17,9 +17,16 @@ public partial class Weapon : AnimatedSprite2D
 	[Export] private Node2D leftMuzzle;
 	[Export] private Node2D rightMuzzle;
 
+    private CameraShake camera;
+
     public override void _Ready()
     {
         animationPlayer.AnimationFinished += OnAnimationFinished;
+    }
+
+    public void SetCamera(CameraShake camFromTop)
+    {
+        camera = camFromTop;
     }
 
     private void OnAnimationFinished(StringName anim)
@@ -45,7 +52,9 @@ public partial class Weapon : AnimatedSprite2D
 	// for the animation player to call.
 	public void InstantiateBulletLeft()
 	{
-		var bullet = (Bullet)bulletScene.Instantiate();
+        camera.Shake(0.1f, 5);
+
+        var bullet = (Bullet)bulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bullet);
         bullet.GlobalPosition = leftMuzzle.GlobalPosition;
         bullet.GlobalRotation = GlobalRotation;
@@ -53,6 +62,8 @@ public partial class Weapon : AnimatedSprite2D
 
     public void InstantiateBulletRight()
 	{
+        camera.Shake(0.1f, 5);
+
         var bullet = (Bullet)bulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bullet);
         bullet.GlobalPosition = rightMuzzle.GlobalPosition;

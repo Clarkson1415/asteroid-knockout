@@ -7,6 +7,8 @@ public partial class ShipController : RigidBody2D
 {
     [Export] public float MaxSpeed = 100f;
 
+    [Export] private CameraShake camera2d;
+
     /// <summary>
     /// Multipler of how much bigger max speed is when boosting.
     /// </summary>
@@ -37,7 +39,7 @@ public partial class ShipController : RigidBody2D
 
     [Export] Godot.Collections.Dictionary<DAMAGE, Texture2D> damageSprites;
 
-    [Export] Sprite2D shipSprite;
+    [Export] AnimatedSprite2D shipSprite;
 
     private bool isBoosting;
 
@@ -47,20 +49,36 @@ public partial class ShipController : RigidBody2D
 
     private ShaderMaterial flashMaterial;
 
+    [Export] AudioStreamPlayer2D BonkAsteroidSFX;
+
     public override void _Ready()
     {
         area.AreaEntered += OnHitAsteroid;
         CanSleep = false;
-        shipSprite.Texture = damageSprites[damageLevel];
+        shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
 
         // duplicate material future proof if add more ships or something idk.
         flashMaterial = (ShaderMaterial)shipSprite.Material.Duplicate();
         shipSprite.Material = flashMaterial;
+
+        if (currentWeapon != null)
+        {
+            currentWeapon.SetCamera(this.camera2d);
+        }
     }
 
     public override void _ExitTree()
     {
         area.AreaEntered -= OnHitAsteroid;
+    }
+
+    /// <summary>
+    /// TODO: to be used for pickups.
+    /// </summary>
+    /// <param name="newWeapon"></param>
+    private void AddWeapon(Weapon newWeapon)
+    {
+        newWeapon.SetCamera(this.camera2d);
     }
 
     private void OnHitAsteroid(Area2D area)
@@ -70,11 +88,20 @@ public partial class ShipController : RigidBody2D
             return;
         }
 
+        BonkAsteroidSFX.Play();
+
         // TODO: instead of isBoosting check for the speed of the collision.
+        // fully destroy or normal was hit.
         if (damageLevel == DAMAGE.completely || isBoosting)
         {
+            currentEngine.PowerOff();
+            camera2d.Shake(1f, 30f);
             shipSpriteAnimator.Play(explode);
             return;
+        }
+        else
+        {
+            camera2d.Shake();
         }
 
         // Flash all sprite2ds in the ships tree.
@@ -122,7 +149,7 @@ public partial class ShipController : RigidBody2D
         flashTimer = new Timer();
         flashTimer.OneShot = true;
         AddChild(flashTimer);
-        flashTimer.WaitTime = 0.5f;
+        flashTimer.WaitTime = 0.1f;
         flashTimer.Timeout += ResetAll;
         flashTimer.Start();
 
@@ -131,7 +158,7 @@ public partial class ShipController : RigidBody2D
 
         // sprite change
         damageLevel += 1;
-        shipSprite.Texture = damageSprites[damageLevel];
+        shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
     }
 
     private Array<ShaderMaterial> spriteMats = new();
@@ -169,6 +196,14 @@ public partial class ShipController : RigidBody2D
         }
 
         isBoosting = boostButton.IsPressed();
+
+        // apply friction (dampen velocity manually)
+        LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, Friction * dt);
+
+        if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
+        {
+            return;
+        }
 
         Movement(dt);
 
@@ -208,9 +243,6 @@ public partial class ShipController : RigidBody2D
         // if no input but is boosing apply force in direction facing.
         var forceDirection = !isBoosting ? inputVector : new Vector2(Mathf.Sin(GlobalRotation), -Mathf.Cos(GlobalRotation));
         ApplyCentralForce(forceDirection.Normalized() * Acceleration * boost);
-
-        // apply friction (dampen velocity manually)
-        LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, Friction * dt);
 
         // Clamp max speed
         var maxSpeed = isBoosting ? (MaxSpeed * boostMaxSpeedMultiplier) : MaxSpeed;

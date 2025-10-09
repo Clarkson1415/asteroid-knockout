@@ -12,11 +12,14 @@ public partial class Level : Node
 	[Export] private Label astroidsScore;
 
 	// TODO: have time lasted
+	private static ConfigFile Config = new ConfigFile();
 
-	/// <summary>
-	/// Level increments survived.
-	/// </summary>
-	private int levels = 0;
+	private static string filePath = "user://scores.cfg";
+
+    /// <summary>
+    /// Level increments survived.
+    /// </summary>
+    private int levels = 0;
 
 	private int astroidsDestroyed = 0;
 
@@ -28,10 +31,14 @@ public partial class Level : Node
 		timer.Timeout += IncreaseAsteroidSpeed;
 
 		GlobalSignalBus.GetInstance().OnAstroidDestroyed += OnDestroyed;
+		GlobalSignalBus.GetInstance().OnShipDestroyed += OnShipDestroyed;
+
+		Error err = Config.Load(filePath);
     }
 
     public override void _ExitTree()
     {
+        GlobalSignalBus.GetInstance().OnShipDestroyed += OnShipDestroyed;
         GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyed;
     }
 
@@ -41,9 +48,35 @@ public partial class Level : Node
         levels++;
     }
 
+    private class SaveDataSections
+    {
+        public static string playerData = "playerData";
+    }
+
+    private class SaveDataKeys
+	{
+		public static string highscore = "highscore";
+	}
+
+	private void OnShipDestroyed()
+	{
+		if (astroidsDestroyed <= GetHighScore())
+		{
+			return;
+		}
+
+		Config.SetValue(SaveDataSections.playerData, SaveDataKeys.highscore, astroidsDestroyed);
+		Config.Save(filePath);
+	}
+
 	private void OnDestroyed()
 	{
 		astroidsDestroyed++;
 		astroidsScore.Text = astroidsDestroyed.ToString();
     }
+
+	public static int GetHighScore()
+	{
+		return (int)Config.GetValue(SaveDataSections.playerData, SaveDataKeys.highscore);
+	}
 }

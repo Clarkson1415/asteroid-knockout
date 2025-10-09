@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.InteropServices.Marshalling;
 
 public partial class Engine : Node2D
 {
@@ -11,9 +13,26 @@ public partial class Engine : Node2D
     private string powerOff = "poweringOff";
     private string boost = "boost";
 
+    [Export] CpuParticles2D emissionLeft;
+    [Export] CpuParticles2D emissionRight;
+
+    public void TurnOffSprites()
+    {
+        foreach (var c in GetChildren())
+        {
+            if (c is AnimatedSprite2D animsprite)
+            {
+                animsprite.Visible = false;
+            }
+        }
+
+        emissionLeft.Emitting = false;
+        emissionRight.Emitting = false;
+    }
+
     public override void _Ready()
     {
-		animationPlayer.AnimationFinished += AnimationFinished;
+        animationPlayer.AnimationFinished += AnimationFinished;
     }
 
     public void Boost()

@@ -1,6 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://cx00sj46yac8m"]
 
-[ext_resource type="PackedScene" path="res://scenes/asteroid_base.tscn" id="1_rq5kg"]
-
+[ext_resource type="PackedScene" uid="uid://bukbivorbl6bb" path="res://scenes/asteroid_base.tscn" id="1_rq5kg"]
 
 [node name="asteroid" instance=ExtResource("1_rq5kg")]

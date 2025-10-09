@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://bjwdi0sxsebyt"]
+
+[ext_resource type="PackedScene" uid="uid://bukbivorbl6bb" path="res://scenes/asteroid_base.tscn" id="1_vumos"]
+[ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="2_1t8ky"]
+[ext_resource type="Texture2D" uid="uid://cbldjp340pb6p" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 03 - Explode-Sheet.png" id="2_rtaup"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtaup"]
+shader = ExtResource("2_1t8ky")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.54901963, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyxp3"]
+shader = ExtResource("2_1t8ky")
+shader_parameter/flash_strength = 0.0
+shader_parameter/color = Color(0.50724375, 4.6927482e-07, 3.3691526e-07, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyxp3"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t8ky"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euwf0"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnocf"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tith3"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urnlc"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypo0q"]
+atlas = ExtResource("2_rtaup")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_euwf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyxp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t8ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euwf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnocf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tith3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urnlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypo0q")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[node name="asteroid03" instance=ExtResource("1_vumos")]
+material = SubResource("ShaderMaterial_rtaup")
+mass = 500.0
+hitsTillExplode = 7
+
+[node name="fire" parent="." index="0"]
+visible = false
+position = Vector2(21.608753, -8.127867)
+rotation = -0.1852319
+
+[node name="animated" parent="." index="1"]
+material = SubResource("ShaderMaterial_cyxp3")
+sprite_frames = SubResource("SpriteFrames_euwf0")
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PackedVector2Array(-11.744161, -33.437622, -26.51734, -28.667591, -34.419773, -7.2304373, -35.48664, 10.848882, -24.517862, 29.30656, -10.174735, 35.573513, 8.69648, 32.59404, 24.520012, 28.770975, 37.157303, 2.082046, 26.82534, -23.417965, 7.28213, -33.421112)
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PackedVector2Array(-11.744161, -33.437622, -26.51734, -28.667591, -34.419773, -7.2304373, -35.48664, 10.848882, -24.517862, 29.30656, -10.174735, 35.573513, 8.69648, 32.59404, 24.520012, 28.770975, 37.157303, 2.082046, 26.82534, -23.417965, 7.28213, -33.421112)
