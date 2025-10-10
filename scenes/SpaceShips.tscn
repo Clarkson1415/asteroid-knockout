@@ -996,8 +996,8 @@ gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_25tam")
 
 [sub_resource type="Gradient" id="Gradient_6skc5"]
-offsets = PackedFloat32Array(0, 0.74210525, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.5764706, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.32982457, 0.5701754, 0.80350876)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5764706, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_sttqx"]
 length = 0.001
@@ -2809,7 +2809,7 @@ process_material = SubResource("ParticleProcessMaterial_sgonc")
 position = Vector2(-7, 16)
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 500
+length = 300
 
 [node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
 position = Vector2(7, 16)
@@ -2824,7 +2824,7 @@ process_material = SubResource("ParticleProcessMaterial_sgonc")
 position = Vector2(-7, 16)
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 500
+length = 300
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
 root_node = NodePath("../../../Camera2D")
