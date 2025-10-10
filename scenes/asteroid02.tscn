@@ -111,18 +111,22 @@ animations = [{
 
 [node name="asteroid02" instance=ExtResource("1_f4go5")]
 
-[node name="fire" parent="." index="0"]
+[node name="Trail" parent="." index="0"]
+width = 25.0
+length = 50
+
+[node name="fire" parent="." index="1"]
 rotation = 0.001556641
 sprite_frames = SubResource("SpriteFrames_yh80d")
 animation = &"erm"
 autoplay = "erm"
 frame_progress = 0.0
 
-[node name="animated" parent="." index="1"]
+[node name="animated" parent="." index="2"]
 material = SubResource("ShaderMaterial_qvqcm")
 sprite_frames = SubResource("SpriteFrames_ee7tg")
 
-[node name="CollisionPolygon2D" parent="." index="2"]
+[node name="CollisionPolygon2D" parent="." index="3"]
 position = Vector2(3.9429603, -1.2054313)
 polygon = PackedVector2Array(-12.500877, -9.366326, -18.131012, -2.0655322, -17.717472, 5.9237785, -9.262942, 14.498203, 4.8217254, 15.771841, 9.453196, 8.522739, 8.884584, -2.462555, 3.4260397, -11.192062, -8.60961, -11.570421)
 

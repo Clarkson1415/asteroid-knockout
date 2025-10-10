@@ -1,4 +1,4 @@
-[gd_scene load_steps=292 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=297 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rw6jw22s6hvn" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background - Layer X -Rotary Star.png" id="10_3m62u"]
 [ext_resource type="Texture2D" uid="uid://dpyolwbyb3ilv" path="res://UIButtons/crosshairImageONLY.png" id="12_gv5l8"]
 [ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/ShipController.cs" id="12_h3aac"]
+[ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/FpsCounter.cs" id="12_sgonc"]
 [ext_resource type="Texture2D" uid="uid://b05r3ynccs31g" path="res://UIButtons/buttonBlank.png" id="12_uj3vt"]
 [ext_resource type="Script" uid="uid://crul3y3qrsogo" path="res://scenes/SciFiButton.cs" id="13_irl7o"]
 [ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/Engine.cs" id="13_rfagt"]
@@ -53,6 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/CameraShake.cs" id="31_y4jiu"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
+[ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="34_6skc5"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
 [ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
 [ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
@@ -975,9 +977,27 @@ bounce = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
 size = Vector2(1268, 768)
 
-[sub_resource type="Gradient" id="Gradient_sttqx"]
-offsets = PackedFloat32Array(0, 0.5410959, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0.5411765, 0, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_sgonc"]
+offsets = PackedFloat32Array(0, 0.18301886, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.5372549, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_25tam"]
+gradient = SubResource("Gradient_sgonc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sgonc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_25tam")
+
+[sub_resource type="Gradient" id="Gradient_6skc5"]
+offsets = PackedFloat32Array(0, 0.74210525, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.5764706, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_sttqx"]
 length = 0.001
@@ -2503,6 +2523,19 @@ autoplay = "default"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="fps" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 10.0
+offset_right = -11.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("14_jnogn")
+text = "FPS: 0"
+script = ExtResource("12_sgonc")
+
 [node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
 modulate = Color(0.8893871, 0.4118303, 0.7156243, 1)
 offset_top = -150.0
@@ -2719,7 +2752,6 @@ collision_mask = 2
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
-continuous_cd = 2
 script = ExtResource("12_h3aac")
 camera2d = NodePath("Camera2D")
 boostMaxSpeedMultiplier = 4.0
@@ -2757,38 +2789,42 @@ shape = SubResource("RectangleShape2D_tkyuk")
 [node name="EngineSlot" type="Node2D" parent="ship"]
 use_parent_material = true
 
-[node name="Engine" type="Node2D" parent="ship/EngineSlot" node_paths=PackedStringArray("animationPlayer")]
+[node name="Engine" type="Node2D" parent="ship/EngineSlot" node_paths=PackedStringArray("animationPlayer", "emissionLeft", "emissionRight")]
 use_parent_material = true
 script = ExtResource("13_rfagt")
 animationPlayer = NodePath("AnimationPlayer")
+emissionLeft = NodePath("flame")
+emissionRight = NodePath("flameRight")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(-7, 17)
-amount = 500
-lifetime = 1.6700000000000002
-lifetime_randomness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(2, 1)
-direction = Vector2(0, 1)
-spread = 30.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-color_ramp = SubResource("Gradient_sttqx")
+[node name="flame" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
+position = Vector2(-7, 16)
+amount = 400
+lifetime = 2.0
+trail_lifetime = 2.0
+trail_sections = 15
+trail_section_subdivisions = 12
+process_material = SubResource("ParticleProcessMaterial_sgonc")
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(7, 17)
-amount = 500
-lifetime = 1.6700000000000002
-lifetime_randomness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(2, 1)
-direction = Vector2(0, 1)
-spread = 30.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-color_ramp = SubResource("Gradient_sttqx")
+[node name="Trail" parent="ship/EngineSlot/Engine/flame" instance=ExtResource("34_6skc5")]
+position = Vector2(-7, 16)
+width = 5.0
+gradient = SubResource("Gradient_6skc5")
+length = 500
+
+[node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
+position = Vector2(7, 16)
+amount = 400
+lifetime = 2.0
+trail_lifetime = 2.0
+trail_sections = 15
+trail_section_subdivisions = 12
+process_material = SubResource("ParticleProcessMaterial_sgonc")
+
+[node name="Trail" parent="ship/EngineSlot/Engine/flameRight" instance=ExtResource("34_6skc5")]
+position = Vector2(-7, 16)
+width = 5.0
+gradient = SubResource("Gradient_6skc5")
+length = 500
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
 root_node = NodePath("../../../Camera2D")

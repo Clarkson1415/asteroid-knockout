@@ -1,8 +1,5 @@
 {
   "profiles": {
-    "cake game 1 idk": {
-      "commandName": "Project"
-    },
     "lap": {
       "commandName": "Executable",
       "executablePath": "C:\\Users\\georg\\OneDrive\\Desktop\\GODOT\\Godot_v4.5-stable_mono_win64\\Godot_v4.5-stable_mono_win64\\Godot_v4.5-stable_mono_win64.exe",

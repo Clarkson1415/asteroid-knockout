@@ -13,8 +13,8 @@ public partial class Engine : Node2D
     private string powerOff = "poweringOff";
     private string boost = "boost";
 
-    [Export] CpuParticles2D emissionLeft;
-    [Export] CpuParticles2D emissionRight;
+    [Export] GpuParticles2D emissionLeft;
+    [Export] GpuParticles2D emissionRight;
 
     public void TurnOffSprites()
     {
