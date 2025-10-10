@@ -30,7 +30,7 @@ public partial class Level : Node
 		timer.WaitTime = levelIncrementTime;
 		timer.Timeout += IncreaseAsteroidSpeed;
 
-		GlobalSignalBus.GetInstance().OnAstroidDestroyed += OnDestroyed;
+		GlobalSignalBus.GetInstance().OnAstroidDestroyed += OnDestroyedAsteroid;
 		GlobalSignalBus.GetInstance().OnShipDestroyed += OnShipDestroyed;
 
 		Error err = Config.Load(filePath);
@@ -39,7 +39,7 @@ public partial class Level : Node
     public override void _ExitTree()
     {
         GlobalSignalBus.GetInstance().OnShipDestroyed += OnShipDestroyed;
-        GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyed;
+        GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyedAsteroid;
     }
 
     private void IncreaseAsteroidSpeed()
@@ -60,7 +60,10 @@ public partial class Level : Node
 
 	private void OnShipDestroyed()
 	{
-		if (astroidsDestroyed <= GetHighScore())
+		// unsub after ship destroyed tho.
+        GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyedAsteroid;
+
+        if (astroidsDestroyed <= GetHighScore())
 		{
 			return;
 		}
@@ -69,7 +72,7 @@ public partial class Level : Node
 		Config.Save(filePath);
 	}
 
-	private void OnDestroyed()
+	private void OnDestroyedAsteroid()
 	{
 		astroidsDestroyed++;
 		astroidsScore.Text = astroidsDestroyed.ToString();
