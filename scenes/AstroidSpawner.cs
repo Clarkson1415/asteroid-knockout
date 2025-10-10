@@ -11,7 +11,11 @@ public partial class AstroidSpawner : Area2D
 
 	private float additionalSpeedIncrease = 0f;
 
-	public void IncreaseSpeeds(float speedsIncrease)
+    [Export] Label countLabel;
+
+    private int asteroids = 0;
+
+    public void IncreaseSpeeds(float speedsIncrease)
 	{
 		additionalSpeedIncrease += speedsIncrease;
     }
@@ -83,5 +87,8 @@ public partial class AstroidSpawner : Area2D
 		GetTree().CurrentScene.AddChild(asteroid);
 		asteroid.GlobalPosition = spawnPoint;
 		asteroid.SetSpeed(additionalSpeedIncrease);
+
+        asteroids++;
+        countLabel.Text = $"asteroids: {asteroids}";
     }
 }

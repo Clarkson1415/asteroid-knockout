@@ -2536,6 +2536,18 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 text = "FPS: 0"
 script = ExtResource("12_sgonc")
 
+[node name="asteroids" type="Label" parent="CanvasLayer/fps"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_top = 26.0
+offset_bottom = 54.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("14_jnogn")
+text = "Asteroids: "
+
 [node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
 modulate = Color(0.8893871, 0.4118303, 0.7156243, 1)
 offset_top = -150.0
@@ -2778,9 +2790,10 @@ process_callback = 0
 position_smoothing_speed = 10.0
 script = ExtResource("31_y4jiu")
 
-[node name="astroidSpawner" type="Area2D" parent="ship"]
+[node name="astroidSpawner" type="Area2D" parent="ship" node_paths=PackedStringArray("countLabel")]
 script = ExtResource("14_tkyuk")
 asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
+countLabel = NodePath("../../CanvasLayer/fps/asteroids")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
 position = Vector2(-7, 9)
