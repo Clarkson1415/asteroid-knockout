@@ -1,4 +1,4 @@
-[gd_scene load_steps=297 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=299 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -55,6 +55,7 @@
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/CameraShake.cs" id="31_y4jiu"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="34_6skc5"]
+[ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="40_6skc5"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
 [ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
 [ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
@@ -977,6 +978,14 @@ bounce = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
 size = Vector2(1268, 768)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ilsx"]
+shader = ExtResource("40_6skc5")
+shader_parameter/pixel_size = 4
+
+[sub_resource type="Gradient" id="Gradient_6skc5"]
+offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5887066, 0.028890513, 1, 1, 1, 1, 1)
+
 [sub_resource type="Gradient" id="Gradient_sgonc"]
 offsets = PackedFloat32Array(0, 0.18301886, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.5372549, 0, 1, 1, 0, 0, 1)
@@ -995,9 +1004,100 @@ initial_velocity_max = 10.0
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_25tam")
 
-[sub_resource type="Gradient" id="Gradient_6skc5"]
-offsets = PackedFloat32Array(0, 0.32982457, 0.5701754, 0.80350876)
-colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5764706, 0, 1, 1, 1, 1, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_knfn0"]
+atlas = ExtResource("18_368rj")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0lfn"]
+atlas = ExtResource("18_368rj")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih1n6"]
+atlas = ExtResource("18_368rj")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whboy"]
+atlas = ExtResource("18_368rj")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctqp"]
+atlas = ExtResource("17_rfagt")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_187kh"]
+atlas = ExtResource("17_rfagt")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0b7p"]
+atlas = ExtResource("17_rfagt")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dihkf"]
+atlas = ExtResource("18_ebvmo")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmxou"]
+atlas = ExtResource("18_ebvmo")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t61my"]
+atlas = ExtResource("18_ebvmo")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt5av"]
+atlas = ExtResource("18_ebvmo")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3n1cu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knfn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0lfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih1n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whboy")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lctqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_187kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0b7p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dihkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmxou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t61my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt5av")
+}],
+"loop": true,
+"name": &"powering",
+"speed": 10.0
+}]
 
 [sub_resource type="Animation" id="Animation_sttqx"]
 length = 0.001
@@ -1385,101 +1485,6 @@ _data = {
 &"poweringOff": SubResource("Animation_rfagt"),
 &"poweringOn": SubResource("Animation_4jc4o")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_knfn0"]
-atlas = ExtResource("18_368rj")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r0lfn"]
-atlas = ExtResource("18_368rj")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ih1n6"]
-atlas = ExtResource("18_368rj")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whboy"]
-atlas = ExtResource("18_368rj")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lctqp"]
-atlas = ExtResource("17_rfagt")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_187kh"]
-atlas = ExtResource("17_rfagt")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g0b7p"]
-atlas = ExtResource("17_rfagt")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dihkf"]
-atlas = ExtResource("18_ebvmo")
-region = Rect2(0, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bmxou"]
-atlas = ExtResource("18_ebvmo")
-region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t61my"]
-atlas = ExtResource("18_ebvmo")
-region = Rect2(96, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tt5av"]
-atlas = ExtResource("18_ebvmo")
-region = Rect2(144, 0, 48, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3n1cu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_knfn0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r0lfn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ih1n6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whboy")
-}],
-"loop": true,
-"name": &"boost",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lctqp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_187kh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g0b7p")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dihkf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bmxou")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t61my")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tt5av")
-}],
-"loop": true,
-"name": &"powering",
-"speed": 10.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p6dx"]
 atlas = ExtResource("17_bgaru")
@@ -2809,48 +2814,55 @@ animationPlayer = NodePath("AnimationPlayer")
 emissionLeft = NodePath("flame")
 emissionRight = NodePath("flameRight")
 
+[node name="CanvasGroup" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
+material = SubResource("ShaderMaterial_2ilsx")
+position = Vector2(-7, 12)
+
+[node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup" instance=ExtResource("34_6skc5")]
+width = 5.0
+gradient = SubResource("Gradient_6skc5")
+length = 500
+
 [node name="flame" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(-7, 16)
-amount = 400
-lifetime = 2.0
+position = Vector2(-7, 12)
+amount = 800
+lifetime = 0.5
 trail_lifetime = 2.0
 trail_sections = 15
 trail_section_subdivisions = 12
 process_material = SubResource("ParticleProcessMaterial_sgonc")
 
-[node name="Trail" parent="ship/EngineSlot/Engine/flame" instance=ExtResource("34_6skc5")]
-position = Vector2(-7, 16)
+[node name="CanvasGroup2" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
+material = SubResource("ShaderMaterial_2ilsx")
+position = Vector2(7, 12)
+
+[node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup2" instance=ExtResource("34_6skc5")]
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 300
+length = 500
 
 [node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(7, 16)
-amount = 400
-lifetime = 2.0
+position = Vector2(7, 12)
+amount = 800
+lifetime = 0.5
 trail_lifetime = 2.0
 trail_sections = 15
 trail_section_subdivisions = 12
 process_material = SubResource("ParticleProcessMaterial_sgonc")
 
-[node name="Trail" parent="ship/EngineSlot/Engine/flameRight" instance=ExtResource("34_6skc5")]
-position = Vector2(-7, 16)
-width = 5.0
-gradient = SubResource("Gradient_6skc5")
-length = 300
+[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
+visible = false
+use_parent_material = true
+position = Vector2(0, 5)
+sprite_frames = SubResource("SpriteFrames_3n1cu")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
 root_node = NodePath("../../../Camera2D")
 libraries = {
 &"": SubResource("AnimationLibrary_bgaru")
 }
-autoplay = "idle"
-
-[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
-use_parent_material = true
-position = Vector2(0, 5)
-sprite_frames = SubResource("SpriteFrames_3n1cu")
-animation = &"idle"
 autoplay = "idle"
 
 [node name="engine" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]

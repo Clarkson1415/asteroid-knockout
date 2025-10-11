@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class Asteroid : RigidBody2D
 {
@@ -19,12 +18,6 @@ public partial class Asteroid : RigidBody2D
 
     public override void _Ready()
     {
-        // Pick a random direction to float in, normalize it
-        moveDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
-
-        // Rotate to face that direction
-        GlobalRotation = moveDirection.Angle();
-
         // Connect signal for detecting collision
         area.AreaEntered += OnHit;
 
@@ -35,6 +28,12 @@ public partial class Asteroid : RigidBody2D
 
     public void SetSpeed(double additionalSpeedIncrease)
     {
+        // Pick a random direction to float in, normalize it
+        moveDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
+
+        // Rotate to face that direction
+        GlobalRotation = moveDirection.Angle();
+
         // Set random speed
         double min = 30 + additionalSpeedIncrease;
         double max = 200 + additionalSpeedIncrease;
