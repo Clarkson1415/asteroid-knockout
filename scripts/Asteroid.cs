@@ -9,6 +9,8 @@ public partial class Asteroid : RigidBody2D
     [Export] private Area2D area;
     [Export] private AnimationPlayer animationPlayer;
 
+    [Export] private Node trailNode;
+
     [Export] private AnimatedSprite2D sprite;
 
     // Direction the asteroid will move in (unit vector)
@@ -26,8 +28,15 @@ public partial class Asteroid : RigidBody2D
         sprite.Material = flashMat;
     }
 
+    public void ToggleTrailOff()
+    {
+        trailNode.Call("ToggleTrailOff");
+    }
+
     public void SetSpeed(double additionalSpeedIncrease)
     {
+        trailNode.Call("ToggleTrailOn");
+
         // Pick a random direction to float in, normalize it
         moveDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
 

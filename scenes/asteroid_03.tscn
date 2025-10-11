@@ -75,6 +75,9 @@ animations = [{
 mass = 500.0
 hitsTillExplode = 4
 
+[node name="Trail" parent="CanvasGroup" index="0"]
+width = 50.0
+
 [node name="fire" parent="." index="1"]
 position = Vector2(21.608753, -8.127867)
 rotation = -0.1852319

@@ -1,15 +1,17 @@
 using Godot;
-using System;
 
 public partial class CameraShake : Camera2D
 {
-    // --- exported defaults you can tweak in the editor ---
+    [Export] private Node2D followTarget;
+    [Export(PropertyHint.Range, "0.0,20.0,0.1")] public float FollowSpeed = 15.0f;
+
+    // Shake Properties
     [Export] public float DefaultDuration = 0.5f;
     [Export] public float DefaultMagnitude = 16f; // pixels
     [Export] public float Roughness = 1.0f; // how "jittery" each sample is
 
-    // --- internal state ---
-    private Vector2 _originalPosition;
+    // Private State Variables
+    private Vector2 _basePosition; // The position after following, but before shake
     private float _timeLeft = 0f;
     private float _totalDuration = 0f;
     private float _magnitude = 0f;
@@ -17,11 +19,17 @@ public partial class CameraShake : Camera2D
 
     public override void _Ready()
     {
-        // store the camera's base position so shake offsets are additive and reversible
-        _originalPosition = Position;
         _rng.Randomize();
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        if (followTarget == null) return;
+        Vector2 targetPos = followTarget.GlobalPosition;
+        Position = Position.Lerp(targetPos, (float)delta * FollowSpeed);
+        _basePosition = Position;
+    }
+    
     public override void _Process(double delta)
     {
         if (_timeLeft > 0f)
@@ -29,37 +37,34 @@ public partial class CameraShake : Camera2D
             // decrease remaining time
             _timeLeft -= (float)delta;
 
-            // progress 0 -> 1 (0 at start, 1 at end)
-            float progress = 1f - (_timeLeft / Math.Max(0.0001f, _totalDuration));
+            float progress = 1f - (_timeLeft / Mathf.Max(0.0001f, _totalDuration));
 
-            // damping curve (smooth falloff). You can change to Mathf.Pow(1 - progress, 2) etc.
+            // damping curve (smooth falloff)
             float damper = Mathf.SmoothStep(1f, 0f, progress);
 
-            // generate a jitter vector in [-1,1] for x and y, scaled by roughness
+            // generate a jitter vector scaled by roughness
             Vector2 jitter = new Vector2(
                 _rng.RandfRange(-1f, 1f),
                 _rng.RandfRange(-1f, 1f)
             );
 
-            // optional: make jitter direction length more varied
+            // make jitter direction length more varied
             if (jitter.Length() > 0.0001f)
                 jitter = jitter.Normalized() * _rng.RandfRange(0f, 1f);
 
-            // final offset = direction * magnitude * damper
             Vector2 offset = jitter * _magnitude * damper * Roughness;
 
-            // apply relative to the stored original position
-            Position = _originalPosition + offset;
+            // Apply the shake offset relative to the base follow position
+            // This line overrides the Position set in _PhysicsProcess with the offset.
+            Position = _basePosition + offset;
 
-            // when finished, ensure we snap back exactly to original to avoid drift
             if (_timeLeft <= 0f)
-                Position = _originalPosition;
+                Position = _basePosition;
         }
         else
         {
-            // make sure position remains exactly the original when not shaking
-            if (Position != _originalPosition)
-                Position = _originalPosition;
+            // When not shaking, do nothing here. The _PhysicsProcess is 
+            // continuously updating 'Position' for the follow effect.
         }
     }
 
@@ -77,28 +82,26 @@ public partial class CameraShake : Camera2D
     public void Shake(float duration, float magnitude)
     {
         // set up shake state (this will restart/override any current shake)
-        _totalDuration = Math.Max(0.0001f, duration);
+        _totalDuration = Mathf.Max(0.0001f, duration);
         _timeLeft = _totalDuration;
-        _magnitude = Math.Max(0f, magnitude);
+        _magnitude = Mathf.Max(0f, magnitude);
     }
 
     /// <summary>
     /// Add an impulse style shake on top of any existing shake (increases magnitude/time).
-    /// Useful for stacking explosions/impacts.
     /// </summary>
     public void AddShake(float extraDuration, float extraMagnitude)
     {
         if (_timeLeft <= 0f)
         {
-            // start fresh
             Shake(extraDuration, extraMagnitude);
         }
         else
         {
             // extend/boost existing shake (simple additive model)
-            _timeLeft = Math.Min(_totalDuration + extraDuration, _timeLeft + extraDuration);
-            _totalDuration = Math.Max(_totalDuration, _timeLeft);
-            _magnitude = Math.Max(_magnitude, extraMagnitude);
+            _timeLeft = Mathf.Min(_totalDuration + extraDuration, _timeLeft + extraDuration);
+            _totalDuration = Mathf.Max(_totalDuration, _timeLeft);
+            _magnitude = Mathf.Max(_magnitude, extraMagnitude);
         }
     }
 }

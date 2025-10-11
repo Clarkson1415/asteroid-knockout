@@ -73,6 +73,7 @@ public partial class AstroidSpawner : Area2D
 
     private void AddToPool(Asteroid asteroid)
     {
+        asteroid.ToggleTrailOff();
         asteroid.DisableMode = DisableModeEnum.KeepActive;
         asteroid.Visible = false;
         asteroidPool.Add(asteroid);

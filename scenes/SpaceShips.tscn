@@ -1,4 +1,4 @@
-[gd_scene load_steps=299 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=307 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://by32rd0rx7j41" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 02 - Shadows 2.png" id="1_eqaos"]
 [ext_resource type="Texture2D" uid="uid://dagkhknx3cwfm" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/PNGs/Split up/Starry background  - Layer 01 - Solid colour.png" id="1_pp3iq"]
@@ -49,9 +49,13 @@
 [ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="24_h0gdq"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
+[ext_resource type="Script" uid="uid://bal3umval1r3a" path="res://scenes/PauseMenu.cs" id="28_2ilsx"]
 [ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
+[ext_resource type="Script" uid="uid://mfw2f1aj4wvg" path="res://scenes/ControlsButton.cs" id="29_nhe15"]
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
+[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scenes/RemappingButton.cs" id="30_ivo02"]
+[ext_resource type="Script" uid="uid://dio76wev14j0k" path="res://scripts/PauseMenuBackButton.cs" id="31_0e8gh"]
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/CameraShake.cs" id="31_y4jiu"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="34_6skc5"]
@@ -773,7 +777,7 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_uj3vt"]
-colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 0.49019608)
+colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
 gradient = SubResource("Gradient_uj3vt")
@@ -966,6 +970,20 @@ _data = {
 &"gameOver": SubResource("Animation_uj3vt")
 }
 
+[sub_resource type="Gradient" id="Gradient_nhe15"]
+colors = PackedColorArray(0, 0.84055024, 0.7291495, 1, 1, 0.08235294, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ivo02"]
+gradient = SubResource("Gradient_nhe15")
+width = 294
+
+[sub_resource type="Gradient" id="Gradient_ivo02"]
+colors = PackedColorArray(0.793019, 0.14559332, 0.5284827, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e8gh"]
+gradient = SubResource("Gradient_ivo02")
+width = 129
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h6tte"]
 shader = ExtResource("43_s5ab8")
 shader_parameter/flash_strength = 0.0
@@ -1106,58 +1124,66 @@ length = 0.001
 resource_name = "boost"
 length = 4.9
 loop_mode = 1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
+tracks/0/path = NodePath("../ship/EngineSlot/Engine/boost")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"powering"]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../ship/EngineSlot/Engine/idleSound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"boost"]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ship/EngineSlot/Engine/PoweringOn")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ship/EngineSlot/Engine/PoweredSound")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../EngineSlot/Engine/PoweringOn")
+tracks/4/path = NodePath("../ship/EngineSlot/Engine/PoweringOff")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1167,80 +1193,32 @@ tracks/4/keys = {
 "args": [],
 "method": &"stop"
 }]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../EngineSlot/Engine/PoweredSound")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../EngineSlot/Engine/boost:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_r0to7"]
 resource_name = "idle"
 length = 4.91
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
+tracks/0/path = NodePath("../ship/EngineSlot/Engine/idleSound")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../ship/EngineSlot/Engine/PoweredSound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../EngineSlot/Engine/idleSound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../EngineSlot/Engine/PoweredSound")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1248,13 +1226,27 @@ tracks/3/keys = {
 "method": &"stop"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../EngineSlot/Engine/boost")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ship/EngineSlot/Engine/PoweringOff")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ship/EngineSlot/Engine/boost")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1267,61 +1259,27 @@ tracks/4/keys = {
 resource_name = "powered"
 length = 4.91
 loop_mode = 1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
+tracks/0/path = NodePath("../ship/EngineSlot/Engine/PoweredSound")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"powering"]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../ship/EngineSlot/Engine/PoweringOn")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"powering"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../EngineSlot/Engine/PoweringOn")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1329,13 +1287,27 @@ tracks/4/keys = {
 "method": &"stop"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../EngineSlot/Engine/boost")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ship/EngineSlot/Engine/idleSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ship/EngineSlot/Engine/boost")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1347,61 +1319,55 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_rfagt"]
 resource_name = "poweringOff"
 length = 0.4
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
+tracks/0/path = NodePath("../ship/EngineSlot/Engine/PoweringOff")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"powering", &"idle"]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../ship/EngineSlot/Engine/idleSound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"powering", &"idle"]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../EngineSlot/Engine/PoweredSound:playing")
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ship/EngineSlot/Engine/PoweredSound")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOff:playing")
+tracks/3/path = NodePath("../ship/EngineSlot/Engine/boost")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../EngineSlot/Engine/PoweredSound")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1413,58 +1379,66 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_4jc4o"]
 resource_name = "poweringOn"
 length = 0.26
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../EngineSlot/Engine/engine:animation")
+tracks/0/path = NodePath("../ship/EngineSlot/Engine/PoweringOn")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"idle", &"powering"]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../EngineSlot/Engine/engine-base engine flame:animation")
+tracks/1/path = NodePath("../ship/EngineSlot/Engine/PoweredSound")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [&"idle", &"powering"]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("../EngineSlot/Engine/idleSound:playing")
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ship/EngineSlot/Engine/idleSound")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../EngineSlot/Engine/PoweringOn:playing")
+tracks/3/path = NodePath("../ship/EngineSlot/Engine/PoweringOff")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../EngineSlot/Engine/idleSound")
+tracks/4/path = NodePath("../ship/EngineSlot/Engine/boost")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2762,6 +2736,121 @@ libraries = {
 }
 script = ExtResource("20_wxqlh")
 
+[node name="PauseMenu" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ivo02")
+script = ExtResource("28_2ilsx")
+
+[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="CanvasLayer/PauseMenu/MainButtons" node_paths=PackedStringArray("menuThisButtonCloses")]
+layout_mode = 2
+text = "back"
+script = ExtResource("31_0e8gh")
+menuThisButtonCloses = NodePath("../..")
+
+[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/MainButtons" node_paths=PackedStringArray("controlMenu")]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("29_nhe15")
+controlMenu = NodePath("../../../controlsMenu")
+
+[node name="Button3" type="Button" parent="CanvasLayer/PauseMenu/MainButtons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="controlsMenu" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0e8gh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/controlsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/controlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Fire"
+
+[node name="Label2" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90.94, 0)
+layout_mode = 2
+text = "Left Click"
+
+[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelDisplaying")]
+layout_mode = 2
+text = "remap"
+script = ExtResource("30_ivo02")
+actionRemapName = "fire"
+labelDisplaying = NodePath("../Label2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/controlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Boost"
+
+[node name="Label2" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(90.94, 0)
+layout_mode = 2
+text = "Right Click"
+
+[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelDisplaying")]
+layout_mode = 2
+text = "remap"
+script = ExtResource("30_ivo02")
+labelDisplaying = NodePath("../Label2")
+
+[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer" node_paths=PackedStringArray("menuThisButtonCloses")]
+layout_mode = 2
+text = "back"
+script = ExtResource("31_0e8gh")
+menuThisButtonCloses = NodePath("../..")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("followTarget")]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("31_y4jiu")
+followTarget = NodePath("../ship")
+
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
 z_index = 10
 material = SubResource("ShaderMaterial_h6tte")
@@ -2770,7 +2859,7 @@ mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
 script = ExtResource("12_h3aac")
-camera2d = NodePath("Camera2D")
+camera2d = NodePath("../Camera2D")
 boostMaxSpeedMultiplier = 4.0
 boostAccellerationMultiplier = 4.0
 Acceleration = 9999.0
@@ -2786,14 +2875,9 @@ damageSprites = Dictionary[int, Texture2D]({
 2: ExtResource("15_ncsgd"),
 3: ExtResource("16_bk3pc")
 })
-shipSprite = NodePath("Ship")
-shipSpriteAnimator = NodePath("Ship/shipAnims")
-BonkAsteroidSFX = NodePath("Ship/bumpSound")
-
-[node name="Camera2D" type="Camera2D" parent="ship"]
-process_callback = 0
-position_smoothing_speed = 10.0
-script = ExtResource("31_y4jiu")
+shipSprite = NodePath("body")
+shipSpriteAnimator = NodePath("body/shipAnims")
+BonkAsteroidSFX = NodePath("body/bumpSound")
 
 [node name="astroidSpawner" type="Area2D" parent="ship" node_paths=PackedStringArray("countLabel")]
 script = ExtResource("14_tkyuk")
@@ -2821,7 +2905,8 @@ position = Vector2(-7, 12)
 [node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup" instance=ExtResource("34_6skc5")]
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 500
+length = 300
+TrailOn = true
 
 [node name="flame" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
 position = Vector2(-7, 12)
@@ -2839,7 +2924,8 @@ position = Vector2(7, 12)
 [node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup2" instance=ExtResource("34_6skc5")]
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 500
+length = 300
+TrailOn = true
 
 [node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
 position = Vector2(7, 12)
@@ -2855,11 +2941,11 @@ visible = false
 use_parent_material = true
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_3n1cu")
-animation = &"idle"
+animation = &"powering"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
-root_node = NodePath("../../../Camera2D")
+root_node = NodePath("../../../../Camera2D")
 libraries = {
 &"": SubResource("AnimationLibrary_bgaru")
 }
@@ -2926,22 +3012,22 @@ position = Vector2(8.999999, -9.000001)
 stream = ExtResource("23_4jc4o")
 volume_db = -6.0
 
-[node name="Ship" type="AnimatedSprite2D" parent="ship"]
+[node name="body" type="AnimatedSprite2D" parent="ship"]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_lg0qw")
 animation = &"explode"
 autoplay = "default"
 frame_progress = 0.13582116
 
-[node name="shipAnims" type="AnimationPlayer" parent="ship/Ship"]
+[node name="shipAnims" type="AnimationPlayer" parent="ship/body"]
 libraries = {
 &"": SubResource("AnimationLibrary_s5ab8")
 }
 
-[node name="explosionsound" type="AudioStreamPlayer2D" parent="ship/Ship"]
+[node name="explosionsound" type="AudioStreamPlayer2D" parent="ship/body"]
 stream = ExtResource("49_oss5w")
 
-[node name="bumpSound" type="AudioStreamPlayer2D" parent="ship/Ship"]
+[node name="bumpSound" type="AudioStreamPlayer2D" parent="ship/body"]
 stream = ExtResource("50_sttqx")
 volume_db = 10.0
 

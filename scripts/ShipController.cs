@@ -1,7 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class ShipController : RigidBody2D
 {
@@ -153,12 +150,12 @@ public partial class ShipController : RigidBody2D
     {
         float dt = (float)delta;
 
-        if (fireButton.IsPressed())
+        if (fireButton.IsPressed() || Input.IsActionPressed("fire"))
         {
             currentWeapon.Fire();
         }
 
-        isBoosting = boostButton.IsPressed();
+        isBoosting = boostButton.IsPressed() || Input.IsActionPressed("boost");
 
         // apply friction (dampen velocity manually)
         LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, Friction * dt);
@@ -187,7 +184,7 @@ public partial class ShipController : RigidBody2D
 
     private void Movement(float dt)
     {
-        inputVector = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        inputVector = Input.GetVector("left", "right", "up", "down");
 
         if (JoystickLeft != null && (bool)JoystickLeft.Get("is_pressed"))
         {
