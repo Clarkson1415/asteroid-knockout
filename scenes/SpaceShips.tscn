@@ -1,4 +1,4 @@
-[gd_scene load_steps=241 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=248 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://q3kifu1mxr6y" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer1Frame1.png" id="1_0e8gh"]
 [ext_resource type="Texture2D" uid="uid://dpx51kmuwvxyx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer2Frame1.png" id="2_0e8gh"]
@@ -71,6 +71,9 @@
 [ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scenes/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
+[ext_resource type="Texture2D" uid="uid://c7msiknv20127" path="res://Foozle_2DS0012_Void_FleetPack_1/Foozle_2DS0012_Void_EnemyFleet_1/Kla'ed/Base/PNGs/Kla'ed - Scout - Base.png" id="72_2e4hs"]
+[ext_resource type="Script" uid="uid://cypaoebn6tkbc" path="res://scripts/EnemySimple.cs" id="72_aom5x"]
+[ext_resource type="Script" uid="uid://c47n6nhv4o3gx" path="res://scripts/enemy/Enemy.cs" id="72_gcnh3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
 atlas = ExtResource("1_0e8gh")
@@ -1921,6 +1924,30 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ycwd3"]
+vertices = PackedVector2Array(2762.4766, -1428.1016, 2913.461, 1531.8984, -2235.1016, 1488.0781, -2266.8906, -1481.8906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2277, -1492, 2772, -1438, 2924, 1542, -2245, 1498)])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmmwl"]
+atlas = ExtResource("72_2e4hs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pp75p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmmwl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aom5x"]
+radius = 9.0
+height = 22.0
+
 [node name="Game" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-2087.0]
 
@@ -2507,7 +2534,7 @@ script = ExtResource("49_a6vpd")
 [node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup" instance=ExtResource("34_6skc5")]
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 300
+length = 100
 TrailOn = true
 
 [node name="flame" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
@@ -2527,7 +2554,7 @@ script = ExtResource("49_a6vpd")
 [node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup2" instance=ExtResource("34_6skc5")]
 width = 5.0
 gradient = SubResource("Gradient_6skc5")
-length = 300
+length = 100
 TrailOn = true
 
 [node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
@@ -2661,3 +2688,28 @@ autoplay = true
 script = ExtResource("28_m36cv")
 astroidSpawner = NodePath("../ship/astroidSpawner")
 astroidsScore = NodePath("../CanvasLayer/Control/astroidscore")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ycwd3")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." node_paths=PackedStringArray("navigationAgent")]
+position = Vector2(-66, 9)
+gravity_scale = 0.0
+script = ExtResource("72_gcnh3")
+navigationAgent = NodePath("NavigationAgent2D")
+accelleration = 50.0
+maxSpeed = 50.0
+shootMinDistance = 0.0
+shootMaxDistance = 400.0
+shootMaxAngle = 2.0
+rotationSpeed = 2.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+sprite_frames = SubResource("SpriteFrames_pp75p")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="RigidBody2D"]
+script = ExtResource("72_aom5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_aom5x")

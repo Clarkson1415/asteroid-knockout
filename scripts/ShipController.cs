@@ -1,7 +1,12 @@
 using Godot;
 
+/// <summary>
+/// The player.
+/// </summary>
 public partial class ShipController : RigidBody2D
 {
+    public static ShipController Instance { get; private set; }
+
     /// <summary>
     /// Max speed including boosting. (for camera zoom).
     /// </summary>
@@ -56,6 +61,8 @@ public partial class ShipController : RigidBody2D
 
     public override void _Ready()
     {
+        Instance = this;
+
         area.AreaEntered += OnHitAsteroid;
         CanSleep = false;
         shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
