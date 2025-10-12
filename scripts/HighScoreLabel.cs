@@ -6,7 +6,7 @@ public partial class HighScoreLabel : Label
 	public void UpdateHighScoreText()
 	{
 		var highScore = Level.GetHighScore();
-		var timeForAnimation = 1f;
+		var timeForAnimation = 0.3f;
 		var timer = new Timer();
 		AddChild(timer);
 		timer.WaitTime = timeForAnimation / highScore;

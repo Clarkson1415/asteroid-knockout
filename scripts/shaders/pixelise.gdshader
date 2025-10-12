@@ -2,15 +2,13 @@ shader_type canvas_item;
 render_mode unshaded; // Important for CanvasGroup
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-uniform int pixel_size = 8; // Adjust this value to control the size of the "pixels"
+uniform int pixel_size = 4; // Adjust this value to control the size of the "pixels"
+uniform vec2 camera_zoom = vec2(1, 1);
 
-void fragment() {
-    // 1. Calculate the scaled UV for pixelation
-    // SCREEN_PIXEL_SIZE is the size of one screen pixel in UV coordinates.
-    vec2 screen_pixel_size = 1.0 / vec2(textureSize(screen_texture, 0));
-    
+void fragment() 
+{
     // Calculate the block size in UV space
-    vec2 pixel_block_size = float(pixel_size) * screen_pixel_size;
+    vec2 pixel_block_size = (float(pixel_size) * SCREEN_PIXEL_SIZE) * camera_zoom;
     
     // 2. Round the UV to the nearest "pixel block" coordinate
     // This snaps the UV to a grid based on the pixel_size

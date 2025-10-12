@@ -1,9 +1,8 @@
 using Godot;
-using System;
 
 public partial class Bullet : Node2D
 {
-	private float bulletSpeed = 400;
+	[Export] private float bulletSpeed = 800;
 
     [Export] private Area2D area;
     

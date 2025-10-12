@@ -2,7 +2,12 @@ using Godot;
 
 public partial class ShipController : RigidBody2D
 {
-    [Export] public float MaxSpeed = 100f;
+    /// <summary>
+    /// Max speed including boosting. (for camera zoom).
+    /// </summary>
+    public float OverallMaxSpeed => MaxNotBoostingSpeed * boostMaxSpeedMultiplier;
+
+    [Export] private float MaxNotBoostingSpeed = 100f;
 
     [Export] private CameraShake camera2d;
 
@@ -148,6 +153,11 @@ public partial class ShipController : RigidBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (GlobalSignalBus.MenusOpen)
+        {
+            return;
+        }
+
         float dt = (float)delta;
 
         if (fireButton.IsPressed() || Input.IsActionPressed("fire"))
@@ -205,7 +215,7 @@ public partial class ShipController : RigidBody2D
         ApplyCentralForce(forceDirection.Normalized() * Acceleration * boost);
 
         // Clamp max speed
-        var maxSpeed = isBoosting ? (MaxSpeed * boostMaxSpeedMultiplier) : MaxSpeed;
+        var maxSpeed = isBoosting ? (MaxNotBoostingSpeed * boostMaxSpeedMultiplier) : MaxNotBoostingSpeed;
         if (LinearVelocity.Length() > maxSpeed)
         {
             LinearVelocity = LinearVelocity.Normalized() * maxSpeed;

@@ -2,6 +2,8 @@ using Godot;
 
 public partial class GlobalSignalBus : Node
 {
+    public static bool MenusOpen;
+
     private static GlobalSignalBus instance;
 
     public static GlobalSignalBus GetInstance()

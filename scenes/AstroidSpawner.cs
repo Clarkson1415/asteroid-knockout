@@ -124,8 +124,9 @@ public partial class AstroidSpawner : Area2D
         Vector2 spawnPoint = random_offset + GlobalPosition;
 
         var camera = GetViewport().GetCamera2D();
-        Vector2 topLeft = camera.GetScreenCenterPosition() - GetViewportRect().Size / 2;
-        Rect2 worldViewport = new Rect2(topLeft, GetViewportRect().Size);
+        Vector2 worldViewportSize = GetViewportRect().Size * camera.Zoom;
+        Vector2 topLeft = camera.GetScreenCenterPosition() - worldViewportSize / 2;
+        Rect2 worldViewport = new Rect2(topLeft, worldViewportSize);
 
         if (worldViewport.HasPoint(spawnPoint))
         {
