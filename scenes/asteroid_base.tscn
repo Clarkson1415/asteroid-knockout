@@ -17,6 +17,7 @@ bounce = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2coib"]
 shader = ExtResource("2_yb8w1")
 shader_parameter/pixel_size = 4
+shader_parameter/camera_zoom = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_bwm3j"]
 offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
@@ -309,7 +310,7 @@ material = SubResource("ShaderMaterial_2coib")
 [node name="Trail" parent="CanvasGroup" instance=ExtResource("3_77v4f")]
 width = 25.0
 gradient = SubResource("Gradient_bwm3j")
-length = 300
+length = 150
 
 [node name="fire" type="AnimatedSprite2D" parent="."]
 visible = false

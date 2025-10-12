@@ -36,6 +36,7 @@ public partial class AstroidSpawner : Area2D
     public void IncreaseSpeeds(float speedsIncrease)
 	{
 		additionalSpeedIncrease += speedsIncrease;
+        Logger.Log($"Asteroid speed initial increased: {additionalSpeedIncrease}");
     }
 
 	// Called when the node enters the scene tree for the first time.
