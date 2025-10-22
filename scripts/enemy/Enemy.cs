@@ -16,8 +16,12 @@ public partial class Enemy : RigidBody2D
     [Export] private float shootMaxDistance = 800f;
     [Export] private float shootMaxAngle = 30f; // Width of the firing cone in degrees
     [Export] private PackedScene bulletScene;
+    [Export] private Node2D bulletStartPosition;
+
     [Export] private float fireRate = 1.0f; // Shots per second
     [Export] private float rotationSpeed = 0.5f;
+    [Export] private Area2D getHit;
+    [Export] private AnimatedSprite2D bodyAnimations;
 
     // State Variables
     private float timeSinceLastShot = 0f;
@@ -37,8 +41,27 @@ public partial class Enemy : RigidBody2D
 
         // shoot
         shootCooldown = new Timer();
+        this.AddChild(shootCooldown);
         shootCooldown.OneShot = true;
         shootCooldown.WaitTime = 1f / fireRate;
+
+        // duplicate
+        var flashMat = (ShaderMaterial)this.bodyAnimations.Material.Duplicate();
+        this.bodyAnimations.Material = flashMat;
+
+        getHit.AreaEntered += OnHit;
+    }
+
+    private void OnHit(Area2D area)
+    {
+        // can be hit by asteroids or bullets.
+        if ()
+        {
+
+        }
+
+        this.bodyAnimations.Play("explode");
+        this.bodyAnimations.AnimationFinished += () => this.QueueFree();
     }
 
     /// <summary>
@@ -116,21 +139,19 @@ public partial class Enemy : RigidBody2D
         state.LinearVelocity = calculatedVelocity;
     }
 
-    // --- Shooting Helper ---
     private void Shoot(Vector2 direction)
     {
         if (bulletScene != null)
         {
-            var bullet = (RigidBody2D)bulletScene.Instantiate();
-            bullet.GlobalPosition = GlobalPosition;
+            var bullet = (Bullet)bulletScene.Instantiate();
+            bullet.SetLayerToBeEnemysBullet();
+            bullet.GlobalPosition = bulletStartPosition.GlobalPosition;
             bullet.Rotation = Rotation;
-
             // TODO: Add custom velocity/impulse logic here for the bullet
             GetParent().AddChild(bullet);
         }
     }
 
-    // -----------------------------------------------------------------------------
     /// <summary>
     /// Draws the debug shooting sector/cone on the screen using DrawPolygon.
     /// </summary>
@@ -138,16 +159,9 @@ public partial class Enemy : RigidBody2D
     {
         float shootMaxAngleRad = Mathf.DegToRad(shootMaxAngle);
 
-        // The Rotation property tells us where the *current* 0 degree (right) vector is.
-        // To get the UP direction (which is your visual forward), we use Rotation + PI/2 offset.
-        // However, since your aiming logic already works with Vector2.Up.Rotated(Rotation),
-        // the cleanest way to unify is to calculate the cone's center from the current rotation
-        // and let Vector2.FromAngle handle the cartesian coordinates.
-
-        float currentRotation = -(Mathf.Pi/2);
-
-        float startAngle = currentRotation - shootMaxAngleRad;
-        float endAngle = currentRotation + shootMaxAngleRad;
+        float spriteFacingRotationOffset = -(Mathf.Pi/2);
+        float startAngle = spriteFacingRotationOffset - shootMaxAngleRad;
+        float endAngle = spriteFacingRotationOffset + shootMaxAngleRad;
 
         // Color logic remains the same
         Color rangeColor = (playerInRange && facingPlayer) ? new Color(0.2f, 1.0f, 0.2f, 0.2f) : new Color(1f, 0.2f, 0.2f, 0.2f);

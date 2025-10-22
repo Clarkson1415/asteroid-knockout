@@ -330,7 +330,7 @@ polygon = PackedVector2Array(-5.7686944, -14.72148, -9.763347, -14.514712, -17.2
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-1.5497208e-06, -5.9604645e-06)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-5.7686944, -14.72148, -9.763347, -14.514712, -17.287422, -5.113208, -17.717472, 5.9237785, -6.215259, 15.341796, 4.821727, 15.771847, 15.393484, 7.213929, 15.926919, -1.8257301, 2.2206101, -15.135016)

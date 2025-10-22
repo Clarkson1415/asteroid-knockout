@@ -1,3 +1,4 @@
+using cakegame1idk.scripts.shaderControllers;
 using Godot;
 
 public partial class Asteroid : RigidBody2D
@@ -52,6 +53,10 @@ public partial class Asteroid : RigidBody2D
         LinearVelocity = -moveDirection * asteroidSpeed;
     }
 
+    /// <summary>
+    /// Goddamit this on hit area flash and hits could be a separate component since this is the same for enemies and asteroids.
+    /// </summary>
+    /// <param name="area"></param>
     private void OnHit(Area2D area)
     {
         if (hitsTillExplode > 1)
@@ -61,8 +66,8 @@ public partial class Asteroid : RigidBody2D
 
             // flash Red
             var spriteMaterial = (ShaderMaterial)sprite.Material;
-            spriteMaterial.SetShaderParameter("flash_strength", 1f);
 
+            spriteMaterial.SetShaderParameter("flash_strength", 1f);
             var flashTimer = new Timer();
             flashTimer.OneShot = true;
             AddChild(flashTimer);
