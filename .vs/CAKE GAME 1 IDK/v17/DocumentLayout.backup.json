@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\github\\astroid-knockout\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\shipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\shipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\enemy\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scenes\\astroidspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scenes\\astroidspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\shipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\shipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\pressanykeytorestart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\camerashake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|solutionrelative:scripts\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{718B7BD5-1835-4427-9A04-5EAA2B07A90A}|cake game 1 idk.csproj|d:\\github\\astroid-knockout\\scripts\\weapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,7 +106,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 27,
           "Children": [
             {
               "$type": "Bookmark",
@@ -126,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "GameLayers.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\GameLayers.cs",
               "RelativeDocumentMoniker": "scripts\\GameLayers.cs",
@@ -139,20 +139,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Enemy.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\enemy\\Enemy.cs",
               "RelativeDocumentMoniker": "scripts\\enemy\\Enemy.cs",
               "ToolTip": "D:\\github\\astroid-knockout\\scripts\\enemy\\Enemy.cs",
               "RelativeToolTip": "scripts\\enemy\\Enemy.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAAC8AAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwDkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T12:55:37.503Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "PauseMenu.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scenes\\PauseMenu.cs",
               "RelativeDocumentMoniker": "scenes\\PauseMenu.cs",
@@ -176,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "FpsCounter.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\FpsCounter.cs",
               "RelativeDocumentMoniker": "scripts\\FpsCounter.cs",
@@ -188,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "CameraShake.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\CameraShake.cs",
               "RelativeDocumentMoniker": "scripts\\CameraShake.cs",
@@ -196,11 +196,12 @@
               "RelativeToolTip": "scripts\\CameraShake.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAvwDUAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T07:18:02.206Z"
+              "WhenOpened": "2025-10-09T07:18:02.206Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Engine.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\Engine.cs",
               "RelativeDocumentMoniker": "scripts\\Engine.cs",
@@ -225,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "RestartButton.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\RestartButton.cs",
               "RelativeDocumentMoniker": "scripts\\RestartButton.cs",
@@ -237,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Level.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scenes\\Level.cs",
               "RelativeDocumentMoniker": "scenes\\Level.cs",
@@ -249,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "AstroidSpawner.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scenes\\AstroidSpawner.cs",
               "RelativeDocumentMoniker": "scenes\\AstroidSpawner.cs",
@@ -273,15 +274,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "ShipController.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\ShipController.cs",
               "RelativeDocumentMoniker": "scripts\\ShipController.cs",
               "ToolTip": "D:\\github\\astroid-knockout\\scripts\\ShipController.cs",
               "RelativeToolTip": "scripts\\ShipController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAcwGEAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:36:43.665Z"
+              "WhenOpened": "2025-10-07T11:36:43.665Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -321,20 +323,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Bullet.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\Bullet.cs",
               "RelativeDocumentMoniker": "scripts\\Bullet.cs",
               "ToolTip": "D:\\github\\astroid-knockout\\scripts\\Bullet.cs",
               "RelativeToolTip": "scripts\\Bullet.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAACoAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAA5wCQAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-12T01:14:45.877Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "PressAnyKeyToRestart.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\PressAnyKeyToRestart.cs",
               "RelativeDocumentMoniker": "scripts\\PressAnyKeyToRestart.cs",
@@ -371,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "GlobalSignalBus.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\GlobalSignalBus.cs",
               "RelativeDocumentMoniker": "scripts\\GlobalSignalBus.cs",
@@ -395,7 +397,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "HighScoreLabel.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\HighScoreLabel.cs",
               "RelativeDocumentMoniker": "scripts\\HighScoreLabel.cs",
@@ -407,15 +409,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 0,
               "Title": "Asteroid.cs",
               "DocumentMoniker": "D:\\github\\astroid-knockout\\scripts\\Asteroid.cs",
               "RelativeDocumentMoniker": "scripts\\Asteroid.cs",
               "ToolTip": "D:\\github\\astroid-knockout\\scripts\\Asteroid.cs",
               "RelativeToolTip": "scripts\\Asteroid.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAEwCMAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAiwEAAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T11:43:14.638Z"
+              "WhenOpened": "2025-10-07T11:43:14.638Z",
+              "EditorCaption": ""
             }
           ]
         },
