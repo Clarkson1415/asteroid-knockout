@@ -515,7 +515,7 @@ friction = 0.2
 bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
-size = Vector2(1268, 768)
+size = Vector2(1295, 726)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ilsx"]
 shader = ExtResource("40_6skc5")
@@ -2495,7 +2495,7 @@ asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fj
 countLabel = NodePath("../../CanvasLayer/fps/asteroids")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
-position = Vector2(-7, 9)
+position = Vector2(6.5, -12)
 shape = SubResource("RectangleShape2D_tkyuk")
 
 [node name="EngineSlot" type="Node2D" parent="ship"]
