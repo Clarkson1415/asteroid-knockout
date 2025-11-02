@@ -55,11 +55,6 @@ public partial class Enemy : RigidBody2D
     private void OnHit(Area2D area)
     {
         // can be hit by asteroids or bullets.
-        if ()
-        {
-
-        }
-
         this.bodyAnimations.Play("explode");
         this.bodyAnimations.AnimationFinished += () => this.QueueFree();
     }
