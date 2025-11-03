@@ -75,7 +75,7 @@ public partial class Level : Node
 	private void OnDestroyedAsteroid()
 	{
 		astroidsDestroyed++;
-		astroidsScore.Text = astroidsDestroyed.ToString();
+		astroidsScore.Text = $"Asteroids: {(astroidsDestroyed.ToString())}";
     }
 
 	public static int GetHighScore()

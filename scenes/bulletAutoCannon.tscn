@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqcs1eukaeloy"]
 
-[ext_resource type="Script" uid="uid://e7bxd13suj4d" path="res://scripts/Bullet.cs" id="1_jm8ui"]
+[ext_resource type="Script" uid="uid://e7bxd13suj4d" path="res://scripts/GameObjects/Bullet.cs" id="1_jm8ui"]
 [ext_resource type="Texture2D" uid="uid://coxskmg616gkw" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main ship weapons/PNGs/Main ship weapon - Projectile - Auto cannon bullet.png" id="1_mkf8s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jm8ui"]

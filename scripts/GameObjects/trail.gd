@@ -10,6 +10,7 @@ func ToggleTrailOff():
 	TrailOn = false
 
 func ToggleTrailOn():
+	clear_points()
 	TrailOn = true
 
 func _process(_delta: float) -> void:

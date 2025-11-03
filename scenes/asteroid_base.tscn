@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://bukbivorbl6bb"]
 
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="1_cdqko"]
-[ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/Asteroid.cs" id="1_pwrvu"]
+[ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/GameObjects/Asteroid.cs" id="1_pwrvu"]
 [ext_resource type="Texture2D" uid="uid://jnhvx3rc1ir8" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Flame.png" id="2_0jovh"]
 [ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="2_yb8w1"]
 [ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="3_77v4f"]
@@ -192,7 +192,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_d0621"]
@@ -334,6 +334,7 @@ gradient = SubResource("Gradient_bwm3j")
 length = 150
 
 [node name="fire" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_qndy7")
 autoplay = "default"
 frame_progress = 0.31453902

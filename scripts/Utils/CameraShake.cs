@@ -4,11 +4,11 @@ public partial class CameraShake : Camera2D
 {
     [Export] private ShipController followTarget;
 
-    // Minimum allowed zoom (e.g., 1.0 is default, further out)
+    // Minimum allowed zoom (e.g., 1.0 is default, further out)a
     private const float MIN_ZOOM = 0.5f;
 
     // Maximum allowed zoom (e.g., 0.5 is closer/more zoomed in)
-    private const float MAX_ZOOM = 1f;
+    private const float MAX_ZOOM = 0.8f;
 
     [Export] private float ZoomSmoothness = 0.01f;
 

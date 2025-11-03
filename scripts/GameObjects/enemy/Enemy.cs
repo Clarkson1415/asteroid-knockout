@@ -1,11 +1,10 @@
 using Godot;
+using Godot.Collections;
 using System.Linq;
 
 public partial class Enemy : PoolableRB
 {
     //[Export] NavigationAgent2D navigationAgent;
-
-    private ShipController player;
 
     // Movement Properties
     [Export] private float accelleration = 100f;
@@ -13,7 +12,7 @@ public partial class Enemy : PoolableRB
 
     // the front of the sprites gun. TODO: although this doesnt work propertly. since just goes towards player if not in range.
     [Export] private float shootMinDistance = 15f; 
-    [Export] private float shootMaxDistance = 100f;
+    [Export] private float shootMaxDistance = 200f;
     [Export] private float shootMaxAngle = 1f; // Width of the firing cone in degrees
     [Export] private PackedScene bulletScene;
     [Export] private Node2D bulletStartPosition;
@@ -29,13 +28,42 @@ public partial class Enemy : PoolableRB
     private bool playerInRange = false;
     private bool playerDirectlyinFront = false;
 
+    [Export] private Array<Node> trails;
+    [Export] private Array<CanvasGroup> trailParents;
+
+    private void ToggleTrails(bool on)
+    {
+        foreach (var t in trails)
+        {
+            if (on)
+            {
+                t.Call("ToggleTrailOn");
+            }
+            else
+            {
+                t.Call("ToggleTrailOff");
+            }
+        }
+
+        foreach (var tp in trailParents)
+        {
+            if (on)
+            {
+                tp.Visible = true;
+            }
+            else
+            {
+                tp.Visible = false;
+            }
+        }
+    }
+
     public override void _Ready()
     {
-        // Find Player node using your defined method
-        player = ShipController.Instance;
-
-        // Enables _Process and _Draw calls
-        SetProcess(true);
+        ToggleTrails(false);
+        explodeSound.Finished += EmitDestroyed;
+        //  TODO: use an animation player likie asteroids
+        this.bodyAnimations.AnimationFinished += () => ToggleTrails(false);
 
         // shoot
         shootCooldown = new Timer();
@@ -63,35 +91,35 @@ public partial class Enemy : PoolableRB
 
     private void OnHit(Area2D area)
     {
-        if (HitsLeft < 1) 
+        // TODO: note this is exactly the same as asteoirds on hit.
+        if (HitsLeft <= 0) 
         { 
-            return; 
+            return;
         }
 
         // can be hit by asteroids or bullets.
 
         // TODO; PUT HITS, SOUNDS EXPLODE and hit.
-        if (HitsLeft > 1)
-        {
-            HitsLeft--;
-            // TODO: PUT animation flash in hit component. in asteroids and player too.
-            var spriteMaterial = (ShaderMaterial)this.bodyAnimations.Material;
-            spriteMaterial.SetShaderParameter("flash_strength", 1f);
-            var flashTimer = new Timer();
-            flashTimer.OneShot = true;
-            AddChild(flashTimer);
-            flashTimer.WaitTime = 0.1f;
-            flashTimer.Timeout += () => spriteMaterial.SetShaderParameter("flash_strength", 0f);
-            flashTimer.Start();
+        // TODO: PUT animation flash in hit component. in asteroids and player too.
+        var spriteMaterial = (ShaderMaterial)this.bodyAnimations.Material;
+        spriteMaterial.SetShaderParameter("flash_strength", 1f);
+        var flashTimer = new Timer();
+        flashTimer.OneShot = true;
+        AddChild(flashTimer);
+        flashTimer.WaitTime = 0.1f;
+        flashTimer.Timeout += () => spriteMaterial.SetShaderParameter("flash_strength", 0f);
+        flashTimer.Start();
 
-            // TODO: move this to get hit component.
-            gotHitSound.Play();
-            return;
+        // TODO: move this to get hit component.
+        gotHitSound.Play();
+
+        if (HitsLeft == 1)
+        {
+            explodeSound.Play();
+            this.bodyAnimations.Play("explode");
         }
 
-        explodeSound.Play();
-        this.bodyAnimations.Play("explode");
-        this.bodyAnimations.AnimationFinished += EmitDestroyed;
+        HitsLeft--;
 
         // Does not get disposed it goes back into the object pooler.
         // Emit destroyed is emitteed in animation player.
@@ -103,13 +131,15 @@ public partial class Enemy : PoolableRB
     public override void _Process(double delta)
     {
         if (!Visible) { return; }
-
-        if (player.IsDead)
+        
+        if (HitsLeft < 1) // Dead
         {
             return;
         }
 
-        if (HitsLeft < 1) // Dead
+        var player = ShipController.Instance;
+
+        if (player.IsDead)
         {
             return;
         }
@@ -137,6 +167,8 @@ public partial class Enemy : PoolableRB
         }
 
         if (!Visible) { return; }
+
+        var player = ShipController.Instance;
 
         if (player == null) return;
 
@@ -201,7 +233,10 @@ public partial class Enemy : PoolableRB
     /// </summary>
     public override void _Draw()
     {
-        return;
+        if (!GameSettings.Instance.debugOn)
+        {
+            return;
+        }
 
         if (HitsLeft < 1)
         {
@@ -246,5 +281,6 @@ public partial class Enemy : PoolableRB
         bodyAnimations.Play("default");
         LinearVelocity = Vector2.Zero;
         AngularVelocity = 0;
+        ToggleTrails(true);
     }
 }

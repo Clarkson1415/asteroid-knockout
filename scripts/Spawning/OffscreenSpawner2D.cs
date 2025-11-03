@@ -88,7 +88,7 @@ public partial class OffscreenSpawner2D : Node2D
     {
         OnPutInPool(obj);
         obj.DisableMode = CollisionObject2D.DisableModeEnum.Remove;
-        obj.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+        obj.ProcessMode = ProcessModeEnum.Disabled;
         obj.Visible = false;
         objectPool.Add(obj);
         visibleObjects.Remove(obj);
@@ -103,11 +103,23 @@ public partial class OffscreenSpawner2D : Node2D
     {
         var obj = objectPool[GD.RandRange(0, objectPool.Count - 1)];
         objectPool.Remove(obj);
-        obj.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        obj.ProcessMode = ProcessModeEnum.Inherit;
         obj.Visible = true;
         obj.OnMadeVisibleAgain();
         visibleObjects.Add(obj);
         return obj;
+    }
+
+    private bool IsOffscreen(PoolableRB obj)
+    {
+        var camera = GetViewport().GetCamera2D();
+        if (camera == null) return false;
+
+        Vector2 viewportSize = GetViewportRect().Size / camera.Zoom;
+        Vector2 topLeft = camera.GetScreenCenterPosition() - viewportSize / 2f;
+        Rect2 worldViewport = new Rect2(topLeft, viewportSize);
+
+        return !worldViewport.HasPoint(obj.GlobalPosition);
     }
 
     /// <summary>
@@ -122,6 +134,11 @@ public partial class OffscreenSpawner2D : Node2D
         {
             // put the furthest asteroid visible away.
             var furthestAsteroid = visibleObjects.OrderByDescending(x => x.GlobalPosition.DistanceSquaredTo(this.GlobalPosition)).First();
+            if (!IsOffscreen(furthestAsteroid))
+            {
+                return;
+            }
+
             AddToPool(furthestAsteroid);
         }
         else if (objectPool.Count == 0) // if we requested more asteroids than loaded, need to spawn more.
@@ -139,51 +156,46 @@ public partial class OffscreenSpawner2D : Node2D
 
     private Vector2 GetRandomPositionOffScreen()
     {
-        var viewport = GetViewport();
-        var camera = viewport.GetCamera2D();
-        var viewRect = new Rect2();
-        viewRect.Position = GetViewportRect().Position;
-        viewRect.Size = GetViewportRect().Size / camera.Zoom;
+        var camera = GetViewport().GetCamera2D();
+        if (camera == null)
+            return Vector2.Zero;
 
-        // TODO: asteroids are being spawned inside view. :(
-        Logger.Log($"view rect pos = {viewRect.Position}");
-        Logger.Log($"view rect size = {viewRect.Size}");
+        Vector2 viewportSize = GetViewportRect().Size / camera.Zoom;
+        Vector2 topLeft = camera.GetScreenCenterPosition() - viewportSize / 2f;
+        Vector2 bottomRight = topLeft + viewportSize;
 
-        // random position within this area
-        var random_offset = new Vector2((float)GD.RandRange(-viewRect.Size.X, viewRect.Size.X), (float)GD.RandRange(-viewRect.Size.Y, viewRect.Size.Y));
+        float margin = 64f; // buffer so it’s properly offscreen
+        Vector2 spawnPos = Vector2.Zero;
 
-        // If within viewport move to closest point outside of the viewport. 
-        // +32 for the asteroid size 1/2
-        Vector2 spawnPoint = random_offset + GlobalPosition;
-
-        Vector2 worldViewportSize = GetViewportRect().Size * camera.Zoom;
-        Vector2 topLeft = camera.GetScreenCenterPosition() - worldViewportSize / 2;
-        Rect2 worldViewport = new Rect2(topLeft, worldViewportSize);
-
-        if (worldViewport.HasPoint(spawnPoint))
+        int side = GD.RandRange(0, 3); // 0=top,1=bottom,2=left,3=right
+        switch (side)
         {
-            // Add this so the whole asteroid is offscren.
-            var asteroidSize = 32f; // TODO: asteroid size varies a lot tho
-
-            // get closest point on the edge of the viewport to random_offset
-            // Determine which edge is closest
-            float differenceToLeft = spawnPoint.X - worldViewport.Position.X;
-            float differenceToRight = worldViewport.End.X - spawnPoint.X;
-            float differenceToTop = spawnPoint.Y - worldViewport.Position.Y;
-            float differenceToBottom = worldViewport.End.Y - spawnPoint.Y;
-
-            float minDist = new List<float>() { differenceToLeft, differenceToRight, differenceToTop, differenceToBottom }.Min();
-
-            if (minDist == differenceToLeft)
-                spawnPoint.X = worldViewport.Position.X - asteroidSize;
-            else if (minDist == differenceToRight)
-                spawnPoint.X = worldViewport.End.X + asteroidSize;
-            else if (minDist == differenceToTop)
-                spawnPoint.Y = worldViewport.Position.Y - asteroidSize;
-            else
-                spawnPoint.Y = worldViewport.End.Y + asteroidSize;
+            case 0: // Top
+                spawnPos = new Vector2(
+                    (float)GD.RandRange(topLeft.X - margin, bottomRight.X + margin),
+                    topLeft.Y - margin
+                );
+                break;
+            case 1: // Bottom
+                spawnPos = new Vector2(
+                    (float)GD.RandRange(topLeft.X - margin, bottomRight.X + margin),
+                    bottomRight.Y + margin
+                );
+                break;
+            case 2: // Left
+                spawnPos = new Vector2(
+                    topLeft.X - margin,
+                    (float)GD.RandRange(topLeft.Y - margin, bottomRight.Y + margin)
+                );
+                break;
+            case 3: // Right
+                spawnPos = new Vector2(
+                    bottomRight.X + margin,
+                    (float)GD.RandRange(topLeft.Y - margin, bottomRight.Y + margin)
+                );
+                break;
         }
 
-        return spawnPoint;
+        return spawnPos;
     }
 }

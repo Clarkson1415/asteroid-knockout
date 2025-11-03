@@ -1,4 +1,5 @@
 using Godot;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// The player.
@@ -14,8 +15,6 @@ public partial class ShipController : RigidBody2D
         get { return this._maxSpeed; }
         private set { _maxSpeed = value; }
     }
-
-    public static ShipController Instance { get; private set; }
     
     [Export] private CameraShake camera2d;
 
@@ -57,12 +56,16 @@ public partial class ShipController : RigidBody2D
 
     public bool IsDead => shipDestroyedHasBeenEmitted;
 
+    private static ShipController _instance;
+
+    public static ShipController Instance { get {  return _instance; } private set { _instance = value; } }
+
     public override void _Ready()
     {
         Instance = this;
 
         // TODO: put the hit and flash in the hit component. to do itself.
-        area.AreaEntered += OnHitAsteroid;
+        area.AreaEntered += OnGotHit;
         CanSleep = false;
         shipSprite.SpriteFrames.SetFrame("default", 0, damageSprites[damageLevel]);
 
@@ -75,7 +78,7 @@ public partial class ShipController : RigidBody2D
 
     public override void _ExitTree()
     {
-        area.AreaEntered -= OnHitAsteroid;
+        area.AreaEntered -= OnGotHit;
     }
 
     /// <summary>
@@ -87,7 +90,7 @@ public partial class ShipController : RigidBody2D
         newWeapon.SetCamera(this.camera2d);
     }
 
-    private void OnHitAsteroid(Area2D area)
+    private void OnGotHit(Area2D area)
     {
         if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
         {
@@ -98,10 +101,10 @@ public partial class ShipController : RigidBody2D
 
         // TODO: instead of isBoosting check for the speed of the collision.
         // fully destroy or normal was hit.
-        if (damageLevel == DAMAGE.completely || isBoosting)
+        if (damageLevel == DAMAGE.completely)
         {
             currentEngine.PowerOff();
-            camera2d.Shake(1f, 30f);
+            camera2d.Shake(1f, 40f);
             shipSpriteAnimator.Play(explode);
             return;
         }
@@ -154,6 +157,19 @@ public partial class ShipController : RigidBody2D
         GlobalSignalBus.GetInstance().EmitShipDestroyed();
     }
 
+    [Export] private float BoostUsedPerSec = 1;
+
+    [Export] private float RegenPerSecNotUsing = 1;
+
+    private float BoostRemaining = 100;
+
+    [Export] private float MaximumBoostAmount = 100;
+
+    public float BoostPercentRemaining()
+    {
+        return BoostRemaining / MaximumBoostAmount;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (GlobalSignalBus.MenusOpen)
@@ -168,7 +184,7 @@ public partial class ShipController : RigidBody2D
             currentWeapon.Fire();
         }
 
-        isBoosting = boostButton.IsPressed() || Input.IsActionPressed("boost");
+        isBoosting = (boostButton.IsPressed() || Input.IsActionPressed("boost")) && (BoostRemaining > 0f);
 
         if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
         {
@@ -189,6 +205,25 @@ public partial class ShipController : RigidBody2D
         else
         {
             currentEngine.PowerOff();
+        }
+
+        if (isBoosting)
+        {
+            // Reduce boost over time
+            BoostRemaining -= (float)(BoostUsedPerSec * delta);
+            if (BoostRemaining < 0) // stop at 0
+            {
+                BoostRemaining = 0;
+            }
+        }
+        else
+        {
+            // TODO regen boost over time.
+            BoostRemaining += (float)(RegenPerSecNotUsing * delta);
+            if (BoostRemaining > MaximumBoostAmount) // stop at max.
+            {
+                BoostRemaining = MaximumBoostAmount;
+            }
         }
     }
 

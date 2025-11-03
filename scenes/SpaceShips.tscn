@@ -1,4 +1,4 @@
-[gd_scene load_steps=243 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=245 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://q3kifu1mxr6y" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer1Frame1.png" id="1_0e8gh"]
 [ext_resource type="Texture2D" uid="uid://dpx51kmuwvxyx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer2Frame1.png" id="2_0e8gh"]
@@ -14,25 +14,25 @@
 [ext_resource type="Texture2D" uid="uid://d2t8fsx5t1nua" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer11Frame1_BlackHole3LayersLayer11_12_13.png" id="11_gkmpg"]
 [ext_resource type="Texture2D" uid="uid://uus6wkdw1huk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer14Frame1.png" id="12_56xrs"]
 [ext_resource type="Texture2D" uid="uid://dpyolwbyb3ilv" path="res://UIButtons/crosshairImageONLY.png" id="12_gv5l8"]
-[ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/units/ShipController.cs" id="12_h3aac"]
-[ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/FpsCounter.cs" id="12_sgonc"]
+[ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/GameObjects/ShipController.cs" id="12_h3aac"]
+[ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/Debug/FpsCounter.cs" id="12_sgonc"]
 [ext_resource type="Texture2D" uid="uid://b05r3ynccs31g" path="res://UIButtons/buttonBlank.png" id="12_uj3vt"]
 [ext_resource type="Texture2D" uid="uid://bwqsdmpqjtufk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer15Frame1_BigRedStar.png" id="13_6k5jt"]
-[ext_resource type="Script" uid="uid://crul3y3qrsogo" path="res://scenes/SciFiButton.cs" id="13_irl7o"]
-[ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/Engine.cs" id="13_rfagt"]
+[ext_resource type="Script" uid="uid://crul3y3qrsogo" path="res://scripts/UI/SciFiButton.cs" id="13_irl7o"]
+[ext_resource type="Script" uid="uid://s7dci0k5b217" path="res://scripts/GameObjects/Engine.cs" id="13_rfagt"]
 [ext_resource type="Texture2D" uid="uid://ds5fwck5uilpb" path="res://UIButtons/ButtonLayer2.png" id="14_3cnjt"]
 [ext_resource type="Texture2D" uid="uid://d3f0ntc28axqa" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Slight damage.png" id="14_368rj"]
 [ext_resource type="Texture2D" uid="uid://dyp3patpiiwxt" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer16Frame1_BlueStar.png" id="14_bs4d1"]
 [ext_resource type="Texture2D" uid="uid://cmkbf3s476dmd" path="res://UIButtons/ButtonLayer1.png" id="14_fjoud"]
 [ext_resource type="Texture2D" uid="uid://bcxrk47oueobo" path="res://UIButtons/ButtonLayer3.png" id="14_gv5l8"]
 [ext_resource type="FontFile" uid="uid://bi07jo5upd7pk" path="res://fonts/PLANK___.TTF" id="14_jnogn"]
-[ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scenes/AstroidSpawner.cs" id="14_tkyuk"]
+[ext_resource type="Script" uid="uid://bba85lk4jmanh" path="res://scripts/Spawning/AstroidSpawner.cs" id="14_tkyuk"]
 [ext_resource type="Texture2D" uid="uid://dsuulg6whsfyi" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png" id="15_ncsgd"]
 [ext_resource type="Texture2D" uid="uid://brvdgciagsbk5" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Very damaged.png" id="16_bk3pc"]
 [ext_resource type="AudioStream" uid="uid://dwxoeasy1rxfb" path="res://sounds/EngineIdleLoop.mp3" id="16_r0to7"]
 [ext_resource type="AudioStream" uid="uid://bby4wv65yfewj" path="res://sounds/EngineTurningOn.mp3" id="17_4jc4o"]
 [ext_resource type="Texture2D" uid="uid://c5euqw8o7xje2" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="17_bgaru"]
-[ext_resource type="Script" uid="uid://65yqwwtl5r45" path="res://scripts/Weapon.cs" id="17_elunu"]
+[ext_resource type="Script" uid="uid://65yqwwtl5r45" path="res://scripts/GameObjects/Weapon.cs" id="17_elunu"]
 [ext_resource type="Texture2D" uid="uid://dtqvlwuaf3l15" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="17_rfagt"]
 [ext_resource type="Texture2D" uid="uid://c1lvunitqrsp8" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Boost.png" id="18_368rj"]
 [ext_resource type="Texture2D" uid="uid://b7youynf6v52p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Powering.png" id="18_ebvmo"]
@@ -41,37 +41,41 @@
 [ext_resource type="Texture2D" uid="uid://c7ui6nclw7mfa" path="res://UIButtons/ColoredboostcircleSciFi.png" id="18_uj3vt"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
-[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/HighScoreLabel.cs" id="20_h6tte"]
+[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/UI/HighScoreLabel.cs" id="20_h6tte"]
 [ext_resource type="Texture2D" uid="uid://bt6vpvah5rtf8" path="res://UIButtons/blankRestartcircle.png" id="20_qurfu"]
 [ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="20_whogn"]
-[ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/CanvasAnimator.cs" id="20_wxqlh"]
-[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/RestartButton.cs" id="21_3ko2o"]
+[ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/UI/CanvasAnimator.cs" id="20_wxqlh"]
+[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/UI/RestartButton.cs" id="21_3ko2o"]
 [ext_resource type="Texture2D" uid="uid://bbrcjfb3bi4sd" path="res://UIButtons/RestartPressed.png" id="21_lg0qw"]
 [ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
 [ext_resource type="PackedScene" uid="uid://b7cyqdh2fncu3" path="res://scenes/asteroid02.tscn" id="23_fjoud"]
 [ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="24_h0gdq"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
+[ext_resource type="Shader" uid="uid://cd3uoqt6vmwgk" path="res://scripts/shaders/progress_bar.gdshader" id="25_qgmj2"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
-[ext_resource type="Script" uid="uid://bal3umval1r3a" path="res://scenes/PauseMenu.cs" id="28_2ilsx"]
-[ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scenes/Level.cs" id="28_m36cv"]
+[ext_resource type="Script" uid="uid://bal3umval1r3a" path="res://scripts/UI/PauseMenu.cs" id="28_2ilsx"]
+[ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scripts/Level.cs" id="28_m36cv"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
-[ext_resource type="Script" uid="uid://mfw2f1aj4wvg" path="res://scenes/ControlsButton.cs" id="29_nhe15"]
+[ext_resource type="Script" uid="uid://mfw2f1aj4wvg" path="res://scripts/UI/ControlsButton.cs" id="29_nhe15"]
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
-[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scenes/RemappingButton.cs" id="30_ivo02"]
-[ext_resource type="Script" uid="uid://dio76wev14j0k" path="res://scripts/PauseMenuBackButton.cs" id="31_0e8gh"]
-[ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/CameraShake.cs" id="31_y4jiu"]
-[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/PressAnyKeyToRestart.cs" id="31_ycwd3"]
+[ext_resource type="Script" uid="uid://dffyqvwecvodf" path="res://scripts/UI/TouchControls.cs" id="30_43ba8"]
+[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scripts/UI/RemappingButton.cs" id="30_ivo02"]
+[ext_resource type="Script" uid="uid://dio76wev14j0k" path="res://scripts/UI/PauseMenuBackButton.cs" id="31_0e8gh"]
+[ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/Utils/CameraShake.cs" id="31_y4jiu"]
+[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/PressAnyKeyToRestart.cs" id="31_ycwd3"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="34_6skc5"]
+[ext_resource type="Script" uid="uid://c5f1wf1gdjchj" path="res://scripts/UI/BoostAmount.cs" id="37_gcnh3"]
+[ext_resource type="Script" uid="uid://dbob345vgsahf" path="res://scripts/Debug/Debug.cs" id="38_pp75p"]
 [ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="40_6skc5"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
 [ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
 [ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
-[ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scenes/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
+[ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scripts/shaders/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
-[ext_resource type="Script" uid="uid://cuvb471mbg2nu" path="res://scripts/spawners/EnemySpawner.cs" id="69_aom5x"]
+[ext_resource type="Script" uid="uid://cuvb471mbg2nu" path="res://scripts/Spawning/EnemySpawner.cs" id="69_aom5x"]
 [ext_resource type="PackedScene" uid="uid://dnsc26abupugj" path="res://scenes/enemy/Klaed_Scout.tscn" id="72_2e4hs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
@@ -284,19 +288,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_uj3vt"]
-colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
-gradient = SubResource("Gradient_uj3vt")
-width = 255
-
 [sub_resource type="Animation" id="Animation_0mrug"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("gameover:modulate:a")
+tracks/0/path = NodePath("Menus/gameover:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -307,7 +304,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("gameover:modulate:r")
+tracks/1/path = NodePath("Menus/gameover:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -318,7 +315,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("gameover:modulate:g")
+tracks/2/path = NodePath("Menus/gameover:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -329,7 +326,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("gameover:modulate:b")
+tracks/3/path = NodePath("Menus/gameover:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -340,7 +337,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("gameover:visible")
+tracks/4/path = NodePath("Menus/gameover:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -352,7 +349,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Virtual Joystick:visible")
+tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -364,7 +361,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("VBoxContainer:visible")
+tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -380,7 +377,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("gameover:modulate:r")
+tracks/0/path = NodePath("Menus/gameover:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -391,7 +388,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("gameover:modulate:g")
+tracks/1/path = NodePath("Menus/gameover:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -402,7 +399,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("gameover:modulate:b")
+tracks/2/path = NodePath("Menus/gameover:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -413,7 +410,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("gameover:modulate:a")
+tracks/3/path = NodePath("Menus/gameover:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -424,7 +421,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("gameover:visible")
+tracks/4/path = NodePath("Menus/gameover:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -436,7 +433,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Virtual Joystick:visible")
+tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -448,7 +445,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("VBoxContainer:visible")
+tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -460,7 +457,7 @@ tracks/6/keys = {
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("gameover/HBoxContainer/highscore")
+tracks/7/path = NodePath("Menus/gameover/HBoxContainer/highscore")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -474,7 +471,7 @@ tracks/7/keys = {
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("gameover/anykey")
+tracks/8/path = NodePath("Menus/gameover/anykey")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -491,6 +488,74 @@ _data = {
 &"RESET": SubResource("Animation_0mrug"),
 &"gameOver": SubResource("Animation_uj3vt")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmmwl"]
+shader = ExtResource("25_qgmj2")
+shader_parameter/bar_mode = 4
+shader_parameter/fill_mode = 1
+shader_parameter/segment_count = 12
+shader_parameter/discrete_fill_amount = 12
+shader_parameter/fade_fill_amount = 1.0
+shader_parameter/pour_fill_amount = 1.0
+shader_parameter/animation_speed = 1.0
+shader_parameter/flash_type = 0
+shader_parameter/flash_segment = 0
+shader_parameter/flash_intensity = 1.0
+shader_parameter/single_segment_previous_fill = 1.0
+shader_parameter/single_segment_current_fill = 1.0
+shader_parameter/single_segment_flash_intensity = 0.8
+shader_parameter/flash_from_segment = 0
+shader_parameter/flash_to_segment = 0
+shader_parameter/single_segment_fade_from = 1.0
+shader_parameter/single_segment_fade_to = 1.0
+shader_parameter/single_segment_fade_progress = 0.0
+shader_parameter/drain_previous_fill = 1.0
+shader_parameter/drain_current_fill = 1.0
+shader_parameter/drain_time_progress = 0.0
+shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/filled_color = Color(1, 0.85, 0, 1)
+shader_parameter/border_color = Color(0.20868027, 2.0004343e-07, 2.4065375e-08, 1)
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/drain_flash_color = Color(1, 1, 1, 1)
+shader_parameter/custom_frame = false
+shader_parameter/frame_trim = 0.0
+shader_parameter/alpha_threshold = 0.69
+shader_parameter/scan_steps = 15
+shader_parameter/edge_smoothness = 0.02
+shader_parameter/mask_expansion = 0.0
+shader_parameter/frame_edge_opacity = 0.9
+shader_parameter/fluid_base_color = Color(1, 1, 0, 1)
+shader_parameter/fluid_highlight_color = Color(1, 0, 0, 1)
+shader_parameter/fluid_shadow_color = Color(1, 1, 1, 1)
+shader_parameter/fluid_flow_speed = 1.5
+shader_parameter/fluid_turbulence = 1.0
+shader_parameter/fluid_noise_scale = 6.0
+shader_parameter/gas_mode = false
+shader_parameter/gas_intensity = 0.8
+shader_parameter/effect_mode = 0
+shader_parameter/effect_strength = 0.3
+shader_parameter/effect_speed = 1.5
+shader_parameter/wave_thickness = 0.1
+shader_parameter/bubbles_aspect_ratio = 1.0
+shader_parameter/vertical_gradient = true
+shader_parameter/V_gradient_strength = 0.6
+shader_parameter/horizontal_gradient = false
+shader_parameter/H_gradient_strength = 0.2810000133475
+shader_parameter/segment_gap = 0.0
+shader_parameter/universal_border_size = 0.050000002375
+shader_parameter/horizontal_border_size = 1.0
+shader_parameter/inner_border_thickness_multiplier = 1.0
+shader_parameter/outer_border_size = 2.0
+shader_parameter/slant_amount = 0.0
+shader_parameter/scale = 0.0
+shader_parameter/slant_clip_margin = 0.0
+
+[sub_resource type="Gradient" id="Gradient_uj3vt"]
+colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
+gradient = SubResource("Gradient_uj3vt")
+width = 255
 
 [sub_resource type="Gradient" id="Gradient_nhe15"]
 colors = PackedColorArray(0, 0.8392157, 0.7294118, 0.5882353, 1, 0.08235294, 1, 0.5882353)
@@ -526,24 +591,6 @@ shader_parameter/camera_zoom = Vector2(1, 1)
 [sub_resource type="Gradient" id="Gradient_6skc5"]
 offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5887066, 0.028890513, 1, 1, 1, 1, 1)
-
-[sub_resource type="Gradient" id="Gradient_sgonc"]
-offsets = PackedFloat32Array(0, 0.18301886, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 0.5372549, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_25tam"]
-gradient = SubResource("Gradient_sgonc")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sgonc"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(2, 1, 1)
-direction = Vector3(0, 1, 0)
-spread = 10.0
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_25tam")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knfn0"]
 atlas = ExtResource("18_368rj")
@@ -2061,120 +2108,14 @@ autoplay = "default"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="fps" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -72.0
-offset_top = 10.0
-offset_right = -11.0
-offset_bottom = 38.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("14_jnogn")
-text = "FPS: 0"
-script = ExtResource("12_sgonc")
-
-[node name="asteroids" type="Label" parent="CanvasLayer/fps"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -61.0
-offset_top = 26.0
-offset_bottom = 54.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("14_jnogn")
-text = "Asteroids: "
-
-[node name="Virtual Joystick" parent="CanvasLayer" instance=ExtResource("5_30c0q")]
-modulate = Color(0.8893871, 0.4118303, 0.7156243, 1)
-offset_top = -150.0
-offset_bottom = 150.0
-scale = Vector2(0.5, 0.5)
-pressed_color = Color(0.9439187, 0.66288173, 0.8258425, 1)
-joystick_mode = 1
-use_input_actions = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -90.0
-offset_top = -176.0
-offset_right = -9.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/separation = 10
-
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 100)
-layout_mode = 2
-
-[node name="fire" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control"]
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("12_uj3vt")
-passby_press = true
-script = ExtResource("13_irl7o")
-
-[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control/fire"]
-position = Vector2(510, 510)
-scale = Vector2(0.99999946, 0.99999946)
-texture = ExtResource("12_gv5l8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control/fire"]
-modulate = Color(1, 0.48235294, 0, 1)
-position = Vector2(510, 500)
-scale = Vector2(0.99999976, 0.99999976)
-texture = ExtResource("14_gv5l8")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control/fire"]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(510, 510)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("14_3cnjt")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control/fire"]
-modulate = Color(0.95445794, 3.6098063e-06, 1.347661e-06, 1)
-position = Vector2(510, 510)
-texture = ExtResource("14_fjoud")
-
-[node name="Control2" type="Control" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 100)
-layout_mode = 2
-
-[node name="boost" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer/Control2"]
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("18_uj3vt")
-passby_press = true
-script = ExtResource("13_irl7o")
-
-[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control2/boost"]
-modulate = Color(0.16862746, 1, 0, 1)
-position = Vector2(510, 500)
-scale = Vector2(0.99999976, 0.99999976)
-texture = ExtResource("14_gv5l8")
-
-[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control2/boost"]
-modulate = Color(0.9843137, 0, 0.7764706, 1)
-position = Vector2(510, 510)
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("14_3cnjt")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/VBoxContainer/Control2/boost"]
-modulate = Color(3.080368e-06, 0.921319, 0.7934725, 1)
-position = Vector2(510, 510)
-texture = ExtResource("14_fjoud")
-
-[node name="Control" type="HBoxContainer" parent="CanvasLayer"]
+[node name="roids score" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 12.0
 offset_top = 10.0
 offset_right = 184.0
-offset_bottom = 50.0
+offset_bottom = 61.0
 
-[node name="astroidscore" type="Label" parent="CanvasLayer/Control"]
+[node name="astroidscore" type="Label" parent="CanvasLayer/roids score"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7862757, 0.29739234, 0.7401805, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -2183,9 +2124,146 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="gameover" type="TextureRect" parent="CanvasLayer"]
+[node name="CanvasAnimation" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_0mrug")
+}
+script = ExtResource("20_wxqlh")
+
+[node name="Debug" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("38_pp75p")
+
+[node name="fps" type="Label" parent="CanvasLayer/Debug"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 528.0
+offset_top = 10.0
+offset_right = 589.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("14_jnogn")
+text = "FPS: 0"
+script = ExtResource("12_sgonc")
+
+[node name="TouchControls" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("30_43ba8")
+
+[node name="Virtual Joystick" parent="CanvasLayer/TouchControls" instance=ExtResource("5_30c0q")]
+modulate = Color(0.8893871, 0.4118303, 0.7156243, 1)
+layout_mode = 1
+offset_top = 170.0
+offset_bottom = 470.0
+scale = Vector2(0.5, 0.5)
+pressed_color = Color(0.9439187, 0.66288173, 0.8258425, 1)
+joystick_mode = 1
+use_input_actions = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TouchControls"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 471.0
+offset_top = 94.0
+offset_right = 591.0
+offset_bottom = 304.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="CanvasLayer/TouchControls/VBoxContainer"]
+custom_minimum_size = Vector2(80, 100)
+layout_mode = 2
+
+[node name="fire" type="TouchScreenButton" parent="CanvasLayer/TouchControls/VBoxContainer/Control"]
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("12_uj3vt")
+passby_press = true
+script = ExtResource("13_irl7o")
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control/fire"]
+position = Vector2(510, 510)
+scale = Vector2(0.99999946, 0.99999946)
+texture = ExtResource("12_gv5l8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control/fire"]
+modulate = Color(1, 0.48235294, 0, 1)
+position = Vector2(510, 500)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("14_gv5l8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control/fire"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(510, 510)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_3cnjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control/fire"]
+modulate = Color(0.95445794, 3.6098063e-06, 1.347661e-06, 1)
+position = Vector2(510, 510)
+texture = ExtResource("14_fjoud")
+
+[node name="Control2" type="Control" parent="CanvasLayer/TouchControls/VBoxContainer"]
+custom_minimum_size = Vector2(120, 100)
+layout_mode = 2
+
+[node name="boost" type="TouchScreenButton" parent="CanvasLayer/TouchControls/VBoxContainer/Control2"]
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("18_uj3vt")
+passby_press = true
+script = ExtResource("13_irl7o")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control2/boost"]
+modulate = Color(0.16862746, 1, 0, 1)
+position = Vector2(510, 500)
+scale = Vector2(0.99999976, 0.99999976)
+texture = ExtResource("14_gv5l8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control2/boost"]
+modulate = Color(0.9843137, 0, 0.7764706, 1)
+position = Vector2(510, 510)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_3cnjt")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/TouchControls/VBoxContainer/Control2/boost"]
+modulate = Color(3.080368e-06, 0.921319, 0.7934725, 1)
+position = Vector2(510, 510)
+texture = ExtResource("14_fjoud")
+
+[node name="boost" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_wmmwl")
+offset_left = 615.0
+offset_top = 347.94647
+offset_right = 691.9811
+offset_bottom = 360.0484
+rotation = -1.5707964
+color = Color(1, 0, 0, 1)
+script = ExtResource("37_gcnh3")
+
+[node name="Menus" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gameover" type="TextureRect" parent="CanvasLayer/Menus"]
 visible = false
 modulate = Color(0, 0, 0, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2194,7 +2272,7 @@ grow_vertical = 2
 mouse_filter = 0
 texture = SubResource("GradientTexture1D_0mrug")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/gameover"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/gameover"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2209,7 +2287,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label3" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+[node name="Label3" type="Label" parent="CanvasLayer/Menus/gameover/HBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
@@ -2222,7 +2300,7 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 34
 text = "high score:"
 
-[node name="highscore" type="Label" parent="CanvasLayer/gameover/HBoxContainer"]
+[node name="highscore" type="Label" parent="CanvasLayer/Menus/gameover/HBoxContainer"]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
@@ -2236,7 +2314,7 @@ theme_override_font_sizes/font_size = 34
 text = "0"
 script = ExtResource("20_h6tte")
 
-[node name="Label" type="Label" parent="CanvasLayer/gameover"]
+[node name="Label" type="Label" parent="CanvasLayer/Menus/gameover"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2259,7 +2337,7 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 34
 text = "Game Over"
 
-[node name="touch restart Button" type="Control" parent="CanvasLayer/gameover"]
+[node name="touch restart Button" type="Control" parent="CanvasLayer/Menus/gameover"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -2274,23 +2352,23 @@ offset_bottom = 91.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shadow" type="Sprite2D" parent="CanvasLayer/gameover/touch restart Button"]
+[node name="shadow" type="Sprite2D" parent="CanvasLayer/Menus/gameover/touch restart Button"]
 position = Vector2(38, 39)
 scale = Vector2(0.10266032, 0.10266032)
 texture = ExtResource("24_h0gdq")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/gameover/touch restart Button"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Menus/gameover/touch restart Button"]
 position = Vector2(30.25, 30.875002)
 scale = Vector2(0.09395429, 0.095179744)
 texture = ExtResource("20_qurfu")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/gameover/touch restart Button"]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/Menus/gameover/touch restart Button"]
 scale = Vector2(0.099609375, 0.099609375)
 texture_normal = ExtResource("20_whogn")
 texture_pressed = ExtResource("21_lg0qw")
 script = ExtResource("21_3ko2o")
 
-[node name="anykey" type="Control" parent="CanvasLayer/gameover"]
+[node name="anykey" type="Control" parent="CanvasLayer/Menus/gameover"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2305,7 +2383,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("31_ycwd3")
 
-[node name="any" type="Label" parent="CanvasLayer/gameover/anykey"]
+[node name="any" type="Label" parent="CanvasLayer/Menus/gameover/anykey"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2328,14 +2406,9 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 22
 text = "Press any key or tap to restart"
 
-[node name="CanvasAnimation" type="AnimationPlayer" parent="CanvasLayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_0mrug")
-}
-script = ExtResource("20_wxqlh")
-
-[node name="PauseMenu" type="TextureRect" parent="CanvasLayer" node_paths=PackedStringArray("initialFocusButton")]
+[node name="PauseMenu" type="TextureRect" parent="CanvasLayer/Menus" node_paths=PackedStringArray("initialFocusButton")]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2345,7 +2418,7 @@ texture = SubResource("GradientTexture2D_a6vpd")
 script = ExtResource("28_2ilsx")
 initialFocusButton = NodePath("MainButtons/back")
 
-[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer/PauseMenu"]
+[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer/Menus/PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2359,14 +2432,14 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="back" type="Button" parent="CanvasLayer/PauseMenu/MainButtons" node_paths=PackedStringArray("menuThisButtonCloses")]
+[node name="back" type="Button" parent="CanvasLayer/Menus/PauseMenu/MainButtons" node_paths=PackedStringArray("menuThisButtonCloses")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Button2")
 text = "back"
 script = ExtResource("31_0e8gh")
 menuThisButtonCloses = NodePath("../..")
 
-[node name="Button2" type="Button" parent="CanvasLayer/PauseMenu/MainButtons" node_paths=PackedStringArray("controlMenu")]
+[node name="Button2" type="Button" parent="CanvasLayer/Menus/PauseMenu/MainButtons" node_paths=PackedStringArray("controlMenu")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../back")
 focus_neighbor_bottom = NodePath("../Button3")
@@ -2374,13 +2447,14 @@ text = "Controls"
 script = ExtResource("29_nhe15")
 controlMenu = NodePath("../../../controlsMenu")
 
-[node name="Button3" type="Button" parent="CanvasLayer/PauseMenu/MainButtons"]
+[node name="Button3" type="Button" parent="CanvasLayer/Menus/PauseMenu/MainButtons"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Button2")
 text = "Quit"
 
-[node name="controlsMenu" type="TextureRect" parent="CanvasLayer"]
+[node name="controlsMenu" type="TextureRect" parent="CanvasLayer/Menus"]
 visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2388,7 +2462,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_0e8gh")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/controlsMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menus/controlsMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -2402,59 +2476,60 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/controlsMenu/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Fire"
 
-[node name="Label2" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(90.94, 0)
 layout_mode = 2
 text = "Left Click"
 
-[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelDisplaying")]
+[node name="Button" type="Button" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelDisplaying")]
 layout_mode = 2
 text = "remap"
 script = ExtResource("30_ivo02")
 actionRemapName = "fire"
 labelDisplaying = NodePath("../Label2")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/controlsMenu/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Boost"
 
-[node name="Label2" type="Label" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(90.94, 0)
 layout_mode = 2
 text = "Right Click"
 
-[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelDisplaying")]
+[node name="Button" type="Button" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelDisplaying")]
 layout_mode = 2
 text = "remap"
 script = ExtResource("30_ivo02")
 labelDisplaying = NodePath("../Label2")
 
-[node name="Button" type="Button" parent="CanvasLayer/controlsMenu/VBoxContainer" node_paths=PackedStringArray("menuThisButtonCloses")]
+[node name="Button" type="Button" parent="CanvasLayer/Menus/controlsMenu/VBoxContainer" node_paths=PackedStringArray("menuThisButtonCloses")]
 layout_mode = 2
 text = "back"
 script = ExtResource("31_0e8gh")
 menuThisButtonCloses = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("followTarget")]
-zoom = Vector2(1.715, 1.715)
+zoom = Vector2(0.75, 0.75)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("31_y4jiu")
 followTarget = NodePath("../ship")
 ZoomSmoothness = 0.05
+DefaultMagnitude = 25.0
 
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
 z_index = 10
@@ -2465,12 +2540,12 @@ physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
 script = ExtResource("12_h3aac")
 Acceleration = 2000.0
-_maxSpeed = 1000.0
+_maxSpeed = 500.0
 camera2d = NodePath("../Camera2D")
 boostAccellerationMultiplier = 4.0
-JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
-fireButton = NodePath("../CanvasLayer/VBoxContainer/Control/fire")
-boostButton = NodePath("../CanvasLayer/VBoxContainer/Control2/boost")
+JoystickLeft = NodePath("../CanvasLayer/TouchControls/Virtual Joystick")
+fireButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control/fire")
+boostButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control2/boost")
 area = NodePath("Area2D")
 currentEngine = NodePath("EngineSlot/Engine")
 currentWeapon = NodePath("weaponSlot/weapon")
@@ -2483,14 +2558,14 @@ damageSprites = Dictionary[int, Texture2D]({
 shipSprite = NodePath("body")
 shipSpriteAnimator = NodePath("body/shipAnims")
 BonkAsteroidSFX = NodePath("body/bumpSound")
+BoostUsedPerSec = 5.0
 
-[node name="astroidSpawner" type="Area2D" parent="ship" node_paths=PackedStringArray("countLabel")]
+[node name="astroidSpawner" type="Area2D" parent="ship"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("14_tkyuk")
-countLabel = NodePath("../../CanvasLayer/fps/asteroids")
 objectScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
-DensityThreshold = 1
+DensityThreshold = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
 position = Vector2(6.5, -12)
@@ -2503,8 +2578,8 @@ use_parent_material = true
 use_parent_material = true
 script = ExtResource("13_rfagt")
 animationPlayer = NodePath("AnimationPlayer")
-emissionLeft = NodePath("flame")
-emissionRight = NodePath("flameRight")
+emissionLeft = NodePath("")
+emissionRight = NodePath("")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
 material = SubResource("ShaderMaterial_2ilsx")
@@ -2517,15 +2592,6 @@ gradient = SubResource("Gradient_6skc5")
 length = 100
 TrailOn = true
 
-[node name="flame" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(-7, 12)
-amount = 800
-lifetime = 0.5
-trail_lifetime = 2.0
-trail_sections = 15
-trail_section_subdivisions = 12
-process_material = SubResource("ParticleProcessMaterial_sgonc")
-
 [node name="CanvasGroup2" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
 material = SubResource("ShaderMaterial_2ilsx")
 position = Vector2(7, 12)
@@ -2536,15 +2602,6 @@ width = 5.0
 gradient = SubResource("Gradient_6skc5")
 length = 100
 TrailOn = true
-
-[node name="flameRight" type="GPUParticles2D" parent="ship/EngineSlot/Engine"]
-position = Vector2(7, 12)
-amount = 800
-lifetime = 0.5
-trail_lifetime = 2.0
-trail_sections = 15
-trail_section_subdivisions = 12
-process_material = SubResource("ParticleProcessMaterial_sgonc")
 
 [node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
 visible = false
@@ -2657,7 +2714,7 @@ collision_layer = 0
 collision_mask = 0
 script = ExtResource("69_aom5x")
 objectScenes = Array[PackedScene]([ExtResource("72_2e4hs")])
-DensityThreshold = 1
+DensityThreshold = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this"]
 position = Vector2(6.5, -12)
@@ -2672,10 +2729,10 @@ autoplay = "default"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("30_4jc4o")
-volume_db = -10.0
 autoplay = true
+parameters/looping = true
 
 [node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner", "astroidsScore")]
 script = ExtResource("28_m36cv")
 astroidSpawner = NodePath("../ship/astroidSpawner")
-astroidsScore = NodePath("../CanvasLayer/Control/astroidscore")
+astroidsScore = NodePath("../CanvasLayer/roids score/astroidscore")

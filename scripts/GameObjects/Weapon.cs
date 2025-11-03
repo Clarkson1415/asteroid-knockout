@@ -52,7 +52,7 @@ public partial class Weapon : AnimatedSprite2D
 	// for the animation player to call.
 	public void InstantiateBulletLeft()
 	{
-        camera.Shake(0.1f, 5);
+        camera.Shake(0.1f, 10);
 
         var bullet = (Bullet)bulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bullet);
@@ -62,7 +62,7 @@ public partial class Weapon : AnimatedSprite2D
 
     public void InstantiateBulletRight()
 	{
-        camera.Shake(0.1f, 5);
+        camera.Shake(0.1f, 10);
 
         var bullet = (Bullet)bulletScene.Instantiate();
         GetTree().CurrentScene.AddChild(bullet);

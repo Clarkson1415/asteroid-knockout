@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl8dwxha6puta"]
+
+[ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="1_qc56q"]
+[ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scripts/shaders/PixeliseShaderUpdateSize.cs" id="2_ef5dy"]
+[ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="3_jbddh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47a52"]
+shader = ExtResource("1_qc56q")
+shader_parameter/pixel_size = 4
+shader_parameter/camera_zoom = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_5qrfu"]
+offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5887066, 0.028890513, 1, 1, 1, 1, 1)
+
+[node name="CanvasGroup" type="CanvasGroup"]
+material = SubResource("ShaderMaterial_47a52")
+script = ExtResource("2_ef5dy")
+
+[node name="Trail" parent="." instance=ExtResource("3_jbddh")]
+width = 5.0
+gradient = SubResource("Gradient_5qrfu")
+length = 100
+TrailOn = true
