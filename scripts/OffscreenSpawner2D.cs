@@ -10,13 +10,17 @@ using System.Linq;
 /// </summary>
 public partial class OffscreenSpawner2D : Node2D
 {
-    [Export] private Array<PackedScene> asteroidScenes;
+    [Export] private bool ON = true;
 
     /// <summary>
-    /// TODO: PUT IN OFFSCREEN SPAWNER BASE CLASS. AND EDITBALE IN EDITOR.
+    /// object scenes to choose from to spawn in.
+    /// </summary>
+    [Export] private Array<PackedScene> objectScenes;
+
+    /// <summary>
     /// Number of asteroids within the screens between this and screensToCullAfter screen distance to stop spawning more at for performance.
     /// </summary>
-    private int asteroidDensityThreshold = 300;
+    [Export] private int DensityThreshold = 300;
 
     /// <summary>
     /// TODO: NOT IMPLEMENTED YET PUT IN BASE OFFSCREEN SPAWNER CLASS.
@@ -25,14 +29,14 @@ public partial class OffscreenSpawner2D : Node2D
     private int screensToCullAfter;
 
     /// <summary>
-    /// Invisible Asteroids.
+    /// Invisible objects in the pool.
     /// </summary>
-    private List<Asteroid> objectPool = new();
+    private List<PoolableRB> objectPool = new();
 
     /// <summary>
-    /// Visible asteroids.
+    /// Visible objects in game and simulation.
     /// </summary>
-    private List<Asteroid> visibleAsteroids = new();
+    private List<PoolableRB> visibleObjects = new();
 
     /// <summary>
     /// The visible objects in the game and simulation.
@@ -40,25 +44,28 @@ public partial class OffscreenSpawner2D : Node2D
     /// <returns></returns>
     public int GetVisibleAsteroids()
     {
-        return visibleAsteroids.Count;
+        return visibleObjects.Count;
     }
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        CallDeferred(nameof(SetupInitialAsteroids));
+        if(!ON) { return; }
+
+        CallDeferred(nameof(SpawnInitial));
     }
 
     private void Spawn()
     {
-        var asteroidScene = asteroidScenes[GD.RandRange(0, asteroidScenes.Count - 1)];
-        var asteroid = asteroidScene.Instantiate<Asteroid>();
-        GetTree().CurrentScene.AddChild(asteroid);
-        asteroid.GlobalPosition = GetRandomPositionOffScreen();
-        AddToPool(asteroid);
+        var asteroidScene = objectScenes[GD.RandRange(0, objectScenes.Count - 1)];
+        var obj = asteroidScene.Instantiate<PoolableRB>();
+        GetTree().CurrentScene.AddChild(obj);
+        obj.GlobalPosition = GetRandomPositionOffScreen();
+        obj.OnDestroyed += (x) => AddToPool(x);
+        AddToPool(obj);
     }
 
-    private void SetupInitialAsteroids()
+    private void SpawnInitial()
     {
         for (int i = 0; i < 20; i++)
         {
@@ -73,23 +80,34 @@ public partial class OffscreenSpawner2D : Node2D
         timer.Timeout += () => timer.Start();
     }
 
-    private void AddToPool(Asteroid asteroid)
+    /// <summary>
+    /// Disable and turn off. put in pool to grab new ones from.
+    /// </summary>
+    /// <param name="obj"></param>
+    private void AddToPool(PoolableRB obj)
     {
-        asteroid.ToggleTrailOff();
-        asteroid.DisableMode = CollisionObject2D.DisableModeEnum.KeepActive;
-        asteroid.Visible = false;
-        objectPool.Add(asteroid);
-        visibleAsteroids.Remove(asteroid);
+        OnPutInPool(obj);
+        obj.DisableMode = CollisionObject2D.DisableModeEnum.Remove;
+        obj.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+        obj.Visible = false;
+        objectPool.Add(obj);
+        visibleObjects.Remove(obj);
     }
 
-    private Asteroid GetRandomAsteroidFromPool()
+    /// <summary>
+    /// Something additioanl todo when obect is removed from simulation and put in obj pool.
+    /// </summary>
+    protected virtual void OnPutInPool(PoolableRB asteroid) { }
+
+    private PoolableRB GetRandomAsteroidFromPool()
     {
-        var asteroid = objectPool[GD.RandRange(0, objectPool.Count - 1)];
-        objectPool.Remove(asteroid);
-        asteroid.DisableMode = CollisionObject2D.DisableModeEnum.Remove;
-        asteroid.Visible = true;
-        visibleAsteroids.Add(asteroid);
-        return asteroid;
+        var obj = objectPool[GD.RandRange(0, objectPool.Count - 1)];
+        objectPool.Remove(obj);
+        obj.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        obj.Visible = true;
+        obj.OnMadeVisibleAgain();
+        visibleObjects.Add(obj);
+        return obj;
     }
 
     /// <summary>
@@ -97,11 +115,13 @@ public partial class OffscreenSpawner2D : Node2D
     /// </summary>
     private void LoadAsteroidFromPool()
     {
+        if (!ON) { return; }
+
         // Check visible is not over the count. Cull if there is too many.
-        if (visibleAsteroids.Count >= asteroidDensityThreshold)
+        if (visibleObjects.Count > DensityThreshold)
         {
             // put the furthest asteroid visible away.
-            var furthestAsteroid = visibleAsteroids.OrderByDescending(x => x.GlobalPosition.DistanceSquaredTo(this.GlobalPosition)).First();
+            var furthestAsteroid = visibleObjects.OrderByDescending(x => x.GlobalPosition.DistanceSquaredTo(this.GlobalPosition)).First();
             AddToPool(furthestAsteroid);
         }
         else if (objectPool.Count == 0) // if we requested more asteroids than loaded, need to spawn more.
@@ -115,12 +135,19 @@ public partial class OffscreenSpawner2D : Node2D
         OnNewObjectSpawned(asteroid);
     }
 
-    protected virtual void OnNewObjectSpawned(Asteroid asteroid) { }
+    protected virtual void OnNewObjectSpawned(PoolableRB asteroid) { }
 
     private Vector2 GetRandomPositionOffScreen()
     {
         var viewport = GetViewport();
-        var viewRect = GetViewportRect();
+        var camera = viewport.GetCamera2D();
+        var viewRect = new Rect2();
+        viewRect.Position = GetViewportRect().Position;
+        viewRect.Size = GetViewportRect().Size / camera.Zoom;
+
+        // TODO: asteroids are being spawned inside view. :(
+        Logger.Log($"view rect pos = {viewRect.Position}");
+        Logger.Log($"view rect size = {viewRect.Size}");
 
         // random position within this area
         var random_offset = new Vector2((float)GD.RandRange(-viewRect.Size.X, viewRect.Size.X), (float)GD.RandRange(-viewRect.Size.Y, viewRect.Size.Y));
@@ -129,7 +156,6 @@ public partial class OffscreenSpawner2D : Node2D
         // +32 for the asteroid size 1/2
         Vector2 spawnPoint = random_offset + GlobalPosition;
 
-        var camera = viewport.GetCamera2D();
         Vector2 worldViewportSize = GetViewportRect().Size * camera.Zoom;
         Vector2 topLeft = camera.GetScreenCenterPosition() - worldViewportSize / 2;
         Rect2 worldViewport = new Rect2(topLeft, worldViewportSize);

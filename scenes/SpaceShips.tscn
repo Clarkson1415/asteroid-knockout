@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://d2t8fsx5t1nua" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer11Frame1_BlackHole3LayersLayer11_12_13.png" id="11_gkmpg"]
 [ext_resource type="Texture2D" uid="uid://uus6wkdw1huk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer14Frame1.png" id="12_56xrs"]
 [ext_resource type="Texture2D" uid="uid://dpyolwbyb3ilv" path="res://UIButtons/crosshairImageONLY.png" id="12_gv5l8"]
-[ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/ShipController.cs" id="12_h3aac"]
+[ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/units/ShipController.cs" id="12_h3aac"]
 [ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/FpsCounter.cs" id="12_sgonc"]
 [ext_resource type="Texture2D" uid="uid://b05r3ynccs31g" path="res://UIButtons/buttonBlank.png" id="12_uj3vt"]
 [ext_resource type="Texture2D" uid="uid://bwqsdmpqjtufk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer15Frame1_BigRedStar.png" id="13_6k5jt"]
@@ -71,6 +71,7 @@
 [ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scenes/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
+[ext_resource type="Script" uid="uid://cuvb471mbg2nu" path="res://scripts/spawners/EnemySpawner.cs" id="69_aom5x"]
 [ext_resource type="PackedScene" uid="uid://dnsc26abupugj" path="res://scenes/enemy/Klaed_Scout.tscn" id="72_2e4hs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
@@ -1922,149 +1923,143 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ycwd3"]
-vertices = PackedVector2Array(2762.4766, -1428.1016, 2913.461, 1531.8984, -2235.1016, 1488.0781, -2266.8906, -1481.8906)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-2277, -1492, 2772, -1438, 2924, 1542, -2245, 1498)])
-
 [node name="Game" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-2087.0]
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="BG" type="Node2D" parent="."]
 
-[node name="Parallax2D" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="Space" type="AnimatedSprite2D" parent="Node2D2/Parallax2D"]
+[node name="Space" type="AnimatedSprite2D" parent="BG/Parallax2D"]
 sprite_frames = SubResource("SpriteFrames_iqer8")
 autoplay = "default"
 frame_progress = 0.43755117
 
-[node name="Parallax2D2" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D2" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="shadow" type="AnimatedSprite2D" parent="Node2D2/Parallax2D2"]
+[node name="shadow" type="AnimatedSprite2D" parent="BG/Parallax2D2"]
 sprite_frames = SubResource("SpriteFrames_tncqp")
 autoplay = "default"
 frame_progress = 0.107887454
 
-[node name="Parallax2D3" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D3" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D2/Parallax2D3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BG/Parallax2D3"]
 sprite_frames = SubResource("SpriteFrames_ndk0j")
 autoplay = "default"
 
-[node name="Parallax2D4" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D4" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Node2D2/Parallax2D4"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BG/Parallax2D4"]
 sprite_frames = SubResource("SpriteFrames_gv5l8")
 autoplay = "default"
 frame_progress = 0.5960324
 
-[node name="Parallax2D5" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D5" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.3, 0.3)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Node2D2/Parallax2D5"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="BG/Parallax2D5"]
 sprite_frames = SubResource("SpriteFrames_sttqx")
 autoplay = "default"
 frame_progress = 0.73045313
 
-[node name="Parallax2D6" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D6" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.4, 0.4)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Node2D2/Parallax2D6"]
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="BG/Parallax2D6"]
 sprite_frames = SubResource("SpriteFrames_nhe15")
 autoplay = "default"
 frame_progress = 0.19311182
 
-[node name="Parallax2D7" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D7" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.5, 0.5)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Node2D2/Parallax2D7"]
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="BG/Parallax2D7"]
 sprite_frames = SubResource("SpriteFrames_aom5x")
 autoplay = "default"
 
-[node name="Parallax2D8" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D8" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.6, 0.6)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Node2D2/Parallax2D8"]
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="BG/Parallax2D8"]
 sprite_frames = SubResource("SpriteFrames_jrydx")
 autoplay = "default"
 
-[node name="Parallax2D9" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D9" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.65, 0.65)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Node2D2/Parallax2D9"]
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="BG/Parallax2D9"]
 sprite_frames = SubResource("SpriteFrames_lctqp")
 autoplay = "default"
 
-[node name="Parallax2D10" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D10" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Node2D2/Parallax2D10"]
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D10"]
 sprite_frames = SubResource("SpriteFrames_0e8gh")
 autoplay = "default"
 
-[node name="Parallax2D11" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D11" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Node2D2/Parallax2D11"]
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D11"]
 sprite_frames = SubResource("SpriteFrames_gkmpg")
 autoplay = "default"
 
-[node name="Parallax2D12" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D12" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Node2D2/Parallax2D12"]
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D12"]
 sprite_frames = SubResource("SpriteFrames_56xrs")
 autoplay = "default"
 
-[node name="Parallax2D13" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D13" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Node2D2/Parallax2D13"]
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D13"]
 sprite_frames = SubResource("SpriteFrames_6k5jt")
 autoplay = "default"
 
-[node name="Parallax2D14" type="Parallax2D" parent="Node2D2"]
+[node name="Parallax2D14" type="Parallax2D" parent="BG"]
 scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(1280, 720)
 repeat_times = 4
 
-[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Node2D2/Parallax2D14"]
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D14"]
 sprite_frames = SubResource("SpriteFrames_bs4d1")
 autoplay = "default"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="fps" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -2453,11 +2448,13 @@ script = ExtResource("31_0e8gh")
 menuThisButtonCloses = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("followTarget")]
+zoom = Vector2(1.715, 1.715)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("31_y4jiu")
 followTarget = NodePath("../ship")
+ZoomSmoothness = 0.05
 
 [node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
 z_index = 10
@@ -2467,10 +2464,10 @@ mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_tncqp")
 gravity_scale = 0.0
 script = ExtResource("12_h3aac")
+Acceleration = 2000.0
+_maxSpeed = 1000.0
 camera2d = NodePath("../Camera2D")
-boostMaxSpeedMultiplier = 4.0
 boostAccellerationMultiplier = 4.0
-Acceleration = 9999.0
 JoystickLeft = NodePath("../CanvasLayer/Virtual Joystick")
 fireButton = NodePath("../CanvasLayer/VBoxContainer/Control/fire")
 boostButton = NodePath("../CanvasLayer/VBoxContainer/Control2/boost")
@@ -2491,8 +2488,9 @@ BonkAsteroidSFX = NodePath("body/bumpSound")
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("14_tkyuk")
-asteroidScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
 countLabel = NodePath("../../CanvasLayer/fps/asteroids")
+objectScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
+DensityThreshold = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
 position = Vector2(6.5, -12)
@@ -2649,17 +2647,26 @@ polygon = PackedVector2Array(6, 4, -12, 18, -17, 18, -14, 8, -19, 7, -19, 2, -14
 [node name="Area2D" type="Area2D" parent="ship"]
 position = Vector2(-4, -10)
 rotation = -1.5707964
-collision_mask = 2
+collision_mask = 10
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship/Area2D"]
 polygon = PackedVector2Array(-20, 18, -13, 18, 3, 4, -13, -10, -20, -10, -23, 0.99999905, -23, 6.9999995)
 
-[node name="EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this" type="Node2D" parent="ship"]
+[node name="EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this" type="Area2D" parent="ship"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("69_aom5x")
+objectScenes = Array[PackedScene]([ExtResource("72_2e4hs")])
+DensityThreshold = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this"]
+position = Vector2(6.5, -12)
+shape = SubResource("RectangleShape2D_tkyuk")
+
+[node name="Planet" type="Node2D" parent="."]
 position = Vector2(984, 426)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Planet"]
 sprite_frames = SubResource("SpriteFrames_myew2")
 autoplay = "default"
 
@@ -2672,16 +2679,3 @@ autoplay = true
 script = ExtResource("28_m36cv")
 astroidSpawner = NodePath("../ship/astroidSpawner")
 astroidsScore = NodePath("../CanvasLayer/Control/astroidscore")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_ycwd3")
-
-[node name="Klaed_Scout" parent="." instance=ExtResource("72_2e4hs")]
-position = Vector2(-136, 4)
-collision_layer = 0
-collision_mask = 0
-shootMinDistance = 5.0
-shootMaxDistance = 200.0
-shootMaxAngle = 2.0
-rotationSpeed = 2.0

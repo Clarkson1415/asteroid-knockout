@@ -1,13 +1,18 @@
-using cakegame1idk.scripts.shaderControllers;
 using Godot;
 
-public partial class Asteroid : RigidBody2D
+public partial class Asteroid : PoolableRB
 {
     private float asteroidSpeed = 50f;
 
-    [Export] private int hitsTillExplode = 1;
+    [Export] private int initialhitsTillExplode = 1;
 
+    private int hitsLeftTillExplode = 1;
+
+    /// <summary>
+    /// TODO: use a get GetHitComponent instead of detecting it in area individually on asteroids, enemy player for flash
+    /// </summary>
     [Export] private Area2D area;
+
     [Export] private AnimationPlayer animationPlayer;
 
     [Export] private Node trailNode;
@@ -59,9 +64,9 @@ public partial class Asteroid : RigidBody2D
     /// <param name="area"></param>
     private void OnHit(Area2D area)
     {
-        if (hitsTillExplode > 1)
+        if (hitsLeftTillExplode > 1)
         {
-            hitsTillExplode--;
+            hitsLeftTillExplode--;
             hitByBulletSound.Play();
 
             // flash Red
@@ -86,11 +91,8 @@ public partial class Asteroid : RigidBody2D
         GlobalSignalBus.GetInstance().EmitOnAstroidDestroyedSignal();
     }
 
-    //public override void _PhysicsProcess(double delta)
-    //{
-    //    // No manual position update needed: physics moves the asteroid based on LinearVelocity.
-
-    //    // Optional: You could add drag/friction if you want to slow it down over time:
-    //    //LinearVelocity = LinearVelocity.MoveToward(Vector2.Zero, drag * (float)delta);
-    //}
+    public override void OnMadeVisibleAgain()
+    {
+        hitsLeftTillExplode = initialhitsTillExplode;
+    }
 }

@@ -28,6 +28,11 @@ public partial class GetHitComponent : Area2D
             }
         }
 
+        if (flashMaterial == null)
+        {
+            return;
+        }
+
         // FLASH
         flashTimer = new Timer();
         flashTimer.OneShot = true;

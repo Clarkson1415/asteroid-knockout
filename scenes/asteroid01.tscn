@@ -11,9 +11,5 @@ shader_parameter/color = Color(0.4117647, 0, 0, 1)
 [node name="asteroid01" instance=ExtResource("1_rq5kg")]
 continuous_cd = 0
 
-[node name="Trail" parent="." index="0"]
-width = 20.0
-length = 50
-
 [node name="animated" parent="." index="2"]
 material = SubResource("ShaderMaterial_0uxqq")

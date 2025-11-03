@@ -42,7 +42,7 @@ public partial class CameraShake : Camera2D
         float speed = followTarget.LinearVelocity.Length();
         // scale speed to between max speed and speed = 0
         // then put camera zoom at that.
-        float maxSpeed = followTarget.OverallMaxSpeed;
+        float maxSpeed = followTarget.MaxSpeed;
 
         var speedOutOfMaxSpeed = speed / maxSpeed;
 

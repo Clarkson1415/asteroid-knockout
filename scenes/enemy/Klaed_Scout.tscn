@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnsc26abupugj"]
+[gd_scene load_steps=23 format=3 uid="uid://dnsc26abupugj"]
 
-[ext_resource type="Script" uid="uid://c47n6nhv4o3gx" path="res://scripts/enemy/Enemy.cs" id="1_o0pi5"]
+[ext_resource type="Script" uid="uid://c47n6nhv4o3gx" path="res://scripts/units/enemy/Enemy.cs" id="1_o0pi5"]
 [ext_resource type="PackedScene" uid="uid://dqcs1eukaeloy" path="res://scenes/bulletAutoCannon.tscn" id="2_27cij"]
 [ext_resource type="Texture2D" uid="uid://c7msiknv20127" path="res://Foozle_2DS0012_Void_FleetPack_1/Foozle_2DS0012_Void_EnemyFleet_1/Kla'ed/Base/PNGs/Kla'ed - Scout - Base.png" id="2_v31qn"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="3_xpjnn"]
 [ext_resource type="Texture2D" uid="uid://cbk0uvgpuu6of" path="res://Foozle_2DS0012_Void_FleetPack_1/Foozle_2DS0012_Void_EnemyFleet_1/Kla'ed/Destruction/PNGs/Kla'ed - Scout - Destruction.png" id="4_27cij"]
+[ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="6_62jen"]
+[ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="7_6yxf1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62jen"]
 shader = ExtResource("3_xpjnn")
@@ -101,16 +103,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CSharpScript" id="CSharpScript_3pcf4"]
-script/source = "using Godot;
-
-public partial class EnemyNavigationAgent : NavigationAgent2D
-{
-
-    
-}
-"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6epj"]
 radius = 9.0
 height = 22.0
@@ -119,14 +111,15 @@ height = 22.0
 radius = 9.0
 height = 22.0
 
-[node name="Klaed_Scout" type="RigidBody2D" node_paths=PackedStringArray("navigationAgent", "bulletStartPosition", "getHit", "bodyAnimations")]
+[node name="Klaed_Scout" type="RigidBody2D" node_paths=PackedStringArray("bulletStartPosition", "getHit", "bodyAnimations", "gotHitSound", "explodeSound")]
 gravity_scale = 0.0
 script = ExtResource("1_o0pi5")
-navigationAgent = NodePath("NavigationAgent2D")
 bulletScene = ExtResource("2_27cij")
 bulletStartPosition = NodePath("BulletPosition")
 getHit = NodePath("get hit here")
 bodyAnimations = NodePath("ShipBody")
+gotHitSound = NodePath("HitSound")
+explodeSound = NodePath("explodeSound")
 
 [node name="ShipBody" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_62jen")
@@ -134,7 +127,6 @@ sprite_frames = SubResource("SpriteFrames_p8wfw")
 autoplay = "default"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-script = SubResource("CSharpScript_3pcf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -150,3 +142,11 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="get hit here"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_3pcf4")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_62jen")
+volume_db = 3.0
+
+[node name="explodeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6yxf1")
+volume_db = 3.0

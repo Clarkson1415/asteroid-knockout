@@ -5,4 +5,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>cakegame1idk</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="scripts\NewFolder\" />
+  </ItemGroup>
 </Project>
