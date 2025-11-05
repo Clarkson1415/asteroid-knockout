@@ -113,7 +113,7 @@ shape = SubResource("CircleShape2D_8xfal")
 
 [node name="boost" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_0h208")
-volume_db = 3.0
+volume_db = 6.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
