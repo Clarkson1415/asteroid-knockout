@@ -7,10 +7,8 @@ public partial class BoostAmount : Control
         this.Material = this.Material.Duplicate() as ShaderMaterial;
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _Process(double delta)
     {
-        base._Input(@event);
-
         var player = ShipController.Instance;
 
         if (player == null) { return; }

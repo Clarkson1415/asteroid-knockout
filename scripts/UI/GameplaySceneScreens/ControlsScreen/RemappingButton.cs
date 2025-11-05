@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class RemappingButton : Button
 {
@@ -11,37 +12,39 @@ public partial class RemappingButton : Button
 	public override void _Ready()
 	{
 		this.ButtonUp += Remap;
+        this.VisibilityChanged += SyncButtonNames;
 	}
 
-	private void Remap()
+    private void SyncButtonNames()
+    {
+        InputEvent eventForThisAction = InputMap.ActionGetEvents(actionRemapName).FirstOrDefault();
+        if (eventForThisAction == null)
+        {
+            Logger.LogError($"no button mapped to event {actionRemapName}");
+            return;
+        }
+
+        labelDisplaying.Text = GetDisplayNameOfInput(eventForThisAction);
+    }
+
+    private void Remap()
 	{
         waitingForNewMap = true;
         labelDisplaying.Text = "waiting for input...";
         Text = "...";
     }
 
-    public override void _Input(InputEvent @event)
+    private string GetDisplayNameOfInput(InputEvent @event)
     {
-		if (!waitingForNewMap) { return; }
+        var buttonName = "?";
 
-        if (@event is InputEventMouseMotion)
+        if (@event is InputEventKey keyEvent)
         {
-            return;
-        }
-
-		InputMap.ActionAddEvent(actionRemapName, @event);
-
-        labelDisplaying.Text = "...";
-
-		// Get Name of input.
-		var buttonName = "name not found :( but will work";
-		if (@event is InputEventKey keyEvent)
-		{
             Key keyEnum = keyEvent.Keycode;
             buttonName = OS.GetKeycodeString(keyEnum);
         }
-		else if (@event is InputEventJoypadButton buttonEvent)
-		{
+        else if (@event is InputEventJoypadButton buttonEvent)
+        {
             int buttonIndex = (int)buttonEvent.ButtonIndex;
 
             // Get the device ID (incase multiple controllers are connected)
@@ -60,9 +63,28 @@ public partial class RemappingButton : Button
             };
         }
 
+        return buttonName;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+		if (!waitingForNewMap) { return; }
+
+        if (@event is InputEventMouseMotion)
+        {
+            return;
+        }
+
+		InputMap.ActionAddEvent(actionRemapName, @event);
+
+        labelDisplaying.Text = "...";
+
+        // Get Name of input.
+        labelDisplaying.Text = GetDisplayNameOfInput(@event);
         waitingForNewMap = false;
-        labelDisplaying.Text = buttonName;
         Text = "remap";
+
+        GameSettings.UpdateInputMappings(actionRemapName, @event);
     }
 
     private string GetJoypadButtonName(int buttonIndex)

@@ -16,7 +16,7 @@ public partial class ShipController : RigidBody2D
         private set { _maxSpeed = value; }
     }
     
-    [Export] private CameraShake camera2d;
+    [Export] private FollowingCamera2D camera2d;
 
     /// <summary>
     /// How fast boost accellerates.
@@ -62,6 +62,8 @@ public partial class ShipController : RigidBody2D
 
     public override void _Ready()
     {
+        BoostRemaining = MaximumBoostAmount;
+
         Instance = this;
 
         // TODO: put the hit and flash in the hit component. to do itself.
@@ -72,8 +74,6 @@ public partial class ShipController : RigidBody2D
         // duplicate material future proof if add more ships or something idk.
         flashMaterial = (ShaderMaterial)Material.Duplicate();
         Material = flashMaterial;
-
-        currentWeapon?.SetCamera(this.camera2d);
     }
 
     public override void _ExitTree()
@@ -87,7 +87,7 @@ public partial class ShipController : RigidBody2D
     /// <param name="newWeapon"></param>
     private void AddWeapon(Weapon newWeapon)
     {
-        newWeapon.SetCamera(this.camera2d);
+        // TODO:
     }
 
     private void OnGotHit(Area2D area)
@@ -104,13 +104,13 @@ public partial class ShipController : RigidBody2D
         if (damageLevel == DAMAGE.completely)
         {
             currentEngine.PowerOff();
-            camera2d.Shake(1f, 40f);
+            CameraShaker.LargeShake(camera2d);
             shipSpriteAnimator.Play(explode);
             return;
         }
         else
         {
-            camera2d.Shake();
+            CameraShaker.MediumShake(camera2d);
         }
 
         // if flashing rn ignore
@@ -170,6 +170,28 @@ public partial class ShipController : RigidBody2D
         return BoostRemaining / MaximumBoostAmount;
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (isBoosting)
+        {
+            BoostRemaining -= (float)(BoostUsedPerSec * delta);
+            if (BoostRemaining < 0) // stop at 0
+            {
+                BoostRemaining = 0;
+            }
+        }
+        else
+        {
+            BoostRemaining += (float)(RegenPerSecNotUsing * delta);
+            if (BoostRemaining > MaximumBoostAmount) // stop at max.
+            {
+                BoostRemaining = MaximumBoostAmount;
+            }
+        }
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (GlobalSignalBus.MenusOpen)
@@ -205,25 +227,6 @@ public partial class ShipController : RigidBody2D
         else
         {
             currentEngine.PowerOff();
-        }
-
-        if (isBoosting)
-        {
-            // Reduce boost over time
-            BoostRemaining -= (float)(BoostUsedPerSec * delta);
-            if (BoostRemaining < 0) // stop at 0
-            {
-                BoostRemaining = 0;
-            }
-        }
-        else
-        {
-            // TODO regen boost over time.
-            BoostRemaining += (float)(RegenPerSecNotUsing * delta);
-            if (BoostRemaining > MaximumBoostAmount) // stop at max.
-            {
-                BoostRemaining = MaximumBoostAmount;
-            }
         }
     }
 

@@ -1,11 +1,10 @@
 using Godot;
-using System;
 
 public partial class HighScoreLabel : Label
 {
 	public void UpdateHighScoreText()
 	{
-		var highScore = Level.GetHighScore();
+		var highScore = GameSettings.GetHighScore();
 		var timeForAnimation = 0.3f;
 		var timer = new Timer();
 		AddChild(timer);
