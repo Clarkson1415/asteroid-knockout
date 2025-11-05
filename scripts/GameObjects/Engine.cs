@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 
 public partial class Engine : Node2D
 {
@@ -11,8 +10,14 @@ public partial class Engine : Node2D
     private string powerOff = "poweringOff";
     private string boost = "boost";
 
-    [Export] GpuParticles2D emissionLeft;
-    [Export] GpuParticles2D emissionRight;
+    [Export] RocketShipExhaust exhastLeft;
+    [Export] RocketShipExhaust exhastRight;
+
+    private void UpdateExhastVisuals(float percentageSpeed)
+    {
+        exhastLeft.UpdateVisualsFromSpeedPercent(percentageSpeed);
+        exhastRight.UpdateVisualsFromSpeedPercent(percentageSpeed);
+    }
 
     public void TurnOffSprites()
     {
@@ -24,8 +29,8 @@ public partial class Engine : Node2D
             }
         }
 
-        emissionLeft.Emitting = false;
-        emissionRight.Emitting = false;
+        exhastLeft.Visible = false;
+        exhastRight.Visible = false;
     }
 
     public override void _Ready()
@@ -35,6 +40,8 @@ public partial class Engine : Node2D
 
     public void Boost()
     {
+        UpdateExhastVisuals(1.0f);
+
         if (animationPlayer.CurrentAnimation == boost)
         {
             return;
@@ -57,6 +64,8 @@ public partial class Engine : Node2D
 
 	public void PowerOn()
 	{
+        UpdateExhastVisuals(0.5f);
+
         if (animationPlayer.CurrentAnimation == powerOn || animationPlayer.CurrentAnimation == powered)
         {
             return;
@@ -67,6 +76,8 @@ public partial class Engine : Node2D
 
     public void PowerOff()
 	{
+        UpdateExhastVisuals(0.1f);
+
         if (animationPlayer.CurrentAnimation == idle)
         {
             return;

@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bukbivorbl6bb"]
+[gd_scene load_steps=32 format=3 uid="uid://bukbivorbl6bb"]
 
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="1_cdqko"]
 [ext_resource type="Script" uid="uid://bwxt5x86xvpj6" path="res://scripts/GameObjects/Asteroid.cs" id="1_pwrvu"]
 [ext_resource type="Texture2D" uid="uid://jnhvx3rc1ir8" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Flame.png" id="2_0jovh"]
 [ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="2_yb8w1"]
+[ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scripts/shaders/PixeliseShaderUpdateSize.cs" id="3_2coib"]
 [ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="3_77v4f"]
 [ext_resource type="Texture2D" uid="uid://buv71xd1l8j7j" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Base.png" id="3_kkwpv"]
 [ext_resource type="Texture2D" uid="uid://cvtgd885iyfkp" path="res://Foozle_2DS0015_Void_EnvironmentPack/Asteroids/Asteroid 01 - Explode.png" id="4_x1lus"]
@@ -310,7 +311,7 @@ shader = ExtResource("1_cdqko")
 shader_parameter/flash_strength = 0.0
 shader_parameter/color = Color(0.4117647, 0, 0, 1)
 
-[node name="asteroid" type="RigidBody2D" node_paths=PackedStringArray("area", "animationPlayer", "trailNode", "sprite", "hitByBulletSound")]
+[node name="asteroid" type="RigidBody2D" node_paths=PackedStringArray("area", "animationPlayer", "trailController", "sprite", "hitByBulletSound")]
 rotation = 0.051715106
 collision_layer = 2
 collision_mask = 3
@@ -321,12 +322,14 @@ continuous_cd = 2
 script = ExtResource("1_pwrvu")
 area = NodePath("get hit here")
 animationPlayer = NodePath("AnimationPlayer")
-trailNode = NodePath("CanvasGroup/Trail")
+trailController = NodePath("CanvasGroup")
 sprite = NodePath("animated")
 hitByBulletSound = NodePath("OnHitSound")
 
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
+[node name="CanvasGroup" type="CanvasGroup" parent="." node_paths=PackedStringArray("trailNode")]
 material = SubResource("ShaderMaterial_2coib")
+script = ExtResource("3_2coib")
+trailNode = NodePath("Trail")
 
 [node name="Trail" parent="CanvasGroup" instance=ExtResource("3_77v4f")]
 width = 25.0

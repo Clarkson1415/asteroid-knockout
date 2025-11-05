@@ -73,7 +73,7 @@ animations = [{
 
 [node name="asteroid03" instance=ExtResource("1_vumos")]
 mass = 500.0
-hitsTillExplode = 4
+initialhitsTillExplode = 2
 
 [node name="Trail" parent="CanvasGroup" index="0"]
 width = 50.0

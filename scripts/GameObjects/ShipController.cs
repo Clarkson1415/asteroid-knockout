@@ -1,11 +1,12 @@
 using Godot;
-using System.Runtime.InteropServices;
 
 /// <summary>
 /// The player.
 /// </summary>
 public partial class ShipController : RigidBody2D
 {
+    [Export] private Area2D pickupCollectionArea;
+
     [Export] protected float Acceleration = 300f;
 
     [Export] private float _maxSpeed = 100f;
@@ -44,7 +45,7 @@ public partial class ShipController : RigidBody2D
 
     [Export] AnimatedSprite2D shipSprite;
 
-    private bool isBoosting;
+    private bool isBoosting = false;
 
     [Export] private AnimationPlayer shipSpriteAnimator;
 
@@ -74,6 +75,18 @@ public partial class ShipController : RigidBody2D
         // duplicate material future proof if add more ships or something idk.
         flashMaterial = (ShaderMaterial)Material.Duplicate();
         Material = flashMaterial;
+
+        pickupCollectionArea.AreaEntered += OnPickupBoost;
+    }
+
+    private void OnPickupBoost(Area2D pickupCollected)
+    {
+        BoostRemaining += MaximumBoostAmount/4;
+        var boost = pickupCollected as Boost;
+        if (boost != null)
+        {
+            boost.InvokeDestroyedPoolableObject();
+        }
     }
 
     public override void _ExitTree()
@@ -174,20 +187,17 @@ public partial class ShipController : RigidBody2D
     {
         base._Process(delta);
 
+        if (currentEngine != null)
+        {
+            var percent = LinearVelocity.Length() / MaxSpeed;
+        }
+
         if (isBoosting)
         {
             BoostRemaining -= (float)(BoostUsedPerSec * delta);
             if (BoostRemaining < 0) // stop at 0
             {
                 BoostRemaining = 0;
-            }
-        }
-        else
-        {
-            BoostRemaining += (float)(RegenPerSecNotUsing * delta);
-            if (BoostRemaining > MaximumBoostAmount) // stop at max.
-            {
-                BoostRemaining = MaximumBoostAmount;
             }
         }
     }
@@ -206,7 +216,7 @@ public partial class ShipController : RigidBody2D
             currentWeapon.Fire();
         }
 
-        isBoosting = (boostButton.IsPressed() || Input.IsActionPressed("boost")) && (BoostRemaining > 0f);
+        isBoosting = (boostButton.IsPressed() || Input.IsActionPressed("boost")) && (BoostRemaining > 0);
 
         if (shipSpriteAnimator.CurrentAnimation == explode || shipDestroyedHasBeenEmitted)
         {
@@ -245,12 +255,16 @@ public partial class ShipController : RigidBody2D
             GlobalRotation = inputVector.Angle() + Mathf.Pi / 2;
         }
 
-        // apply force.
-        var boost = isBoosting ? boostAccellerationMultiplier : 1f;
+        var facingDirection = new Vector2(Mathf.Sin(GlobalRotation), -Mathf.Cos(GlobalRotation));
 
-        // if no input but is boosing apply force in direction facing.
-        var forceDirection = !isBoosting ? inputVector : new Vector2(Mathf.Sin(GlobalRotation), -Mathf.Cos(GlobalRotation));
-        ApplyCentralForce(forceDirection.Normalized() * Acceleration * boost);
+        if (isBoosting)
+        {
+            ApplyCentralForce(facingDirection.Normalized() * Acceleration * boostAccellerationMultiplier);
+        }
+        else if (inputVector != Vector2.Zero)
+        {
+            ApplyCentralForce(facingDirection.Normalized() * Acceleration);
+        }
 
         // Clamp max speed
         if (LinearVelocity.Length() > MaxSpeed)

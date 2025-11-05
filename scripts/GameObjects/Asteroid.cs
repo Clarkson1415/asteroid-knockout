@@ -15,7 +15,7 @@ public partial class Asteroid : PoolableRB
 
     [Export] private AnimationPlayer animationPlayer;
 
-    [Export] private Node trailNode;
+    [Export] private PixeliseShaderUpdateSize trailController;
 
     [Export] private AnimatedSprite2D sprite;
 
@@ -36,12 +36,12 @@ public partial class Asteroid : PoolableRB
 
     public void ToggleTrailOff()
     {
-        trailNode.Call("ToggleTrailOff");
+        trailController.TrailOff();
     }
 
     public void SetSpeed(double additionalSpeedIncrease)
     {
-        trailNode.Call("ToggleTrailOn");
+        trailController.TrailOn();
 
         // Pick a random direction to float in, normalize it
         moveDirection = new Vector2(GD.RandRange(-100, 100), GD.RandRange(-100, 100)).Normalized();
@@ -89,10 +89,13 @@ public partial class Asteroid : PoolableRB
 
         animationPlayer.Play("explode");
         GlobalSignalBus.GetInstance().EmitOnAstroidDestroyedSignal();
+        InvokeDestroyedPoolableObject();
     }
 
     public override void OnMadeVisibleAgain()
     {
+        base.OnMadeVisibleAgain();
         hitsLeftTillExplode = initialhitsTillExplode;
+        trailController.TrailOn();
     }
 }

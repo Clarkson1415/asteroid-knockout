@@ -28,19 +28,20 @@ public partial class GameSettings : Node
         Instance = this;
         Error err = Config.Load(filePath);
 
+        Logger.Log("fix this");
         // Check if any key exists in the defaultInputMappings section
-        bool defaultMappingsExist = Config.GetSections().Contains(SaveDataKeys.defaultInputMappings);
-        if (!defaultMappingsExist)
-        {
-            SetDefaultInputMappings();
-        }
+        //bool defaultMappingsExist = Config.GetSections().Contains(SaveDataKeys.defaultInputMappings);
+        //if (!defaultMappingsExist)
+        //{
+        //    SetDefaultInputMappings();
+        //}
 
-        // if there is custom input mappings load those instead.
-        bool customMappingsExist = Config.GetSections().Contains(SaveDataKeys.customInputMappings);
-        if (!customMappingsExist)
-        {
-            LoadCustomInputMappings();
-        }
+        //// if there is custom input mappings load those instead.
+        //bool customMappingsExist = Config.GetSections().Contains(SaveDataKeys.customInputMappings);
+        //if (!customMappingsExist)
+        //{
+        //    LoadCustomInputMappings();
+        //}
     }
 
     private void SetDefaultInputMappings()

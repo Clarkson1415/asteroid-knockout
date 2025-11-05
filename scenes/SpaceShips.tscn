@@ -1,4 +1,4 @@
-[gd_scene load_steps=256 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=255 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://q3kifu1mxr6y" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer1Frame1.png" id="1_0e8gh"]
 [ext_resource type="Texture2D" uid="uid://dpx51kmuwvxyx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer2Frame1.png" id="2_0e8gh"]
@@ -62,10 +62,8 @@
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/Utils/FollowingCamera2D.cs" id="31_y4jiu"]
 [ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/GameplaySceneScreens/GameOverScreen/PressAnyKeyToRestart.cs" id="31_ycwd3"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
-[ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="34_6skc5"]
 [ext_resource type="Script" uid="uid://c5f1wf1gdjchj" path="res://scripts/UI/GameplaySceneConstantUI/BoostAmount.cs" id="37_gcnh3"]
 [ext_resource type="Script" uid="uid://dbob345vgsahf" path="res://scripts/Debug/Debug.cs" id="38_pp75p"]
-[ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="40_6skc5"]
 [ext_resource type="Script" uid="uid://f1vrwhrjnfq7" path="res://scripts/UI/PauseMenuController.cs" id="40_jrydx"]
 [ext_resource type="Script" uid="uid://cjoajfa8o5ai2" path="res://scripts/UI/MenuScreen.cs" id="41_jrydx"]
 [ext_resource type="Script" uid="uid://cdvalangrx1hw" path="res://scripts/UI/MenuButton.cs" id="42_slcmu"]
@@ -78,8 +76,11 @@
 [ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scripts/shaders/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
+[ext_resource type="PackedScene" uid="uid://b76mrlm6s3f0o" path="res://scenes/ShipExhast.tscn" id="58_jrydx"]
 [ext_resource type="Script" uid="uid://cuvb471mbg2nu" path="res://scripts/Spawning/EnemySpawner.cs" id="69_aom5x"]
 [ext_resource type="PackedScene" uid="uid://dnsc26abupugj" path="res://scenes/enemy/Klaed_Scout.tscn" id="72_2e4hs"]
+[ext_resource type="Script" uid="uid://u3we2ryv5g5i" path="res://scripts/Spawning/OffscreenSpawner2D.cs" id="75_4e56i"]
+[ext_resource type="PackedScene" uid="uid://ptisuk1k2uu2" path="res://scenes/boost.tscn" id="76_p2h7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
 atlas = ExtResource("1_0e8gh")
@@ -838,318 +839,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Animation" id="Animation_0mrug"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Menus/gameover:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Menus/gameover:modulate:r")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Menus/gameover:modulate:g")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Menus/gameover:modulate:b")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Menus/gameover:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_uj3vt"]
-resource_name = "gameOver"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Menus/gameover:modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Menus/gameover:modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Menus/gameover:modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Menus/gameover:modulate:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.005555555, 0, 0, 0, 1, -0.04444445, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Menus/gameover:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Menus/gameover/HBoxContainer/highscore")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"UpdateHighScoreText"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Menus/gameover/anykey")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"ToggleOn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0mrug"]
-_data = {
-&"RESET": SubResource("Animation_0mrug"),
-&"gameOver": SubResource("Animation_uj3vt")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_slcmu"]
-shader = ExtResource("29_jrydx")
-shader_parameter/pixel_size = 2
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmmwl"]
-shader = ExtResource("25_qgmj2")
-shader_parameter/bar_mode = 4
-shader_parameter/fill_mode = 1
-shader_parameter/segment_count = 12
-shader_parameter/discrete_fill_amount = 12
-shader_parameter/fade_fill_amount = 1.0
-shader_parameter/pour_fill_amount = 1.0
-shader_parameter/animation_speed = 1.0
-shader_parameter/flash_type = 0
-shader_parameter/flash_segment = 0
-shader_parameter/flash_intensity = 0.0
-shader_parameter/single_segment_previous_fill = 1.0
-shader_parameter/single_segment_current_fill = 1.0
-shader_parameter/single_segment_flash_intensity = 1.0
-shader_parameter/flash_from_segment = 1
-shader_parameter/flash_to_segment = 2
-shader_parameter/single_segment_fade_from = 1.0
-shader_parameter/single_segment_fade_to = 1.0
-shader_parameter/single_segment_fade_progress = 0.0
-shader_parameter/drain_previous_fill = 1.0
-shader_parameter/drain_current_fill = 1.0
-shader_parameter/drain_time_progress = 0.0
-shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
-shader_parameter/filled_color = Color(1, 0.85, 0, 1)
-shader_parameter/border_color = Color(0.20868027, 2.0004343e-07, 2.4065375e-08, 1)
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/drain_flash_color = Color(1, 1, 1, 1)
-shader_parameter/custom_frame = false
-shader_parameter/frame_trim = 0.0
-shader_parameter/alpha_threshold = 0.69
-shader_parameter/scan_steps = 15
-shader_parameter/edge_smoothness = 0.02
-shader_parameter/mask_expansion = 0.0
-shader_parameter/frame_edge_opacity = 0.9
-shader_parameter/fluid_base_color = Color(0.91666675, 1, 0, 1)
-shader_parameter/fluid_highlight_color = Color(1, 0, 0, 1)
-shader_parameter/fluid_shadow_color = Color(1, 0.98333335, 0, 1)
-shader_parameter/fluid_flow_speed = 0.20000000624012
-shader_parameter/fluid_turbulence = 1.50900006841762
-shader_parameter/fluid_noise_scale = 6.0
-shader_parameter/gas_mode = false
-shader_parameter/gas_intensity = 0.8
-shader_parameter/effect_mode = 0
-shader_parameter/effect_strength = 0.3
-shader_parameter/effect_speed = 1.5
-shader_parameter/wave_thickness = 0.1
-shader_parameter/bubbles_aspect_ratio = 1.0
-shader_parameter/vertical_gradient = true
-shader_parameter/V_gradient_strength = 0.6
-shader_parameter/horizontal_gradient = false
-shader_parameter/H_gradient_strength = 0.2810000133475
-shader_parameter/segment_gap = 0.0
-shader_parameter/universal_border_size = 0.050000002375
-shader_parameter/horizontal_border_size = 1.0
-shader_parameter/inner_border_thickness_multiplier = 1.0
-shader_parameter/outer_border_size = 2.0
-shader_parameter/slant_amount = 0.0
-shader_parameter/scale = 0.0
-shader_parameter/slant_clip_margin = 0.0
-
-[sub_resource type="Gradient" id="Gradient_uj3vt"]
-colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
-gradient = SubResource("Gradient_uj3vt")
-width = 255
-
-[sub_resource type="Gradient" id="Gradient_nhe15"]
-colors = PackedColorArray(0, 0.8392157, 0.7294118, 0.5882353, 1, 0.08235294, 1, 0.5882353)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6vpd"]
-gradient = SubResource("Gradient_nhe15")
-width = 294
-
-[sub_resource type="Gradient" id="Gradient_ivo02"]
-colors = PackedColorArray(0.793019, 0.14559332, 0.5284827, 1, 0, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e8gh"]
-gradient = SubResource("Gradient_ivo02")
-width = 129
-
-[sub_resource type="Gradient" id="Gradient_jrydx"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_slcmu"]
-gradient = SubResource("Gradient_jrydx")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_43ba8"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrydx"]
-noise = SubResource("FastNoiseLite_43ba8")
-seamless = true
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_slcmu"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4e56i"]
-noise = SubResource("FastNoiseLite_slcmu")
-seamless = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrydx"]
-shader = ExtResource("43_43ba8")
-shader_parameter/pos = Vector2(0, 0)
-shader_parameter/textureResolution = 1280.0
-shader_parameter/moveDir = Vector2(0.5, 0.5)
-shader_parameter/noise = SubResource("NoiseTexture2D_jrydx")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_4e56i")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h6tte"]
 shader = ExtResource("43_s5ab8")
 shader_parameter/flash_strength = 0.0
@@ -1159,17 +848,8 @@ shader_parameter/color = Color(0.5372549, 0, 0, 1)
 friction = 0.2
 bounce = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkyuk"]
-size = Vector2(1295, 726)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ilsx"]
-shader = ExtResource("40_6skc5")
-shader_parameter/pixel_size = 4
-shader_parameter/camera_zoom = Vector2(1, 1)
-
-[sub_resource type="Gradient" id="Gradient_6skc5"]
-offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5887066, 0.028890513, 1, 1, 1, 1, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e56i"]
+size = Vector2(30, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_knfn0"]
 atlas = ExtResource("18_368rj")
@@ -2002,6 +1682,318 @@ _data = {
 &"explode": SubResource("Animation_wxqlh")
 }
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_43ba8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrydx"]
+noise = SubResource("FastNoiseLite_43ba8")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_slcmu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4e56i"]
+noise = SubResource("FastNoiseLite_slcmu")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrydx"]
+shader = ExtResource("43_43ba8")
+shader_parameter/pos = Vector2(0, 0)
+shader_parameter/textureResolution = 1280.0
+shader_parameter/moveDir = Vector2(0.5, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_jrydx")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_4e56i")
+
+[sub_resource type="Animation" id="Animation_0mrug"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menus/gameover:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menus/gameover:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menus/gameover:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menus/gameover:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menus/gameover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uj3vt"]
+resource_name = "gameOver"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Menus/gameover:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menus/gameover:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Menus/gameover:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.083333336, 42.333336, 0, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menus/gameover:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.005555555, 0, 0, 0, 1, -0.04444445, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Menus/gameover:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TouchControls/Virtual Joystick:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TouchControls/VBoxContainer:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Menus/gameover/HBoxContainer/highscore")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"UpdateHighScoreText"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Menus/gameover/anykey")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ToggleOn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0mrug"]
+_data = {
+&"RESET": SubResource("Animation_0mrug"),
+&"gameOver": SubResource("Animation_uj3vt")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_slcmu"]
+shader = ExtResource("29_jrydx")
+shader_parameter/pixel_size = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wmmwl"]
+shader = ExtResource("25_qgmj2")
+shader_parameter/bar_mode = 4
+shader_parameter/fill_mode = 1
+shader_parameter/segment_count = 12
+shader_parameter/discrete_fill_amount = 12
+shader_parameter/fade_fill_amount = 1.0
+shader_parameter/pour_fill_amount = 1.0
+shader_parameter/animation_speed = 1.0
+shader_parameter/flash_type = 0
+shader_parameter/flash_segment = 0
+shader_parameter/flash_intensity = 0.0
+shader_parameter/single_segment_previous_fill = 1.0
+shader_parameter/single_segment_current_fill = 1.0
+shader_parameter/single_segment_flash_intensity = 1.0
+shader_parameter/flash_from_segment = 1
+shader_parameter/flash_to_segment = 2
+shader_parameter/single_segment_fade_from = 1.0
+shader_parameter/single_segment_fade_to = 1.0
+shader_parameter/single_segment_fade_progress = 0.0
+shader_parameter/drain_previous_fill = 1.0
+shader_parameter/drain_current_fill = 1.0
+shader_parameter/drain_time_progress = 0.0
+shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
+shader_parameter/filled_color = Color(1, 0.85, 0, 1)
+shader_parameter/border_color = Color(0.20868027, 2.0004343e-07, 2.4065375e-08, 1)
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/drain_flash_color = Color(1, 1, 1, 1)
+shader_parameter/custom_frame = false
+shader_parameter/frame_trim = 0.0
+shader_parameter/alpha_threshold = 0.69
+shader_parameter/scan_steps = 15
+shader_parameter/edge_smoothness = 0.02
+shader_parameter/mask_expansion = 0.0
+shader_parameter/frame_edge_opacity = 0.9
+shader_parameter/fluid_base_color = Color(0.91666675, 1, 0, 1)
+shader_parameter/fluid_highlight_color = Color(1, 0, 0, 1)
+shader_parameter/fluid_shadow_color = Color(1, 0.98333335, 0, 1)
+shader_parameter/fluid_flow_speed = 0.20000000624012
+shader_parameter/fluid_turbulence = 1.50900006841762
+shader_parameter/fluid_noise_scale = 6.0
+shader_parameter/gas_mode = false
+shader_parameter/gas_intensity = 0.8
+shader_parameter/effect_mode = 0
+shader_parameter/effect_strength = 0.3
+shader_parameter/effect_speed = 1.5
+shader_parameter/wave_thickness = 0.1
+shader_parameter/bubbles_aspect_ratio = 1.0
+shader_parameter/vertical_gradient = true
+shader_parameter/V_gradient_strength = 0.6
+shader_parameter/horizontal_gradient = false
+shader_parameter/H_gradient_strength = 0.2810000133475
+shader_parameter/segment_gap = 0.0
+shader_parameter/universal_border_size = 0.050000002375
+shader_parameter/horizontal_border_size = 1.0
+shader_parameter/inner_border_thickness_multiplier = 1.0
+shader_parameter/outer_border_size = 2.0
+shader_parameter/slant_amount = 0.0
+shader_parameter/scale = 0.0
+shader_parameter/slant_clip_margin = 0.0
+
+[sub_resource type="Gradient" id="Gradient_uj3vt"]
+colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
+gradient = SubResource("Gradient_uj3vt")
+width = 255
+
+[sub_resource type="Gradient" id="Gradient_nhe15"]
+colors = PackedColorArray(0, 0.8392157, 0.7294118, 0.5882353, 1, 0.08235294, 1, 0.5882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6vpd"]
+gradient = SubResource("Gradient_nhe15")
+width = 294
+
+[sub_resource type="Gradient" id="Gradient_ivo02"]
+colors = PackedColorArray(0.793019, 0.14559332, 0.5284827, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e8gh"]
+gradient = SubResource("Gradient_ivo02")
+width = 129
+
+[sub_resource type="Gradient" id="Gradient_jrydx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_slcmu"]
+gradient = SubResource("Gradient_jrydx")
+
 [node name="Game" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-2087.0]
 
@@ -2154,6 +2146,231 @@ repeat_times = 4
 [node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="BG/Parallax2D14"]
 sprite_frames = SubResource("SpriteFrames_bs4d1")
 autoplay = "default"
+
+[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("pickupCollectionArea", "camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
+z_index = 10
+material = SubResource("ShaderMaterial_h6tte")
+collision_mask = 18
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_tncqp")
+gravity_scale = 0.0
+script = ExtResource("12_h3aac")
+pickupCollectionArea = NodePath("PickupCollectionArea")
+Acceleration = 2000.0
+_maxSpeed = 500.0
+camera2d = NodePath("../Camera2D")
+boostAccellerationMultiplier = 4.0
+JoystickLeft = NodePath("../CanvasLayer/TouchControls/Virtual Joystick")
+fireButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control/fire")
+boostButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control2/boost")
+area = NodePath("Area2D")
+currentEngine = NodePath("EngineSlot/Engine")
+currentWeapon = NodePath("weaponSlot/weapon")
+damageSprites = Dictionary[int, Texture2D]({
+0: ExtResource("29_ncsgd"),
+1: ExtResource("14_368rj"),
+2: ExtResource("15_ncsgd"),
+3: ExtResource("16_bk3pc")
+})
+shipSprite = NodePath("body")
+shipSpriteAnimator = NodePath("body/shipAnims")
+BonkAsteroidSFX = NodePath("body/bumpSound")
+BoostUsedPerSec = 5.0
+MaximumBoostAmount = 20.0
+
+[node name="PickupCollectionArea" type="Area2D" parent="ship"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/PickupCollectionArea"]
+shape = SubResource("RectangleShape2D_4e56i")
+
+[node name="EngineSlot" type="Node2D" parent="ship"]
+use_parent_material = true
+
+[node name="Engine" type="Node2D" parent="ship/EngineSlot" node_paths=PackedStringArray("animationPlayer", "exhastLeft", "exhastRight")]
+use_parent_material = true
+script = ExtResource("13_rfagt")
+animationPlayer = NodePath("AnimationPlayer")
+exhastLeft = NodePath("CanvasGroup")
+exhastRight = NodePath("CanvasGroup2")
+
+[node name="CanvasGroup" parent="ship/EngineSlot/Engine" instance=ExtResource("58_jrydx")]
+position = Vector2(-7, 12)
+
+[node name="CanvasGroup2" parent="ship/EngineSlot/Engine" instance=ExtResource("58_jrydx")]
+position = Vector2(8, 12)
+
+[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
+visible = false
+use_parent_material = true
+position = Vector2(0, 5)
+sprite_frames = SubResource("SpriteFrames_3n1cu")
+animation = &"powering"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
+root_node = NodePath("../../../../Camera2D")
+libraries = {
+&"": SubResource("AnimationLibrary_bgaru")
+}
+autoplay = "idle"
+
+[node name="engine" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
+use_parent_material = true
+position = Vector2(0, 2)
+sprite_frames = SubResource("SpriteFrames_yepbu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="idleSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
+stream = ExtResource("16_r0to7")
+
+[node name="PoweringOn" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
+stream = ExtResource("17_4jc4o")
+
+[node name="PoweredSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
+stream = ExtResource("18_rfagt")
+
+[node name="PoweringOff" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
+stream = ExtResource("19_ebvmo")
+
+[node name="boost" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
+stream = ExtResource("26_ncsgd")
+volume_db = 6.0
+
+[node name="weaponSlot" type="Node2D" parent="ship"]
+use_parent_material = true
+
+[node name="weapon" type="AnimatedSprite2D" parent="ship/weaponSlot" node_paths=PackedStringArray("animationPlayer", "leftMuzzle", "rightMuzzle")]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_h3aac")
+animation = &"fire"
+autoplay = "idle"
+frame = 3
+frame_progress = 0.8888854
+script = ExtResource("17_elunu")
+animationPlayer = NodePath("AnimationPlayer")
+bulletScene = ExtResource("18_tncqp")
+leftMuzzle = NodePath("leftMuzzle")
+rightMuzzle = NodePath("rightMuzzle")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/weaponSlot/weapon"]
+libraries = {
+&"": SubResource("AnimationLibrary_tncqp")
+}
+autoplay = "idle"
+
+[node name="leftMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
+position = Vector2(-9.000001, -9)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/leftMuzzle"]
+stream = ExtResource("23_4jc4o")
+volume_db = -6.0
+
+[node name="rightMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
+position = Vector2(8.999999, -9.000001)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/rightMuzzle"]
+stream = ExtResource("23_4jc4o")
+volume_db = -6.0
+
+[node name="body" type="AnimatedSprite2D" parent="ship"]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_lg0qw")
+animation = &"explode"
+autoplay = "default"
+frame_progress = 0.13582116
+
+[node name="shipAnims" type="AnimationPlayer" parent="ship/body"]
+libraries = {
+&"": SubResource("AnimationLibrary_s5ab8")
+}
+
+[node name="explosionsound" type="AudioStreamPlayer2D" parent="ship/body"]
+stream = ExtResource("49_oss5w")
+
+[node name="bumpSound" type="AudioStreamPlayer2D" parent="ship/body"]
+stream = ExtResource("50_sttqx")
+volume_db = 10.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship"]
+position = Vector2(-4, -6)
+rotation = -1.5707964
+polygon = PackedVector2Array(6, 4, -12, 18, -17, 18, -14, 8, -19, 7, -19, 2, -14, 0, -17, -10, -12, -10)
+
+[node name="Area2D" type="Area2D" parent="ship"]
+position = Vector2(-4, -10)
+rotation = -1.5707964
+collision_mask = 10
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship/Area2D"]
+polygon = PackedVector2Array(-20, 18, -13, 18, 3, 4, -13, -10, -20, -10, -23, 0.99999905, -23, 6.9999995)
+
+[node name="Spawners" type="Node2D" parent="ship"]
+
+[node name="astroidSpawner" type="Node2D" parent="ship/Spawners" node_paths=PackedStringArray("countLabel")]
+script = ExtResource("14_tkyuk")
+countLabel = NodePath("../../../CanvasLayer/roids score/astroidscore")
+objectScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
+DensityThreshold = 15
+objectPoolInitialSize = 20
+initialOnSpawn = 10
+
+[node name="EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this" type="Node2D" parent="ship/Spawners"]
+script = ExtResource("69_aom5x")
+objectScenes = Array[PackedScene]([ExtResource("72_2e4hs")])
+DensityThreshold = 15
+minInterval = 8.0
+objectPoolInitialSize = 20
+initialOnSpawn = 3
+
+[node name="BoostPickupSpawner" type="Node2D" parent="ship/Spawners"]
+script = ExtResource("75_4e56i")
+objectScenes = Array[PackedScene]([ExtResource("76_p2h7x")])
+minInterval = 1.0
+maxInterval = 1.0
+objectPoolInitialSize = 3
+initialOnSpawn = 3
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("followTarget", "FogNode", "shaker")]
+zoom = Vector2(0.75, 0.75)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = ExtResource("31_y4jiu")
+followTarget = NodePath("../ship")
+ZoomSmoothness = 0.05
+FogNode = NodePath("Fog")
+shaker = NodePath("CameraShaker")
+
+[node name="Fog" type="ColorRect" parent="Camera2D"]
+material = SubResource("ShaderMaterial_jrydx")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -705.0
+offset_top = -705.0
+offset_right = 705.0
+offset_bottom = 705.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1817488, 0.26389506, 0.42151126, 0.2784314)
+
+[node name="CameraShaker" type="Node" parent="Camera2D"]
+script = ExtResource("46_slcmu")
+metadata/_custom_type_script = "uid://cjnm4vyewqugm"
+
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidsScore")]
+script = ExtResource("28_m36cv")
+astroidsScore = NodePath("../CanvasLayer/roids score/astroidscore")
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="Level"]
+stream = ExtResource("30_4jc4o")
+autoplay = true
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2638,234 +2855,3 @@ grow_vertical = 2
 [node name="Back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
 layout_mode = 2
 text = "Back"
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("followTarget", "FogNode", "shaker")]
-zoom = Vector2(0.75, 0.75)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-script = ExtResource("31_y4jiu")
-followTarget = NodePath("../ship")
-ZoomSmoothness = 0.05
-FogNode = NodePath("Fog")
-shaker = NodePath("CameraShaker")
-
-[node name="Fog" type="ColorRect" parent="Camera2D"]
-material = SubResource("ShaderMaterial_jrydx")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -705.0
-offset_top = -705.0
-offset_right = 705.0
-offset_bottom = 705.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1817488, 0.26389506, 0.42151126, 0.2784314)
-
-[node name="CameraShaker" type="Node" parent="Camera2D"]
-script = ExtResource("46_slcmu")
-metadata/_custom_type_script = "uid://cjnm4vyewqugm"
-
-[node name="ship" type="RigidBody2D" parent="." node_paths=PackedStringArray("camera2d", "JoystickLeft", "fireButton", "boostButton", "area", "currentEngine", "currentWeapon", "shipSprite", "shipSpriteAnimator", "BonkAsteroidSFX")]
-z_index = 10
-material = SubResource("ShaderMaterial_h6tte")
-collision_mask = 18
-mass = 20.0
-physics_material_override = SubResource("PhysicsMaterial_tncqp")
-gravity_scale = 0.0
-script = ExtResource("12_h3aac")
-Acceleration = 2000.0
-_maxSpeed = 500.0
-camera2d = NodePath("../Camera2D")
-boostAccellerationMultiplier = 4.0
-JoystickLeft = NodePath("../CanvasLayer/TouchControls/Virtual Joystick")
-fireButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control/fire")
-boostButton = NodePath("../CanvasLayer/TouchControls/VBoxContainer/Control2/boost")
-area = NodePath("Area2D")
-currentEngine = NodePath("EngineSlot/Engine")
-currentWeapon = NodePath("weaponSlot/weapon")
-damageSprites = Dictionary[int, Texture2D]({
-0: ExtResource("29_ncsgd"),
-1: ExtResource("14_368rj"),
-2: ExtResource("15_ncsgd"),
-3: ExtResource("16_bk3pc")
-})
-shipSprite = NodePath("body")
-shipSpriteAnimator = NodePath("body/shipAnims")
-BonkAsteroidSFX = NodePath("body/bumpSound")
-BoostUsedPerSec = 5.0
-MaximumBoostAmount = 20.0
-
-[node name="astroidSpawner" type="Area2D" parent="ship" node_paths=PackedStringArray("countLabel")]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("14_tkyuk")
-countLabel = NodePath("../../CanvasLayer/roids score/astroidscore")
-ON = false
-objectScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
-DensityThreshold = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/astroidSpawner"]
-position = Vector2(6.5, -12)
-shape = SubResource("RectangleShape2D_tkyuk")
-
-[node name="EngineSlot" type="Node2D" parent="ship"]
-use_parent_material = true
-
-[node name="Engine" type="Node2D" parent="ship/EngineSlot" node_paths=PackedStringArray("animationPlayer")]
-use_parent_material = true
-script = ExtResource("13_rfagt")
-animationPlayer = NodePath("AnimationPlayer")
-
-[node name="CanvasGroup" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
-material = SubResource("ShaderMaterial_2ilsx")
-position = Vector2(-7, 12)
-script = ExtResource("49_a6vpd")
-
-[node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup" instance=ExtResource("34_6skc5")]
-width = 5.0
-gradient = SubResource("Gradient_6skc5")
-length = 100
-TrailOn = true
-
-[node name="CanvasGroup2" type="CanvasGroup" parent="ship/EngineSlot/Engine"]
-material = SubResource("ShaderMaterial_2ilsx")
-position = Vector2(7, 12)
-script = ExtResource("49_a6vpd")
-
-[node name="Trail" parent="ship/EngineSlot/Engine/CanvasGroup2" instance=ExtResource("34_6skc5")]
-width = 5.0
-gradient = SubResource("Gradient_6skc5")
-length = 100
-TrailOn = true
-
-[node name="engine-base engine flame" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
-visible = false
-use_parent_material = true
-position = Vector2(0, 5)
-sprite_frames = SubResource("SpriteFrames_3n1cu")
-animation = &"powering"
-autoplay = "idle"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/EngineSlot/Engine"]
-root_node = NodePath("../../../../Camera2D")
-libraries = {
-&"": SubResource("AnimationLibrary_bgaru")
-}
-autoplay = "idle"
-
-[node name="engine" type="AnimatedSprite2D" parent="ship/EngineSlot/Engine"]
-use_parent_material = true
-position = Vector2(0, 2)
-sprite_frames = SubResource("SpriteFrames_yepbu")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="idleSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
-stream = ExtResource("16_r0to7")
-
-[node name="PoweringOn" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
-stream = ExtResource("17_4jc4o")
-
-[node name="PoweredSound" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
-stream = ExtResource("18_rfagt")
-
-[node name="PoweringOff" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
-stream = ExtResource("19_ebvmo")
-
-[node name="boost" type="AudioStreamPlayer2D" parent="ship/EngineSlot/Engine"]
-stream = ExtResource("26_ncsgd")
-volume_db = 6.0
-
-[node name="weaponSlot" type="Node2D" parent="ship"]
-use_parent_material = true
-
-[node name="weapon" type="AnimatedSprite2D" parent="ship/weaponSlot" node_paths=PackedStringArray("animationPlayer", "leftMuzzle", "rightMuzzle")]
-use_parent_material = true
-sprite_frames = SubResource("SpriteFrames_h3aac")
-animation = &"fire"
-autoplay = "idle"
-frame = 3
-frame_progress = 0.8888854
-script = ExtResource("17_elunu")
-animationPlayer = NodePath("AnimationPlayer")
-bulletScene = ExtResource("18_tncqp")
-leftMuzzle = NodePath("leftMuzzle")
-rightMuzzle = NodePath("rightMuzzle")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ship/weaponSlot/weapon"]
-libraries = {
-&"": SubResource("AnimationLibrary_tncqp")
-}
-autoplay = "idle"
-
-[node name="leftMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
-position = Vector2(-9.000001, -9)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/leftMuzzle"]
-stream = ExtResource("23_4jc4o")
-volume_db = -6.0
-
-[node name="rightMuzzle" type="Node2D" parent="ship/weaponSlot/weapon"]
-position = Vector2(8.999999, -9.000001)
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="ship/weaponSlot/weapon/rightMuzzle"]
-stream = ExtResource("23_4jc4o")
-volume_db = -6.0
-
-[node name="body" type="AnimatedSprite2D" parent="ship"]
-use_parent_material = true
-sprite_frames = SubResource("SpriteFrames_lg0qw")
-animation = &"explode"
-autoplay = "default"
-frame_progress = 0.13582116
-
-[node name="shipAnims" type="AnimationPlayer" parent="ship/body"]
-libraries = {
-&"": SubResource("AnimationLibrary_s5ab8")
-}
-
-[node name="explosionsound" type="AudioStreamPlayer2D" parent="ship/body"]
-stream = ExtResource("49_oss5w")
-
-[node name="bumpSound" type="AudioStreamPlayer2D" parent="ship/body"]
-stream = ExtResource("50_sttqx")
-volume_db = 10.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship"]
-position = Vector2(-4, -6)
-rotation = -1.5707964
-polygon = PackedVector2Array(6, 4, -12, 18, -17, 18, -14, 8, -19, 7, -19, 2, -14, 0, -17, -10, -12, -10)
-
-[node name="Area2D" type="Area2D" parent="ship"]
-position = Vector2(-4, -10)
-rotation = -1.5707964
-collision_mask = 10
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ship/Area2D"]
-polygon = PackedVector2Array(-20, 18, -13, 18, 3, 4, -13, -10, -20, -10, -23, 0.99999905, -23, 6.9999995)
-
-[node name="EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this" type="Area2D" parent="ship"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("69_aom5x")
-ON = false
-objectScenes = Array[PackedScene]([ExtResource("72_2e4hs")])
-DensityThreshold = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ship/EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this"]
-position = Vector2(6.5, -12)
-shape = SubResource("RectangleShape2D_tkyuk")
-
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner", "astroidsScore")]
-script = ExtResource("28_m36cv")
-astroidSpawner = NodePath("../ship/astroidSpawner")
-astroidsScore = NodePath("../CanvasLayer/roids score/astroidscore")
-
-[node name="GameMusic" type="AudioStreamPlayer2D" parent="Level"]
-stream = ExtResource("30_4jc4o")
-autoplay = true
-parameters/looping = true

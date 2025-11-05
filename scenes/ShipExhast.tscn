@@ -1,0 +1,92 @@
+[gd_scene load_steps=16 format=3 uid="uid://b76mrlm6s3f0o"]
+
+[ext_resource type="Shader" uid="uid://dynxswcv2xgj2" path="res://scripts/shaders/pixelise.gdshader" id="1_11rnh"]
+[ext_resource type="Script" uid="uid://2gcptu568hg5" path="res://scripts/RocketShipExhaust.cs" id="2_w11na"]
+[ext_resource type="PackedScene" uid="uid://bup0ar1rqtrj1" path="res://scenes/Trail.tscn" id="3_bt7sp"]
+[ext_resource type="Shader" uid="uid://co81owbv5kjf3" path="res://scripts/shaders/rocket_exhast_not_line.gdshader" id="4_6es45"]
+[ext_resource type="Shader" uid="uid://dxx3werowygk8" path="res://scripts/shaders/glow.gdshader" id="5_1bi5n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ilsx"]
+shader = ExtResource("1_11rnh")
+shader_parameter/pixel_size = 4
+shader_parameter/camera_zoom = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_6skc5"]
+offsets = PackedFloat32Array(0, 0.40852576, 0.77975136, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0.5887066, 0.028890513, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4e56i"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p2h7x"]
+noise = SubResource("FastNoiseLite_4e56i")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c5jp0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ogbqv"]
+noise = SubResource("FastNoiseLite_c5jp0")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2h7x"]
+shader = ExtResource("4_6es45")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_p2h7x")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_ogbqv")
+shader_parameter/yellow_color = Color(1, 0.33333337, 0, 1)
+shader_parameter/orange_color = Color(0.8353262, 0.52731365, 3.85046e-07, 1)
+shader_parameter/smoke_color = Color(1, 1, 1, 1)
+shader_parameter/effect_speed = 2.0
+shader_parameter/flame_height = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5jp0"]
+shader = ExtResource("5_1bi5n")
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 2.0
+shader_parameter/pulse_speed = 0.0
+
+[sub_resource type="Gradient" id="Gradient_11rnh"]
+offsets = PackedFloat32Array(0, 0.45070422, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.27752772, 0.27752772, 0.27752772, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w11na"]
+gradient = SubResource("Gradient_11rnh")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="CanvasGroup" type="CanvasGroup" node_paths=PackedStringArray("rocketFire", "light2d", "trailNode")]
+material = SubResource("ShaderMaterial_2ilsx")
+script = ExtResource("2_w11na")
+rocketFire = NodePath("rocketBlast")
+light2d = NodePath("PointLight2D")
+trailNode = NodePath("Trail")
+
+[node name="Trail" parent="." instance=ExtResource("3_bt7sp")]
+visible = false
+light_mask = 9
+width = 5.0
+gradient = SubResource("Gradient_6skc5")
+length = 100
+TrailOn = true
+
+[node name="rocketBlast" type="ColorRect" parent="."]
+light_mask = 9
+material = SubResource("ShaderMaterial_p2h7x")
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 3.0
+offset_bottom = 23.0
+
+[node name="Glow" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_c5jp0")
+offset_left = -5.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = 6.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 8
+position = Vector2(-0.25000012, 3.9999998)
+scale = Vector2(0.10156251, 0.15625)
+energy = 2.0
+texture = SubResource("GradientTexture2D_w11na")

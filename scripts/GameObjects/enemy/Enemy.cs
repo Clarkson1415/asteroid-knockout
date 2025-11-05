@@ -28,42 +28,33 @@ public partial class Enemy : PoolableRB
     private bool playerInRange = false;
     private bool playerDirectlyinFront = false;
 
-    [Export] private Array<Node> trails;
-    [Export] private Array<CanvasGroup> trailParents;
+    [Export] private Array<RocketShipExhaust> exhasts;
 
     private void ToggleTrails(bool on)
     {
-        foreach (var t in trails)
+        foreach (var e in exhasts)
         {
             if (on)
             {
-                t.Call("ToggleTrailOn");
+                e.Visible = true;
+                e.TrailOn();
             }
             else
             {
-                t.Call("ToggleTrailOff");
-            }
-        }
-
-        foreach (var tp in trailParents)
-        {
-            if (on)
-            {
-                tp.Visible = true;
-            }
-            else
-            {
-                tp.Visible = false;
+                e.Visible = false;
+                e.TrailOff();
             }
         }
     }
 
     public override void _Ready()
     {
-        ToggleTrails(false);
-        explodeSound.Finished += EmitDestroyed;
-        //  TODO: use an animation player likie asteroids
-        this.bodyAnimations.AnimationFinished += () => ToggleTrails(false);
+        if (exhasts.Count == 0)
+        {
+            Logger.LogError("Exhausts are not assigned in inspector.");
+        }
+
+        explodeSound.Finished += InvokeDestroyedPoolableObject;
 
         // shoot
         shootCooldown = new Timer();
@@ -117,10 +108,10 @@ public partial class Enemy : PoolableRB
         {
             explodeSound.Play();
             this.bodyAnimations.Play("explode");
+            ToggleTrails(false);
         }
 
         HitsLeft--;
-
         // Does not get disposed it goes back into the object pooler.
         // Emit destroyed is emitteed in animation player.
     }
@@ -135,6 +126,11 @@ public partial class Enemy : PoolableRB
         if (HitsLeft < 1) // Dead
         {
             return;
+        }
+
+        foreach (var ex in exhasts)
+        {
+            ex.UpdateVisualsFromSpeedPercent(this.LinearVelocity.Length() / maxSpeed);
         }
 
         var player = ShipController.Instance;
@@ -277,6 +273,7 @@ public partial class Enemy : PoolableRB
 
     public override void OnMadeVisibleAgain()
     {
+        base.OnMadeVisibleAgain();
         HitsLeft = initialHitsTillDestroyed;
         bodyAnimations.Play("default");
         LinearVelocity = Vector2.Zero;

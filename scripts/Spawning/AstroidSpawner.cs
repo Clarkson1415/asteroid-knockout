@@ -15,16 +15,14 @@ public partial class AstroidSpawner : OffscreenSpawner2D
         Logger.Log($"Asteroid speed initial increased: {additionalSpeedIncrease}");
     }
 
-    protected override void OnNewObjectSpawned(PoolableRB obj)
+    protected override void OnNewObjectSpawned(Node2D obj)
     {
-        if (obj is not Asteroid asteroid) { return; }
+        if (obj is not Asteroid asteroid) 
+        {
+            return; 
+        }
+
         asteroid.SetSpeed(additionalSpeedIncrease);
         countLabel.Text = $"Visible: {GetVisibleAsteroids()}.";
-    }
-
-    protected override void OnPutInPool(PoolableRB obj)
-    {
-        if (obj is not Asteroid asteroid) { return; }
-        asteroid.ToggleTrailOff();
     }
 }

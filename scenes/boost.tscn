@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ptisuk1k2uu2"]
+
+[ext_resource type="Texture2D" uid="uid://d26ipcsln4hlq" path="res://boostIcons/PickupIcon.png" id="1_8xfal"]
+[ext_resource type="Script" uid="uid://c15mt8rsur73u" path="res://scripts/Boost.cs" id="1_s34y7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xfal"]
+radius = 15.033297
+
+[node name="Boost" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_s34y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.98333335, 1, 0, 1)
+texture = ExtResource("1_8xfal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8xfal")

@@ -1,3 +1,4 @@
+using cakegame1idk.scripts.GameObjects;
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
@@ -31,12 +32,14 @@ public partial class OffscreenSpawner2D : Node2D
     /// <summary>
     /// Invisible objects in the pool.
     /// </summary>
-    private List<PoolableRB> objectPool = new();
+    private List<Node2D> objectPool = new();
 
     /// <summary>
     /// Visible objects in game and simulation.
     /// </summary>
-    private List<PoolableRB> visibleObjects = new();
+    private List<Node2D> visibleObjects = new();
+
+    private Timer timer;
 
     /// <summary>
     /// The visible objects in the game and simulation.
@@ -50,7 +53,10 @@ public partial class OffscreenSpawner2D : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-        if(!ON) { return; }
+        if(!ON) 
+        { 
+            return; 
+        }
 
         CallDeferred(nameof(SpawnInitial));
     }
@@ -58,59 +64,90 @@ public partial class OffscreenSpawner2D : Node2D
     private void Spawn()
     {
         var asteroidScene = objectScenes[GD.RandRange(0, objectScenes.Count - 1)];
-        var obj = asteroidScene.Instantiate<PoolableRB>();
+        Node2D obj = asteroidScene.Instantiate<Node2D>();
         GetTree().CurrentScene.AddChild(obj);
-        obj.GlobalPosition = GetRandomPositionOffScreen();
-        obj.OnDestroyed += (x) => AddToPool(x);
+        var poolableObj = ReturnIPoolable(obj);
+        poolableObj.OnDestroyed += (obj) => AddToPool(obj as Node2D);
         AddToPool(obj);
     }
 
+    private IPoolable ReturnIPoolable(Node2D node)
+    {
+        var poolableObj = node as IPoolable; 
+
+        if (poolableObj == null)
+        {
+            Logger.LogError($"object trying to spawn is not poolable! implement IPoolable interface. on spawner: {this.Name}");
+        }
+
+        return poolableObj;
+    }
+
+    [Export] float minInterval = 2f;
+    [Export] float maxInterval = 10f;
+
+    private RandomNumberGenerator random;
+
+    [Export] private int objectPoolInitialSize;
+
+    [Export] private int initialOnSpawn;
+
     private void SpawnInitial()
     {
-        for (int i = 0; i < 20; i++)
+        // cache an amount
+        for (int i = 0; i < objectPoolInitialSize; i++)
         {
             Spawn();
         }
 
-        var timer = new Timer();
+        // spawn an initail amount
+        for (int i = 0; i < initialOnSpawn; i++)
+        {
+            LoadFromPool();
+        }
+
+        random = new RandomNumberGenerator();
+        timer = new Timer();
         AddChild(timer);
-        timer.WaitTime = 0.3f;
+        timer.OneShot = true;
+        timer.Timeout += RestartTimer;
         timer.Start();
-        timer.Timeout += LoadAsteroidFromPool;
-        timer.Timeout += () => timer.Start();
+    }
+
+    private void RestartTimer()
+    {
+        LoadFromPool();
+        var interval = random.RandfRange(minInterval, maxInterval);
+        timer.WaitTime = interval;
+        timer.Start();
     }
 
     /// <summary>
     /// Disable and turn off. put in pool to grab new ones from.
     /// </summary>
     /// <param name="obj"></param>
-    private void AddToPool(PoolableRB obj)
+    private void AddToPool(Node2D obj)
     {
-        OnPutInPool(obj);
-        obj.DisableMode = CollisionObject2D.DisableModeEnum.Remove;
-        obj.ProcessMode = ProcessModeEnum.Disabled;
-        obj.Visible = false;
+        var poolableObj = ReturnIPoolable(obj);
+        poolableObj.OnAddedToPool();
+        obj.SetVisible(false);
         objectPool.Add(obj);
         visibleObjects.Remove(obj);
     }
 
-    /// <summary>
-    /// Something additioanl todo when obect is removed from simulation and put in obj pool.
-    /// </summary>
-    protected virtual void OnPutInPool(PoolableRB asteroid) { }
-
-    private PoolableRB GetRandomAsteroidFromPool()
+    private Node2D GetRandomFromPool()
     {
         var obj = objectPool[GD.RandRange(0, objectPool.Count - 1)];
         objectPool.Remove(obj);
-        obj.ProcessMode = ProcessModeEnum.Inherit;
-        obj.Visible = true;
-        obj.OnMadeVisibleAgain();
+        obj.SetVisible(true);
+        obj.SetGlobalPosition(GetRandomPositionOffScreen());
+        var poolableObj = ReturnIPoolable(obj);
+        poolableObj.OnMadeVisibleAgain();
         visibleObjects.Add(obj);
         return obj;
     }
 
-    private bool IsOffscreen(PoolableRB obj)
+    private bool IsOffscreen(Node2D obj)
     {
         var camera = GetViewport().GetCamera2D();
         if (camera == null) return false;
@@ -125,7 +162,7 @@ public partial class OffscreenSpawner2D : Node2D
     /// <summary>
     /// Get one from pool and set visible and put on screen.
     /// </summary>
-    private void LoadAsteroidFromPool()
+    private void LoadFromPool()
     {
         if (!ON) { return; }
 
@@ -146,13 +183,17 @@ public partial class OffscreenSpawner2D : Node2D
             Spawn();
         }
 
-        var asteroid = GetRandomAsteroidFromPool();
+        var asteroid = GetRandomFromPool();
         asteroid.GlobalPosition = GetRandomPositionOffScreen();
 
         OnNewObjectSpawned(asteroid);
     }
 
-    protected virtual void OnNewObjectSpawned(PoolableRB asteroid) { }
+    /// <summary>
+    /// When object taken from pool and made or re made visible.
+    /// </summary>
+    /// <param name="asteroid"></param>
+    protected virtual void OnNewObjectSpawned(Node2D asteroid) { }
 
     private Vector2 GetRandomPositionOffScreen()
     {
