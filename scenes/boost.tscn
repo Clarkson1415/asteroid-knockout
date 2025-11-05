@@ -1,19 +1,122 @@
-[gd_scene load_steps=4 format=3 uid="uid://ptisuk1k2uu2"]
+[gd_scene load_steps=10 format=3 uid="uid://ptisuk1k2uu2"]
 
 [ext_resource type="Texture2D" uid="uid://d26ipcsln4hlq" path="res://boostIcons/PickupIcon.png" id="1_8xfal"]
 [ext_resource type="Script" uid="uid://c15mt8rsur73u" path="res://scripts/Boost.cs" id="1_s34y7"]
+[ext_resource type="Shader" uid="uid://c1ovkuyjayco3" path="res://scripts/shaders/spriteShine.gdshader" id="2_sc3qm"]
+[ext_resource type="AudioStream" uid="uid://d0w0ubp4omksf" path="res://sounds/PowerupSpace.wav" id="4_0h208"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0h208"]
+shader = ExtResource("2_sc3qm")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_angle = 45.0
+shader_parameter/shine_speed = 0.3
+shader_parameter/shine_delay = 0.0
+shader_parameter/shine_reverse = false
+shader_parameter/Line_Width = 0.09
+shader_parameter/Line_Smoothness = 0.045
+shader_parameter/Brightness = 3.0
+shader_parameter/Distortion = 2.0
+shader_parameter/LensStrength = 0.05
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xfal"]
-radius = 15.033297
+radius = 9.0
 
-[node name="Boost" type="Area2D"]
+[sub_resource type="Animation" id="Animation_0h208"]
+resource_name = "pickedup"
+length = 0.51
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boost:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"CallFromAnimationPlayerToInvokeOnDestroyed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gve62"]
+length = 0.001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("boost:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5snx"]
+_data = {
+&"RESET": SubResource("Animation_gve62"),
+&"pickedup": SubResource("Animation_0h208")
+}
+
+[node name="Boost" type="Area2D" node_paths=PackedStringArray("player")]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_s34y7")
+player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.98333335, 1, 0, 1)
+material = SubResource("ShaderMaterial_0h208")
 texture = ExtResource("1_8xfal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_8xfal")
+
+[node name="boost" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0h208")
+volume_db = 3.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_c5snx")
+}
+autoplay = "RESET"

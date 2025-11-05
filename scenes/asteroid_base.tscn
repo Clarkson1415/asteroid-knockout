@@ -123,6 +123,7 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_h3aac"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -292,11 +293,11 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.5),
+"times": PackedFloat32Array(2.0333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"EmitDestroyed"
+"method": &"InvokeDestroyedPoolableObject"
 }]
 }
 
@@ -364,6 +365,7 @@ polygon = PackedVector2Array(-5.7686944, -14.72148, -9.763347, -14.514712, -17.2
 libraries = {
 &"": SubResource("AnimationLibrary_h3aac")
 }
+autoplay = "RESET"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_71tyo")

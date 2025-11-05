@@ -25,7 +25,6 @@ public partial class PauseMenuController : MenuController
         current = newMenu;
         newMenu.Open();
 
-        current.backButton.Pressed -= () => CloseCurrent();
         current.backButton.Pressed += () => CloseCurrent();
     }
 

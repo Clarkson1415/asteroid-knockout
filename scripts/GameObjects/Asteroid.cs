@@ -89,7 +89,6 @@ public partial class Asteroid : PoolableRB
 
         animationPlayer.Play("explode");
         GlobalSignalBus.GetInstance().EmitOnAstroidDestroyedSignal();
-        InvokeDestroyedPoolableObject();
     }
 
     public override void OnMadeVisibleAgain()

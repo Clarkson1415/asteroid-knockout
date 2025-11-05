@@ -85,7 +85,7 @@ public partial class ShipController : RigidBody2D
         var boost = pickupCollected as Boost;
         if (boost != null)
         {
-            boost.InvokeDestroyedPoolableObject();
+            boost.PrepareToRemoveFromScene();
         }
     }
 

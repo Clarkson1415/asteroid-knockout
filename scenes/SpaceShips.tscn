@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="24_h0gdq"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="Shader" uid="uid://cd3uoqt6vmwgk" path="res://scripts/shaders/progress_bar.gdshader" id="25_qgmj2"]
-[ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boostSound.mp3" id="26_ncsgd"]
+[ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boost.mp3" id="26_ncsgd"]
 [ext_resource type="Script" uid="uid://damdtfkjbleip" path="res://scripts/Level.cs" id="28_m36cv"]
 [ext_resource type="Shader" uid="uid://bin3vxu7npllv" path="res://scripts/shaders/viewport_pixelise_shader.gdshader" id="29_jrydx"]
 [ext_resource type="Texture2D" uid="uid://c76kybjnjh1p" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="29_ncsgd"]
@@ -1932,7 +1932,7 @@ shader_parameter/drain_current_fill = 1.0
 shader_parameter/drain_time_progress = 0.0
 shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
 shader_parameter/filled_color = Color(1, 0.85, 0, 1)
-shader_parameter/border_color = Color(0.20868027, 2.0004343e-07, 2.4065375e-08, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/drain_flash_color = Color(1, 1, 1, 1)
 shader_parameter/custom_frame = false
@@ -1942,8 +1942,8 @@ shader_parameter/scan_steps = 15
 shader_parameter/edge_smoothness = 0.02
 shader_parameter/mask_expansion = 0.0
 shader_parameter/frame_edge_opacity = 0.9
-shader_parameter/fluid_base_color = Color(0.91666675, 1, 0, 1)
-shader_parameter/fluid_highlight_color = Color(1, 0, 0, 1)
+shader_parameter/fluid_base_color = Color(1, 1, 1, 1)
+shader_parameter/fluid_highlight_color = Color(0.9543063, 0.0015138806, 0.00016383707, 1)
 shader_parameter/fluid_shadow_color = Color(1, 0.98333335, 0, 1)
 shader_parameter/fluid_flow_speed = 0.20000000624012
 shader_parameter/fluid_turbulence = 1.50900006841762
@@ -2315,7 +2315,7 @@ countLabel = NodePath("../../../CanvasLayer/roids score/astroidscore")
 objectScenes = Array[PackedScene]([ExtResource("22_irl7o"), ExtResource("23_fjoud"), ExtResource("32_uddql")])
 DensityThreshold = 15
 objectPoolInitialSize = 20
-initialOnSpawn = 10
+initialOnSpawn = 5
 
 [node name="EnemySpawnerTODO Offsxcreen Spawner2d then inherit in asteroids and this" type="Node2D" parent="ship/Spawners"]
 script = ExtResource("69_aom5x")
@@ -2388,7 +2388,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 30
-text = "0"
+text = "Asteroids: 0"
 
 [node name="CanvasAnimation" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {
@@ -2508,11 +2508,11 @@ modulate = Color(3.080368e-06, 0.921319, 0.7934725, 1)
 position = Vector2(510, 510)
 texture = ExtResource("14_fjoud")
 
-[node name="PixeliseShader" type="CanvasGroup" parent="CanvasLayer"]
+[node name="Boost" type="CanvasGroup" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_slcmu")
 script = ExtResource("49_a6vpd")
 
-[node name="boost" type="ColorRect" parent="CanvasLayer/PixeliseShader"]
+[node name="boost" type="ColorRect" parent="CanvasLayer/Boost"]
 material = SubResource("ShaderMaterial_wmmwl")
 offset_left = 613.32465
 offset_top = 347.94647

@@ -16,5 +16,6 @@ namespace cakegame1idk.scripts
         public static int PlayerBullets = 3;
         public static int EnemyBullets = 4;
         public static int EnemyShip = 5;
+        public static int PlayerPickups = 6;
     }
 }
