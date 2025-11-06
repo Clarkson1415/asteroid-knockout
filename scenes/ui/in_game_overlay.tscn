@@ -1,0 +1,460 @@
+[gd_scene load_steps=26 format=3 uid="uid://mx33osdojb3o"]
+
+[ext_resource type="FontFile" uid="uid://bi07jo5upd7pk" path="res://fonts/PLANK___.TTF" id="1_trhit"]
+[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/UI/MenuScreens/GameOverScreen/HighScoreLabel.cs" id="2_h8bbu"]
+[ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="3_5pi4r"]
+[ext_resource type="Texture2D" uid="uid://bt6vpvah5rtf8" path="res://UIButtons/blankRestartcircle.png" id="4_dafr4"]
+[ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="5_waayp"]
+[ext_resource type="Texture2D" uid="uid://bbrcjfb3bi4sd" path="res://UIButtons/RestartPressed.png" id="6_v1ap1"]
+[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/UI/MenuScreens/GameOverScreen/RestartButton.cs" id="7_tb2id"]
+[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/MenuScreens/GameOverScreen/PressAnyKeyToRestart.cs" id="8_qdoc5"]
+[ext_resource type="Script" uid="uid://f1vrwhrjnfq7" path="res://scripts/UI/PauseMenuController.cs" id="9_7vkfd"]
+[ext_resource type="Script" uid="uid://cjoajfa8o5ai2" path="res://scripts/UI/MenuScreen.cs" id="10_cfr8b"]
+[ext_resource type="Script" uid="uid://cdvalangrx1hw" path="res://scripts/UI/MenuButton.cs" id="11_oqswf"]
+[ext_resource type="Script" uid="uid://2rum45cotq7k" path="res://scripts/UI/MenuScreens/QuitButton.cs" id="12_theil"]
+[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scripts/UI/MenuScreens/ControlsScreen/RemappingButton.cs" id="13_6m5o5"]
+[ext_resource type="Script" uid="uid://ct44b3r160873" path="res://scripts/UI/MenuScreens/SettingsScreen/VsyncOnToggle.cs" id="14_a40yt"]
+[ext_resource type="Script" uid="uid://ce30tqwdwt8g3" path="res://scripts/UI/MenuScreens/SettingsScreen/CameraShakeSlider.cs" id="15_ljqng"]
+
+[sub_resource type="Gradient" id="Gradient_uj3vt"]
+colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
+gradient = SubResource("Gradient_uj3vt")
+width = 255
+
+[sub_resource type="Gradient" id="Gradient_nhe15"]
+colors = PackedColorArray(0, 0.8392157, 0.7294118, 0.5882353, 1, 0.08235294, 1, 0.5882353)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6vpd"]
+gradient = SubResource("Gradient_nhe15")
+width = 294
+
+[sub_resource type="Gradient" id="Gradient_ivo02"]
+colors = PackedColorArray(0.793019, 0.14559332, 0.5284827, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e8gh"]
+gradient = SubResource("Gradient_ivo02")
+width = 129
+
+[sub_resource type="Gradient" id="Gradient_jrydx"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_slcmu"]
+gradient = SubResource("Gradient_jrydx")
+width = 512
+height = 248
+
+[sub_resource type="Gradient" id="Gradient_p2h7x"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.24313726, 0.24313726, 0.24313726, 0.74509805)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5jp0"]
+gradient = SubResource("Gradient_p2h7x")
+height = 32
+
+[node name="InGameOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gameover" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = SubResource("GradientTexture1D_0mrug")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="gameover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -44.0
+offset_right = 233.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label3" type="Label" parent="gameover/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_trhit")
+theme_override_font_sizes/font_size = 34
+text = "high score:"
+
+[node name="highscore" type="Label" parent="gameover/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_trhit")
+theme_override_font_sizes/font_size = 34
+text = "0"
+script = ExtResource("2_h8bbu")
+
+[node name="Label" type="Label" parent="gameover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.5
+offset_top = -146.0
+offset_right = 126.5
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_trhit")
+theme_override_font_sizes/font_size = 34
+text = "Game Over"
+
+[node name="touch restart Button" type="Control" parent="gameover"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 51.0
+offset_right = 20.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="shadow" type="Sprite2D" parent="gameover/touch restart Button"]
+position = Vector2(38, 39)
+scale = Vector2(0.10266032, 0.10266032)
+texture = ExtResource("3_5pi4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="gameover/touch restart Button"]
+position = Vector2(30.25, 30.875002)
+scale = Vector2(0.09395429, 0.095179744)
+texture = ExtResource("4_dafr4")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="gameover/touch restart Button"]
+scale = Vector2(0.099609375, 0.099609375)
+texture_normal = ExtResource("5_waayp")
+texture_pressed = ExtResource("6_v1ap1")
+script = ExtResource("7_tb2id")
+
+[node name="anykey" type="Control" parent="gameover"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_qdoc5")
+
+[node name="any" type="Label" parent="gameover/anykey"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = 62.0
+offset_right = 187.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
+theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("1_trhit")
+theme_override_font_sizes/font_size = 22
+text = "Press any key or tap to restart"
+
+[node name="PauseMenuController" type="Control" parent="." node_paths=PackedStringArray("buttonsThatOpenSubmenus", "initial", "screens")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_7vkfd")
+buttonsThatOpenSubmenus = [NodePath(""), NodePath("")]
+initial = NodePath("InitialScreen")
+screens = [NodePath(""), NodePath(""), NodePath("")]
+
+[node name="InitialScreen" type="TextureRect" parent="PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_a6vpd")
+script = ExtResource("10_cfr8b")
+backButton = NodePath("MainButtons/back")
+initialFocusButton = NodePath("MainButtons/back")
+
+[node name="MainButtons" type="VBoxContainer" parent="PauseMenuController/InitialScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="back" type="Button" parent="PauseMenuController/InitialScreen/MainButtons"]
+layout_mode = 2
+text = "back"
+
+[node name="Controls" type="Button" parent="PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
+layout_mode = 2
+text = "Controls"
+script = ExtResource("11_oqswf")
+menuToOpen = NodePath("../../../controlsMenu")
+
+[node name="Settings" type="Button" parent="PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
+layout_mode = 2
+text = "Settings"
+script = ExtResource("11_oqswf")
+menuToOpen = NodePath("../../../SettingsScreen")
+
+[node name="Quit" type="Button" parent="PauseMenuController/InitialScreen/MainButtons"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("12_theil")
+
+[node name="controlsMenu" type="TextureRect" parent="PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0e8gh")
+script = ExtResource("10_cfr8b")
+backButton = NodePath("VBoxContainer/Back")
+initialFocusButton = NodePath("VBoxContainer/HBoxContainer/Button")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuController/controlsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuController/controlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Fire"
+
+[node name="Label2" type="Label" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90.94, 0)
+layout_mode = 2
+text = "Left Click"
+
+[node name="Button" type="Button" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelDisplaying")]
+layout_mode = 2
+text = "remap"
+script = ExtResource("13_6m5o5")
+actionRemapName = "fire"
+labelDisplaying = NodePath("../Label2")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenuController/controlsMenu/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Boost"
+
+[node name="Label2" type="Label" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(90.94, 0)
+layout_mode = 2
+text = "Right Click"
+
+[node name="Button" type="Button" parent="PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelDisplaying")]
+layout_mode = 2
+text = "remap"
+script = ExtResource("13_6m5o5")
+labelDisplaying = NodePath("../Label2")
+
+[node name="Back" type="Button" parent="PauseMenuController/controlsMenu/VBoxContainer"]
+layout_mode = 2
+text = "back"
+
+[node name="SettingsScreen" type="Control" parent="PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_cfr8b")
+backButton = NodePath("VBoxContainer/Back")
+initialFocusButton = NodePath("VBoxContainer/Back")
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenuController/SettingsScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_slcmu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuController/SettingsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -17.5
+offset_right = 22.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Vsyncon" type="Control" parent="PauseMenuController/SettingsScreen/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -22.5
+offset_right = 77.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c5jp0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -20.0
+offset_right = 46.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckButton" type="CheckButton" parent="PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon/HBoxContainer"]
+layout_mode = 2
+text = "Vsync On"
+script = ExtResource("14_a40yt")
+
+[node name="CameraShake" type="Control" parent="PauseMenuController/SettingsScreen/VBoxContainer"]
+custom_minimum_size = Vector2(100, 89.71)
+layout_mode = 2
+
+[node name="asdf" type="Button" parent="PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -25.000002
+offset_right = 160.0
+offset_bottom = 24.999996
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -11.5
+offset_right = 147.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
+layout_mode = 2
+text = "Camera Shake Intensity"
+
+[node name="HSlider" type="HSlider" parent="PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("15_ljqng")
+
+[node name="Back" type="Button" parent="PauseMenuController/SettingsScreen/VBoxContainer"]
+layout_mode = 2
+text = "Back"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=260 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=236 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://q3kifu1mxr6y" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer1Frame1.png" id="1_0e8gh"]
 [ext_resource type="Texture2D" uid="uid://dpx51kmuwvxyx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer2Frame1.png" id="2_0e8gh"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://uus6wkdw1huk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer14Frame1.png" id="12_56xrs"]
 [ext_resource type="Texture2D" uid="uid://dpyolwbyb3ilv" path="res://UIButtons/crosshairImageONLY.png" id="12_gv5l8"]
 [ext_resource type="Script" uid="uid://7og8i8yrqukk" path="res://scripts/GameObjects/ShipController.cs" id="12_h3aac"]
-[ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/Debug/FpsCounter.cs" id="12_sgonc"]
 [ext_resource type="Texture2D" uid="uid://b05r3ynccs31g" path="res://UIButtons/buttonBlank.png" id="12_uj3vt"]
 [ext_resource type="Texture2D" uid="uid://bwqsdmpqjtufk" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer15Frame1_BigRedStar.png" id="13_6k5jt"]
 [ext_resource type="Script" uid="uid://crul3y3qrsogo" path="res://scripts/UI/MobileOnly/SciFiButton.cs" id="13_irl7o"]
@@ -41,16 +40,10 @@
 [ext_resource type="Texture2D" uid="uid://c7ui6nclw7mfa" path="res://UIButtons/ColoredboostcircleSciFi.png" id="18_uj3vt"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
-[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/UI/MenuScreens/GameOverScreen/HighScoreLabel.cs" id="20_h6tte"]
-[ext_resource type="Texture2D" uid="uid://bt6vpvah5rtf8" path="res://UIButtons/blankRestartcircle.png" id="20_qurfu"]
-[ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="20_whogn"]
 [ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/UI/MenuScreens/GameOverScreen/CanvasAnimator.cs" id="20_wxqlh"]
-[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/UI/MenuScreens/GameOverScreen/RestartButton.cs" id="21_3ko2o"]
-[ext_resource type="Texture2D" uid="uid://bbrcjfb3bi4sd" path="res://UIButtons/RestartPressed.png" id="21_lg0qw"]
 [ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
 [ext_resource type="PackedScene" uid="uid://b7cyqdh2fncu3" path="res://scenes/asteroid02.tscn" id="23_fjoud"]
-[ext_resource type="Texture2D" uid="uid://dspkcm4lmd8ri" path="res://UIButtons/BlackCircleSmaller.png" id="24_h0gdq"]
 [ext_resource type="Texture2D" uid="uid://c34gppbbu6ppp" path="res://Foozle_2DS0011_Void_MainShip/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Weapons/PNGs/Main Ship - Weapons - Auto Cannon.png" id="25_ebvmo"]
 [ext_resource type="Shader" uid="uid://cd3uoqt6vmwgk" path="res://scripts/shaders/progress_bar.gdshader" id="25_qgmj2"]
 [ext_resource type="AudioStream" uid="uid://dvgccmhe3xyv2" path="res://sounds/boost.mp3" id="26_ncsgd"]
@@ -60,30 +53,23 @@
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 [ext_resource type="Script" uid="uid://dffyqvwecvodf" path="res://scripts/UI/MobileOnly/TouchControls.cs" id="30_43ba8"]
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/Utils/FollowingCamera2D.cs" id="31_y4jiu"]
-[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/MenuScreens/GameOverScreen/PressAnyKeyToRestart.cs" id="31_ycwd3"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="Script" uid="uid://c5f1wf1gdjchj" path="res://scripts/UI/GameplaySceneConstantUI/BoostAmount.cs" id="37_gcnh3"]
-[ext_resource type="Script" uid="uid://dbob345vgsahf" path="res://scripts/Debug/Debug.cs" id="38_pp75p"]
-[ext_resource type="Script" uid="uid://f1vrwhrjnfq7" path="res://scripts/UI/PauseMenuController.cs" id="40_jrydx"]
-[ext_resource type="Script" uid="uid://cjoajfa8o5ai2" path="res://scripts/UI/MenuScreen.cs" id="41_jrydx"]
-[ext_resource type="Script" uid="uid://cdvalangrx1hw" path="res://scripts/UI/MenuButton.cs" id="42_slcmu"]
 [ext_resource type="Shader" uid="uid://dav6oc8ibnd3j" path="res://scripts/shaders/CameraFogOverlay.gdshader" id="43_43ba8"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
-[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scripts/UI/MenuScreens/ControlsScreen/RemappingButton.cs" id="43_slcmu"]
 [ext_resource type="Script" uid="uid://cjnm4vyewqugm" path="res://scripts/Utils/CameraShaker.cs" id="46_slcmu"]
 [ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
 [ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
 [ext_resource type="Script" uid="uid://jv4oc1ltgaie" path="res://scripts/shaders/PixeliseShaderUpdateSize.cs" id="49_a6vpd"]
 [ext_resource type="AudioStream" uid="uid://ddj3wilkrcrqo" path="res://sounds/explosion-fx-343683.mp3" id="49_oss5w"]
 [ext_resource type="AudioStream" uid="uid://0lyaqe8plrjy" path="res://sounds/Bump.mp3" id="50_sttqx"]
+[ext_resource type="PackedScene" uid="uid://mliuigocccb3" path="res://scenes/ui/debug_overlay.tscn" id="56_c5jp0"]
 [ext_resource type="PackedScene" uid="uid://b76mrlm6s3f0o" path="res://scenes/ShipExhast.tscn" id="58_jrydx"]
 [ext_resource type="Script" uid="uid://cuvb471mbg2nu" path="res://scripts/Spawning/EnemySpawner.cs" id="69_aom5x"]
+[ext_resource type="PackedScene" uid="uid://mx33osdojb3o" path="res://scenes/ui/in_game_overlay.tscn" id="70_a6vpd"]
 [ext_resource type="PackedScene" uid="uid://dnsc26abupugj" path="res://scenes/enemy/Klaed_Scout.tscn" id="72_2e4hs"]
 [ext_resource type="Script" uid="uid://u3we2ryv5g5i" path="res://scripts/Spawning/OffscreenSpawner2D.cs" id="75_4e56i"]
 [ext_resource type="PackedScene" uid="uid://ptisuk1k2uu2" path="res://scenes/boost.tscn" id="76_p2h7x"]
-[ext_resource type="Script" uid="uid://2rum45cotq7k" path="res://scripts/UI/MenuScreens/QuitButton.cs" id="81_ogbqv"]
-[ext_resource type="Script" uid="uid://ct44b3r160873" path="res://scripts/UI/MenuScreens/SettingsScreen/VsyncOnToggle.cs" id="82_c5jp0"]
-[ext_resource type="Script" uid="uid://ce30tqwdwt8g3" path="res://scripts/UI/MenuScreens/SettingsScreen/CameraShakeSlider.cs" id="82_p2h7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
 atlas = ExtResource("1_0e8gh")
@@ -1710,7 +1696,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menus/gameover:modulate:a")
+tracks/0/path = NodePath("InGameScreens/gameover:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1721,7 +1707,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menus/gameover:modulate:r")
+tracks/1/path = NodePath("InGameScreens/gameover:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1732,7 +1718,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menus/gameover:modulate:g")
+tracks/2/path = NodePath("InGameScreens/gameover:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1743,7 +1729,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Menus/gameover:modulate:b")
+tracks/3/path = NodePath("InGameScreens/gameover:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1754,7 +1740,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Menus/gameover:visible")
+tracks/4/path = NodePath("InGameScreens/gameover:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1794,7 +1780,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menus/gameover:modulate:r")
+tracks/0/path = NodePath("InGameScreens/gameover:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1805,7 +1791,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menus/gameover:modulate:g")
+tracks/1/path = NodePath("InGameScreens/gameover:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1816,7 +1802,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menus/gameover:modulate:b")
+tracks/2/path = NodePath("InGameScreens/gameover:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1827,7 +1813,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Menus/gameover:modulate:a")
+tracks/3/path = NodePath("InGameScreens/gameover:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1838,7 +1824,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Menus/gameover:visible")
+tracks/4/path = NodePath("InGameScreens/gameover:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1874,7 +1860,7 @@ tracks/6/keys = {
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Menus/gameover/HBoxContainer/highscore")
+tracks/7/path = NodePath("InGameScreens/gameover/HBoxContainer/highscore")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1888,7 +1874,7 @@ tracks/7/keys = {
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Menus/gameover/anykey")
+tracks/8/path = NodePath("InGameScreens/gameover/anykey")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1970,43 +1956,6 @@ shader_parameter/outer_border_size = 2.0
 shader_parameter/slant_amount = 0.0
 shader_parameter/scale = 0.0
 shader_parameter/slant_clip_margin = 0.0
-
-[sub_resource type="Gradient" id="Gradient_uj3vt"]
-colors = PackedColorArray(0.90588236, 0, 0.7019608, 0.49019608, 0, 1, 0.8509804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0mrug"]
-gradient = SubResource("Gradient_uj3vt")
-width = 255
-
-[sub_resource type="Gradient" id="Gradient_nhe15"]
-colors = PackedColorArray(0, 0.8392157, 0.7294118, 0.5882353, 1, 0.08235294, 1, 0.5882353)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a6vpd"]
-gradient = SubResource("Gradient_nhe15")
-width = 294
-
-[sub_resource type="Gradient" id="Gradient_ivo02"]
-colors = PackedColorArray(0.793019, 0.14559332, 0.5284827, 1, 0, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e8gh"]
-gradient = SubResource("Gradient_ivo02")
-width = 129
-
-[sub_resource type="Gradient" id="Gradient_jrydx"]
-colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_slcmu"]
-gradient = SubResource("Gradient_jrydx")
-width = 512
-height = 248
-
-[sub_resource type="Gradient" id="Gradient_p2h7x"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.24313726, 0.24313726, 0.24313726, 0.74509805)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5jp0"]
-gradient = SubResource("Gradient_p2h7x")
-height = 32
 
 [node name="Game" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-2087.0]
@@ -2411,26 +2360,7 @@ libraries = {
 }
 script = ExtResource("20_wxqlh")
 
-[node name="Debug" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("38_pp75p")
-
-[node name="fps" type="Label" parent="CanvasLayer/Debug"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 528.0
-offset_top = 10.0
-offset_right = 589.0
-offset_bottom = 38.0
-grow_horizontal = 0
-theme_override_fonts/font = ExtResource("14_jnogn")
-text = "FPS: 0"
-script = ExtResource("12_sgonc")
+[node name="DebugOverlay" parent="CanvasLayer" instance=ExtResource("56_c5jp0")]
 
 [node name="TouchControls" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -2537,408 +2467,4 @@ rotation = -1.5707964
 color = Color(1, 0, 0, 1)
 script = ExtResource("37_gcnh3")
 
-[node name="Menus" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="gameover" type="TextureRect" parent="CanvasLayer/Menus"]
-visible = false
-modulate = Color(0, 0, 0, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
-texture = SubResource("GradientTexture1D_0mrug")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/gameover"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -153.0
-offset_top = -44.0
-offset_right = 233.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Label3" type="Label" parent="CanvasLayer/Menus/gameover/HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
-theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_jnogn")
-theme_override_font_sizes/font_size = 34
-text = "high score:"
-
-[node name="highscore" type="Label" parent="CanvasLayer/Menus/gameover/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
-theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_jnogn")
-theme_override_font_sizes/font_size = 34
-text = "0"
-script = ExtResource("20_h6tte")
-
-[node name="Label" type="Label" parent="CanvasLayer/Menus/gameover"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -126.5
-offset_top = -146.0
-offset_right = 126.5
-offset_bottom = -89.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
-theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_jnogn")
-theme_override_font_sizes/font_size = 34
-text = "Game Over"
-
-[node name="touch restart Button" type="Control" parent="CanvasLayer/Menus/gameover"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 51.0
-offset_right = 20.0
-offset_bottom = 91.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="shadow" type="Sprite2D" parent="CanvasLayer/Menus/gameover/touch restart Button"]
-position = Vector2(38, 39)
-scale = Vector2(0.10266032, 0.10266032)
-texture = ExtResource("24_h0gdq")
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Menus/gameover/touch restart Button"]
-position = Vector2(30.25, 30.875002)
-scale = Vector2(0.09395429, 0.095179744)
-texture = ExtResource("20_qurfu")
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="CanvasLayer/Menus/gameover/touch restart Button"]
-scale = Vector2(0.099609375, 0.099609375)
-texture_normal = ExtResource("20_whogn")
-texture_pressed = ExtResource("21_lg0qw")
-script = ExtResource("21_3ko2o")
-
-[node name="anykey" type="Control" parent="CanvasLayer/Menus/gameover"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("31_ycwd3")
-
-[node name="any" type="Label" parent="CanvasLayer/Menus/gameover/anykey"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = 62.0
-offset_right = 187.0
-offset_bottom = 119.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.87626255, 0, 0.07142096, 1)
-theme_override_colors/font_shadow_color = Color(0.60406584, 0.0024740892, 0.20405978, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 10
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("14_jnogn")
-theme_override_font_sizes/font_size = 22
-text = "Press any key or tap to restart"
-
-[node name="PauseMenuController" type="Control" parent="CanvasLayer/Menus" node_paths=PackedStringArray("buttonsThatOpenSubmenus", "initial", "screens")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("40_jrydx")
-buttonsThatOpenSubmenus = [NodePath("InitialScreen/MainButtons/Controls"), NodePath("InitialScreen/MainButtons/Settings")]
-initial = NodePath("InitialScreen")
-screens = [NodePath("InitialScreen"), NodePath("controlsMenu"), NodePath("SettingsScreen")]
-
-[node name="InitialScreen" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_a6vpd")
-script = ExtResource("41_jrydx")
-backButton = NodePath("MainButtons/back")
-initialFocusButton = NodePath("MainButtons/back")
-
-[node name="MainButtons" type="VBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons"]
-layout_mode = 2
-text = "back"
-
-[node name="Controls" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
-layout_mode = 2
-text = "Controls"
-script = ExtResource("42_slcmu")
-menuToOpen = NodePath("../../../controlsMenu")
-
-[node name="Settings" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
-layout_mode = 2
-text = "Settings"
-script = ExtResource("42_slcmu")
-menuToOpen = NodePath("../../../SettingsScreen")
-
-[node name="Quit" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons"]
-layout_mode = 2
-text = "Quit"
-script = ExtResource("81_ogbqv")
-
-[node name="controlsMenu" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_0e8gh")
-script = ExtResource("41_jrydx")
-backButton = NodePath("VBoxContainer/Back")
-initialFocusButton = NodePath("VBoxContainer/HBoxContainer/Button")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-text = "Fire"
-
-[node name="Label2" type="Label" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(90.94, 0)
-layout_mode = 2
-text = "Left Click"
-
-[node name="Button" type="Button" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("labelDisplaying")]
-layout_mode = 2
-text = "remap"
-script = ExtResource("43_slcmu")
-actionRemapName = "fire"
-labelDisplaying = NodePath("../Label2")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-text = "Boost"
-
-[node name="Label2" type="Label" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(90.94, 0)
-layout_mode = 2
-text = "Right Click"
-
-[node name="Button" type="Button" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("labelDisplaying")]
-layout_mode = 2
-text = "remap"
-script = ExtResource("43_slcmu")
-labelDisplaying = NodePath("../Label2")
-
-[node name="Back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/controlsMenu/VBoxContainer"]
-layout_mode = 2
-text = "back"
-
-[node name="SettingsScreen" type="Control" parent="CanvasLayer/Menus/PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("41_jrydx")
-backButton = NodePath("VBoxContainer/Back")
-initialFocusButton = NodePath("VBoxContainer/Back")
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_slcmu")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -17.5
-offset_right = 22.5
-offset_bottom = 17.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Vsyncon" type="Control" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -77.0
-offset_top = -22.5
-offset_right = 77.0
-offset_bottom = 22.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_c5jp0")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -20.0
-offset_right = 46.5
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon/HBoxContainer"]
-layout_mode = 2
-text = "Vsync On"
-script = ExtResource("82_c5jp0")
-
-[node name="CameraShake" type="Control" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
-custom_minimum_size = Vector2(100, 89.71)
-layout_mode = 2
-
-[node name="asdf" type="Button" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -25.000002
-offset_right = 160.0
-offset_bottom = 24.999996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -147.5
-offset_top = -11.5
-offset_right = 147.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="text" type="Label" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
-layout_mode = 2
-text = "Camera Shake Intensity"
-
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-max_value = 1.0
-step = 0.05
-script = ExtResource("82_p2h7x")
-
-[node name="Back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
-layout_mode = 2
-text = "Back"
+[node name="InGameScreens" parent="CanvasLayer" instance=ExtResource("70_a6vpd")]

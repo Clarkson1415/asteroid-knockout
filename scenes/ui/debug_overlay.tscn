@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://mliuigocccb3"]
+
+[ext_resource type="Script" uid="uid://dbob345vgsahf" path="res://scripts/Debug/Debug.cs" id="1_spnfs"]
+[ext_resource type="FontFile" uid="uid://bi07jo5upd7pk" path="res://fonts/PLANK___.TTF" id="2_gi4cg"]
+[ext_resource type="Script" uid="uid://bdkgld1b4oamy" path="res://scripts/Debug/FpsCounter.cs" id="3_an8qa"]
+
+[node name="DebugOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_spnfs")
+
+[node name="fps" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 528.0
+offset_top = 10.0
+offset_right = 589.0
+offset_bottom = 38.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_gi4cg")
+text = "FPS: 0"
+script = ExtResource("3_an8qa")
