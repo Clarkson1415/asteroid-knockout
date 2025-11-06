@@ -6,13 +6,8 @@ using Godot;
 [GlobalClass]
 public partial class CameraShaker : Node
 {
-	/// <summary>
-	/// Value from 0 to 1. 0 being no camera shake. TODO: setup settings ui for this.
-	/// </summary>
-	public static float GLOBAL_CAMERA_SHAKE_INTENSITY;
-
-    public static float DefaultDuration = 0.2f;
-    public static float DefaultMagnitude = 2f;
+    public static float DefaultDuration = 0.5f;
+    public static float DefaultMagnitude = 4f;
 
     /// <summary>
     /// Start a shake using defaults.
@@ -24,8 +19,8 @@ public partial class CameraShaker : Node
 
     public static void LargeShake(Camera2D camera)
     {
-        var largeShakeDuration = DefaultDuration * 1.2f;
-        var largeShakeMag = DefaultMagnitude * 1.2f;
+        var largeShakeDuration = DefaultDuration * 4f;
+        var largeShakeMag = DefaultMagnitude * 4f;
         Shake(camera, largeShakeDuration, largeShakeMag);
     }
 
@@ -93,7 +88,7 @@ public partial class CameraShaker : Node
         cameraToShake = camera;
         offsetbeforeShake = cameraToShake.Offset;
         currentShakeTimeLeft = duration;
-        currentShakeMag = intensity / camera.Zoom.X;
+        currentShakeMag = (intensity / camera.Zoom.X) * (float)GameSettings.Instance.GLOBAL_CAMERA_SHAKE_INTENSITY;
         currentlyShaking = true;
     }
 

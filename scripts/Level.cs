@@ -45,12 +45,12 @@ public partial class Level : Node
 	{
         GlobalSignalBus.GetInstance().OnAstroidDestroyed -= OnDestroyedAsteroid;
 
-        if (asteroids <= GameSettings.GetHighScore())
+        if (asteroids <= GameSettings.Instance.GetHighScore())
 		{
 			return;
 		}
 
-		GameSettings.UpdateHighscore(asteroids);
+		GameSettings.Instance.UpdateHighscore(asteroids);
 	}
 
 	private void OnDestroyedAsteroid()

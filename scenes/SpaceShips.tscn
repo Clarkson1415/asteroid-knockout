@@ -1,4 +1,4 @@
-[gd_scene load_steps=255 format=3 uid="uid://bm2gpgd3ev7hq"]
+[gd_scene load_steps=260 format=3 uid="uid://bm2gpgd3ev7hq"]
 
 [ext_resource type="Texture2D" uid="uid://q3kifu1mxr6y" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer1Frame1.png" id="1_0e8gh"]
 [ext_resource type="Texture2D" uid="uid://dpx51kmuwvxyx" path="res://Foozle_2DS0015_Void_EnvironmentPack/Backgrounds/Aseprite/larger/Layer2Frame1.png" id="2_0e8gh"]
@@ -41,11 +41,11 @@
 [ext_resource type="Texture2D" uid="uid://c7ui6nclw7mfa" path="res://UIButtons/ColoredboostcircleSciFi.png" id="18_uj3vt"]
 [ext_resource type="AudioStream" uid="uid://dijbs1wxxh3qf" path="res://sounds/engineOff.mp3" id="19_ebvmo"]
 [ext_resource type="Texture2D" uid="uid://cr4xb7xq672la" path="res://Foozle_2DS0015_Void_EnvironmentPack/Planets/PNGs/Earth-Like planet - Without back glow.png" id="20_dlmki"]
-[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/UI/GameplaySceneScreens/GameOverScreen/HighScoreLabel.cs" id="20_h6tte"]
+[ext_resource type="Script" uid="uid://sksr80kji4ph" path="res://scripts/UI/MenuScreens/GameOverScreen/HighScoreLabel.cs" id="20_h6tte"]
 [ext_resource type="Texture2D" uid="uid://bt6vpvah5rtf8" path="res://UIButtons/blankRestartcircle.png" id="20_qurfu"]
 [ext_resource type="Texture2D" uid="uid://bedj3er6x4l3r" path="res://UIButtons/restart.png" id="20_whogn"]
-[ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/UI/GameplaySceneScreens/GameOverScreen/CanvasAnimator.cs" id="20_wxqlh"]
-[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/UI/GameplaySceneScreens/GameOverScreen/RestartButton.cs" id="21_3ko2o"]
+[ext_resource type="Script" uid="uid://btpkvuunmghrk" path="res://scripts/UI/MenuScreens/GameOverScreen/CanvasAnimator.cs" id="20_wxqlh"]
+[ext_resource type="Script" uid="uid://dbhqvs8duljsy" path="res://scripts/UI/MenuScreens/GameOverScreen/RestartButton.cs" id="21_3ko2o"]
 [ext_resource type="Texture2D" uid="uid://bbrcjfb3bi4sd" path="res://UIButtons/RestartPressed.png" id="21_lg0qw"]
 [ext_resource type="PackedScene" uid="uid://cx00sj46yac8m" path="res://scenes/asteroid01.tscn" id="22_irl7o"]
 [ext_resource type="AudioStream" uid="uid://m7a73ug5mjfw" path="res://sounds/AutoGunShotSound2.mp3" id="23_4jc4o"]
@@ -60,7 +60,7 @@
 [ext_resource type="AudioStream" uid="uid://dxkq2hg7regx6" path="res://sounds/TheEndOfThings_SynthwaveOrchestral_100BPM_nostalgic.mp3" id="30_4jc4o"]
 [ext_resource type="Script" uid="uid://dffyqvwecvodf" path="res://scripts/UI/MobileOnly/TouchControls.cs" id="30_43ba8"]
 [ext_resource type="Script" uid="uid://fqy38jx45tro" path="res://scripts/Utils/FollowingCamera2D.cs" id="31_y4jiu"]
-[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/GameplaySceneScreens/GameOverScreen/PressAnyKeyToRestart.cs" id="31_ycwd3"]
+[ext_resource type="Script" uid="uid://pwre6ne6rqk5" path="res://scripts/UI/MenuScreens/GameOverScreen/PressAnyKeyToRestart.cs" id="31_ycwd3"]
 [ext_resource type="PackedScene" uid="uid://bjwdi0sxsebyt" path="res://scenes/asteroid_03.tscn" id="32_uddql"]
 [ext_resource type="Script" uid="uid://c5f1wf1gdjchj" path="res://scripts/UI/GameplaySceneConstantUI/BoostAmount.cs" id="37_gcnh3"]
 [ext_resource type="Script" uid="uid://dbob345vgsahf" path="res://scripts/Debug/Debug.cs" id="38_pp75p"]
@@ -69,7 +69,7 @@
 [ext_resource type="Script" uid="uid://cdvalangrx1hw" path="res://scripts/UI/MenuButton.cs" id="42_slcmu"]
 [ext_resource type="Shader" uid="uid://dav6oc8ibnd3j" path="res://scripts/shaders/CameraFogOverlay.gdshader" id="43_43ba8"]
 [ext_resource type="Shader" uid="uid://cmaw6rxmcmpp2" path="res://scripts/shaders/flash_sprite_white.gdshader" id="43_s5ab8"]
-[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scripts/UI/GameplaySceneScreens/ControlsScreen/RemappingButton.cs" id="43_slcmu"]
+[ext_resource type="Script" uid="uid://bdiajyxaiiwia" path="res://scripts/UI/MenuScreens/ControlsScreen/RemappingButton.cs" id="43_slcmu"]
 [ext_resource type="Script" uid="uid://cjnm4vyewqugm" path="res://scripts/Utils/CameraShaker.cs" id="46_slcmu"]
 [ext_resource type="Texture2D" uid="uid://cw2ddqbbxbovn" path="res://Foozle_2DS0011_Void_MainShip/ShipBlowUPAnimation-Sheet.png" id="47_lg0qw"]
 [ext_resource type="Texture2D" uid="uid://b648kawt7k5d7" path="res://Foozle_2DS0011_Void_MainShip/ShipBlank.png" id="47_xklh7"]
@@ -81,6 +81,9 @@
 [ext_resource type="PackedScene" uid="uid://dnsc26abupugj" path="res://scenes/enemy/Klaed_Scout.tscn" id="72_2e4hs"]
 [ext_resource type="Script" uid="uid://u3we2ryv5g5i" path="res://scripts/Spawning/OffscreenSpawner2D.cs" id="75_4e56i"]
 [ext_resource type="PackedScene" uid="uid://ptisuk1k2uu2" path="res://scenes/boost.tscn" id="76_p2h7x"]
+[ext_resource type="Script" uid="uid://2rum45cotq7k" path="res://scripts/UI/MenuScreens/QuitButton.cs" id="81_ogbqv"]
+[ext_resource type="Script" uid="uid://ct44b3r160873" path="res://scripts/UI/MenuScreens/SettingsScreen/VsyncOnToggle.cs" id="82_c5jp0"]
+[ext_resource type="Script" uid="uid://ce30tqwdwt8g3" path="res://scripts/UI/MenuScreens/SettingsScreen/CameraShakeSlider.cs" id="82_p2h7x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_082m1"]
 atlas = ExtResource("1_0e8gh")
@@ -1990,9 +1993,20 @@ gradient = SubResource("Gradient_ivo02")
 width = 129
 
 [sub_resource type="Gradient" id="Gradient_jrydx"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_slcmu"]
 gradient = SubResource("Gradient_jrydx")
+width = 512
+height = 248
+
+[sub_resource type="Gradient" id="Gradient_p2h7x"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.24313726, 0.24313726, 0.24313726, 0.74509805)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5jp0"]
+gradient = SubResource("Gradient_p2h7x")
+height = 32
 
 [node name="Game" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-2087.0]
@@ -2363,8 +2377,9 @@ color = Color(0.1817488, 0.26389506, 0.42151126, 0.2784314)
 script = ExtResource("46_slcmu")
 metadata/_custom_type_script = "uid://cjnm4vyewqugm"
 
-[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidsScore")]
+[node name="Level" type="Node" parent="." node_paths=PackedStringArray("astroidSpawner", "astroidsScore")]
 script = ExtResource("28_m36cv")
+astroidSpawner = NodePath("../ship/Spawners/astroidSpawner")
 astroidsScore = NodePath("../CanvasLayer/roids score/astroidscore")
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="Level"]
@@ -2676,7 +2691,8 @@ theme_override_fonts/font = ExtResource("14_jnogn")
 theme_override_font_sizes/font_size = 22
 text = "Press any key or tap to restart"
 
-[node name="PauseMenuController" type="Control" parent="CanvasLayer/Menus" node_paths=PackedStringArray("buttonsThatOpenSubmenus", "initial", "screens", "saveButton", "quitButton")]
+[node name="PauseMenuController" type="Control" parent="CanvasLayer/Menus" node_paths=PackedStringArray("buttonsThatOpenSubmenus", "initial", "screens")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2687,10 +2703,9 @@ script = ExtResource("40_jrydx")
 buttonsThatOpenSubmenus = [NodePath("InitialScreen/MainButtons/Controls"), NodePath("InitialScreen/MainButtons/Settings")]
 initial = NodePath("InitialScreen")
 screens = [NodePath("InitialScreen"), NodePath("controlsMenu"), NodePath("SettingsScreen")]
-saveButton = NodePath("InitialScreen/MainButtons/Save")
-quitButton = NodePath("InitialScreen/MainButtons/Quit")
 
 [node name="InitialScreen" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2718,13 +2733,10 @@ grow_vertical = 2
 
 [node name="back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Controls")
 text = "back"
 
 [node name="Controls" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
 layout_mode = 2
-focus_neighbor_top = NodePath("../back")
-focus_neighbor_bottom = NodePath("../Quit")
 text = "Controls"
 script = ExtResource("42_slcmu")
 menuToOpen = NodePath("../../../controlsMenu")
@@ -2735,17 +2747,10 @@ text = "Settings"
 script = ExtResource("42_slcmu")
 menuToOpen = NodePath("../../../SettingsScreen")
 
-[node name="Save" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons" node_paths=PackedStringArray("menuToOpen")]
-layout_mode = 2
-text = "Save"
-script = ExtResource("42_slcmu")
-menuToOpen = NodePath("../../../SettingsScreen")
-
 [node name="Quit" type="Button" parent="CanvasLayer/Menus/PauseMenuController/InitialScreen/MainButtons"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Controls")
-focus_neighbor_bottom = NodePath("../Settings")
 text = "Quit"
+script = ExtResource("81_ogbqv")
 
 [node name="controlsMenu" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController" node_paths=PackedStringArray("backButton", "initialFocusButton")]
 visible = false
@@ -2845,12 +2850,94 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -15.5
-offset_right = 19.0
-offset_bottom = 15.5
+offset_left = -22.5
+offset_top = -17.5
+offset_right = 22.5
+offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Vsyncon" type="Control" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -22.5
+offset_right = 77.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_c5jp0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -20.0
+offset_right = 46.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/Vsyncon/HBoxContainer"]
+layout_mode = 2
+text = "Vsync On"
+script = ExtResource("82_c5jp0")
+
+[node name="CameraShake" type="Control" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
+custom_minimum_size = Vector2(100, 89.71)
+layout_mode = 2
+
+[node name="asdf" type="Button" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -25.000002
+offset_right = 160.0
+offset_bottom = 24.999996
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -11.5
+offset_right = 147.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="text" type="Label" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
+layout_mode = 2
+text = "Camera Shake Intensity"
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer/CameraShake/HSplitContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+script = ExtResource("82_p2h7x")
 
 [node name="Back" type="Button" parent="CanvasLayer/Menus/PauseMenuController/SettingsScreen/VBoxContainer"]
 layout_mode = 2

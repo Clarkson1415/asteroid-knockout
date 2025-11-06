@@ -13,15 +13,8 @@ public partial class MenuController : Control
 
     [Export] protected Array<MenuScreen> screens;
 
-    [Export] protected Button saveButton;
-
-    [Export] protected Button quitButton;
-
     public override void _Ready()
     {
         base._Ready();
-
-        saveButton.Pressed += () => Logger.Log("todo save");
-        quitButton.Pressed += () => Logger.Log("todo quit");
     }
 }

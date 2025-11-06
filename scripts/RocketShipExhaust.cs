@@ -20,6 +20,7 @@ public partial class RocketShipExhaust : PixeliseShaderUpdateSize
     public override void _Ready()
     {
         base._Ready();
+        rocketFire.Material = (ShaderMaterial)rocketFire.Material.Duplicate(); // make resource unique.
         rocketFireMaterial = rocketFire.Material as ShaderMaterial;
         maxEnergy = light2d.Energy;
     }
